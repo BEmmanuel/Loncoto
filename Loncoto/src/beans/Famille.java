@@ -24,5 +24,12 @@ public class Famille {
 		this(0, "");
 	}
 	
+	@Override
+	public String toString() {
+		return "Famille [id=" + id + ", nom=" + nom + "]";
+	}
+	
+	
+	
 	
 }
