@@ -3,6 +3,8 @@ package beans;
 public class Famille {
 	private int id;
 	private String nom;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -15,13 +17,13 @@ public class Famille {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+
+	public Famille() {this(0, "");}
 	public Famille(int id, String nom) {
 		super();
 		this.id = id;
 		this.nom = nom;
-	}
-	public Famille() {
-		this(0, "");
 	}
 	
 	@Override
