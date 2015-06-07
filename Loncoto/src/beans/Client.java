@@ -1,12 +1,22 @@
 package beans;
 
-public class Client {
+import java.io.Serializable;
+
+import javax.persistence.*;
+import java.util.*;
+
+public class Client implements Serializable {
 
 	private int id;
 	private String nom;
 	private String numeroTelephone;
 	private String adresse;
+	private Set<Site> sites;
 	
+	
+	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="clients")
+	public Set<Site> getSites() {return sites;}
+	public void setUsers(Set<Site> sites) {this.sites = sites;}
 	
 	public int getId() {
 		return id;
