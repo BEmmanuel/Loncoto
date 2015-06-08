@@ -1,6 +1,8 @@
 
 package beans;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class Etage {
 	private int id;
 	private int numeroEtage;
 	private Batiment batiment_id;
+	private List<Salle> salles;
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
@@ -44,6 +47,13 @@ public class Etage {
 	@Override
 	public String toString() {
 		return "Etage [id=" + id + ", numeroEtage=" + numeroEtage + "]";
+	}
+	@OneToMany(mappedBy="etage_id")
+	public List<Salle> getSalles() {
+		return salles;
+	}
+	public void setSalles(List<Salle> salles) {
+		this.salles = salles;
 	}
 	
 }
