@@ -3,6 +3,8 @@ package beans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.*;
+
 public class Site {
 	private int id;
 	private String nom;
@@ -27,6 +29,7 @@ public class Site {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+	@ManyToMany(cascade=CascadeType.PERSIST)
 	public List<Client> getClients() {
 		if(clients == null)
 			clients = new ArrayList<Client>();
@@ -35,6 +38,7 @@ public class Site {
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
 	}
+	@ManyToMany(cascade=CascadeType.PERSIST)
 	public List<Batiment> getBatiments() {
 		if(batiments == null)
 			batiments = new ArrayList<Batiment>();
