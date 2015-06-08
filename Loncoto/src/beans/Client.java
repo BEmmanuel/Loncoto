@@ -14,6 +14,9 @@ public class Client {
 	private Set<Site> sites;
 	
 	
+	public void setSites(Set<Site> sites) {
+		this.sites = sites;
+	}
 	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="clients")
 	public Set<Site> getSites() {return sites;}
 	public void setUsers(Set<Site> sites) {this.sites = sites;}
