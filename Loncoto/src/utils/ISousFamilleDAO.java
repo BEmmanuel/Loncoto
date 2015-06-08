@@ -7,6 +7,6 @@ import beans.SousFamille;
 public interface ISousFamilleDAO {
 
 	public List<SousFamille> findAll();
-	public List<SousFamille> findByID(int id);
+	public SousFamille findByID(int id);
 	public SousFamille save(SousFamille sousfamille);
 }

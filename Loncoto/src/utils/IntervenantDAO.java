@@ -2,24 +2,24 @@ package utils;
 
 import java.util.List;
 
-import beans.Groupe;
+import beans.Intervenant;
 
-public class GroupeDAO implements IGroupeDAO {
+public class IntervenantDAO implements IIntervenantDAO {
 
 	@Override
-	public List<Groupe> findAll() {
+	public List<Intervenant> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Groupe> findByID(int id) {
+	public Intervenant findByID(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Groupe save(Groupe groupe) {
+	public Intervenant save(Intervenant intervenant) {
 		// TODO Auto-generated method stub
 		return null;
 	}

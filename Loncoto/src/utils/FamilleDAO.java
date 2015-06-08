@@ -2,26 +2,41 @@ package utils;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import beans.Famille;
 
 public class FamilleDAO implements IFamilleDAO {
 
-	@Override
+	EntityManager em;
+	
+
+	@PersistenceContext
+	public void setEntityManager(EntityManager em) {
+		this.em = em;
+	}
+	
+	@Transactional
 	public List<Famille> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("from Famille", Famille.class).getResultList();
 	}
 
-	@Override
+	@Transactional
 	public Famille findByID(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Famille.class, id);
 	}
 
-	@Override
+	@Transactional
 	public Famille save(Famille famille) {
-		// TODO Auto-generated method stub
-		return null;
+		if(famille.getId()>0) {
+			em.merge(famille);
+		} else {
+			em.persist(famille);
+		}
+		return famille;
 	}
 
 }

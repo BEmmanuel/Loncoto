@@ -2,24 +2,24 @@ package utils;
 
 import java.util.List;
 
-import beans.Groupe;
+import beans.SousFamille;
 
-public class GroupeDAO implements IGroupeDAO {
+public class SousFamilleDAO implements ISousFamilleDAO {
 
 	@Override
-	public List<Groupe> findAll() {
+	public List<SousFamille> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Groupe> findByID(int id) {
+	public SousFamille findByID(int id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Groupe save(Groupe groupe) {
+	public SousFamille save(SousFamille sousfamille) {
 		// TODO Auto-generated method stub
 		return null;
 	}
