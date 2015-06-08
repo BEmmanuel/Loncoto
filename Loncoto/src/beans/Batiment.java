@@ -1,12 +1,15 @@
 package beans;
 
+import javax.persistence.*;
+
+@Entity
 public class Batiment {
 
 	private int id;
 	private String nom;
 	private Site site_id;
 	
-	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
