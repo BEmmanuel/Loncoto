@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,6 +10,7 @@ public class Batiment {
 	private int id;
 	private String nom;
 	private Site site_id;
+	private List<Etage> etages;
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
@@ -22,6 +25,8 @@ public class Batiment {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	@ManyToOne
+	@JoinColumn(name="site_id")
 	public Site getSite_id() {
 		return site_id;
 	}
@@ -41,6 +46,14 @@ public class Batiment {
 	@Override
 	public String toString() {
 		return "Batiment [id=" + id + ", nom=" + nom + "]";
+	}
+	
+	@OneToMany(mappedBy="site")
+	public List<Etage> getEtages() {
+		return etages;
+	}
+	public void setEtages(List<Etage> etages) {
+		this.etages = etages;
 	}
 	
 }

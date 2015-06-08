@@ -45,7 +45,7 @@ public class Site {
 	}
 	
 	
-	@ManyToMany(cascade=CascadeType.PERSIST)
+	@OneToMany(mappedBy="site_id")
 	public List<Batiment> getBatiments() {
 		if(batiments == null)
 			batiments = new ArrayList<Batiment>();

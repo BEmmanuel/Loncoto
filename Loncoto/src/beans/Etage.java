@@ -23,7 +23,8 @@ public class Etage {
 	public void setNumeroEtage(int numeroEtage) {
 		this.numeroEtage = numeroEtage;
 	}
-	
+	@ManyToOne
+	@JoinColumn(name="batiment_id")
 	public Batiment getBatiment_id() {
 		return batiment_id;
 	}
