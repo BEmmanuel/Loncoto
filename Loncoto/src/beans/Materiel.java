@@ -1,5 +1,10 @@
 package beans;
 
+import java.util.List;
+
+import javax.persistence.*;
+
+@Entity
 public class Materiel {
 
 	private int id;
@@ -8,8 +13,9 @@ public class Materiel {
 	private Client client_id;
 	private Salle salle_id;
 	private Article article_id;
+	private List<Intervention> interventions;
 	
-	
+	@Id @GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -28,18 +34,22 @@ public class Materiel {
 	public void setNumeroSerie(String numeroSerie) {
 		this.numeroSerie = numeroSerie;
 	}
+	@ManyToOne
+	@JoinColumn()
 	public Client getClient_id() {
 		return client_id;
 	}
 	public void setClient_id(Client client_id) {
 		this.client_id = client_id;
 	}
+	@ManyToOne
 	public Salle getSalle_id() {
 		return salle_id;
 	}
 	public void setSalle_id(Salle salle_id) {
 		this.salle_id = salle_id;
 	}
+	@ManyToOne
 	public Article getArticle_id() {
 		return article_id;
 	}
@@ -54,6 +64,14 @@ public class Materiel {
 		this.id = id;
 		this.type = type;
 		this.numeroSerie = numeroSerie;
+	}
+	
+	@OneToMany(mappedBy="materiel")
+	public List<Intervention> getInterventions() {
+		return interventions;
+	}
+	public void setInterventions(List<Intervention> interventions) {
+		this.interventions = interventions;
 	}
 	
 	
