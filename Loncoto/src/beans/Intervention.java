@@ -1,8 +1,11 @@
 package beans;
 
 import java.util.Date;
-import javax.persistence.*;
+import java.util.Random;
 
+import javax.annotation.PostConstruct;
+import javax.persistence.*;
+import javax.persistence.*;
 @Entity
 public class Intervention {
 	private int id;
@@ -27,6 +30,8 @@ public class Intervention {
 	public String getNumeroUnique() {
 		return numeroUnique;
 	}
+	
+	
 	public void setNumeroUnique(String numeroUnique) {
 		this.numeroUnique = numeroUnique;
 	}
@@ -100,6 +105,15 @@ public class Intervention {
 	}
 	public void setIntervenant(Intervenant intervenant) {
 		this.intervenant = intervenant;
+	}
+	
+	@PostConstruct
+	public void init(){
+		Random rd = new Random();
+		Long numeroUnique1 = System.currentTimeMillis() + rd.nextInt(1000);
+		String numeroUnique =  numeroUnique1 + "";
+		setNumeroUnique(numeroUnique);
+		setStatut("en cours");
 	}
 	
 }
