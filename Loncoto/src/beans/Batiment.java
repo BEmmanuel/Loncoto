@@ -2,7 +2,7 @@ package beans;
 
 import javax.persistence.*;
 
-@Entity
+
 public class Batiment {
 
 	private int id;
