@@ -43,6 +43,7 @@ public class Materiel {
 		this.client_id = client_id;
 	}
 	@ManyToOne
+	@JoinColumn(name="salle_id")
 	public Salle getSalle_id() {
 		return salle_id;
 	}
@@ -50,6 +51,7 @@ public class Materiel {
 		this.salle_id = salle_id;
 	}
 	@ManyToOne
+	@JoinColumn(name="article_id")
 	public Article getArticle_id() {
 		return article_id;
 	}

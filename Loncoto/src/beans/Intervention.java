@@ -2,6 +2,9 @@ package beans;
 
 import java.util.Date;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Intervention {
 	private int id;
 	private String numeroUnique;
@@ -10,7 +13,8 @@ public class Intervention {
 	private String statut;
 	private String commentaire;
 	private Double duree;
-	
+	private Materiel materiel;
+	private Intervenant intervenant;
 	
 	public int getId() {
 		return id;
@@ -77,6 +81,23 @@ public class Intervention {
 				+ ", datePlanifie=" + datePlanifie + ", dateRealisation="
 				+ dateRealisation + ", statut=" + statut + ", commentaire="
 				+ commentaire + ", duree=" + duree + "]";
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="materiel_id")
+	public Materiel getMateriel() {
+		return materiel;
+	}
+	public void setMateriel(Materiel materiel) {
+		this.materiel = materiel;
+	}
+	@ManyToOne
+	@JoinColumn(name="intervenant_id")
+	public Intervenant getIntervenant() {
+		return intervenant;
+	}
+	public void setIntervenant(Intervenant intervenant) {
+		this.intervenant = intervenant;
 	}
 	
 }
