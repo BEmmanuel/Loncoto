@@ -1,7 +1,9 @@
 package beans;
 
 import java.util.Date;
+import javax.persistence.*;
 
+@Entity
 public class Intervention {
 	private int id;
 	private String numeroUnique;
@@ -10,8 +12,26 @@ public class Intervention {
 	private String statut;
 	private String commentaire;
 	private Double duree;
+	private Materiel materiel;
+	private Intervenant intervenant;
 	
 	
+	@ManyToOne
+	public Materiel getMateriel() {
+		return materiel;
+	}
+	public void setMateriel(Materiel materiel) {
+		this.materiel = materiel;
+	}
+	
+	@ManyToOne
+	public Intervenant getIntervenant() {
+		return intervenant;
+	}
+	public void setIntervenant(Intervenant intervenant) {
+		this.intervenant = intervenant;
+	}
+	@Id @GeneratedValue
 	public int getId() {
 		return id;
 	}
