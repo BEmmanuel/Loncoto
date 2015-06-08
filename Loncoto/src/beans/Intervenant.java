@@ -1,6 +1,7 @@
 package beans;
 import javax.persistence.*;
 import java.util.*;
+
 @Entity
 public class Intervenant {
 
@@ -10,7 +11,10 @@ public class Intervenant {
 	private Set<Groupe> groupes;
 	
 	
-	
+	@ManyToMany
+	@JoinTable(name="intervenant_has_groupe",
+		joinColumns={@JoinColumn(name="intervenant_id")},
+		inverseJoinColumns={@JoinColumn(name="groupe_id")})
 	public Set<Groupe> getGroupes() {
 		return groupes;
 	}
