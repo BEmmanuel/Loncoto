@@ -19,6 +19,7 @@ public class Groupe {
 	public void setIntervenants(Set<Intervenant> intervenants) {
 		this.intervenants = intervenants;
 	}
+	@Id @GeneratedValue
 	public int getId() {
 		return id;
 	}
