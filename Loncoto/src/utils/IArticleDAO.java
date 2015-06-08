@@ -6,6 +6,6 @@ import beans.Article;
 public interface IArticleDAO {
 
 	public List<Article> findAll();
-	public List<Article> findByID(int id);
+	public Article findByID(int id);
 	public Article save(Article article);
 }
