@@ -1,9 +1,9 @@
 package beans;
 
-
 import javax.persistence.*;
 
 import java.util.*;
+
 @Entity
 public class Client {
 
