@@ -5,12 +5,15 @@ import java.util.List;
 
 import javax.persistence.*;
 
+@Entity
 public class Site {
 	private int id;
 	private String nom;
 	private String adresse;
 	private List<Client> clients;
 	private List<Batiment> batiments;
+	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}
@@ -29,6 +32,8 @@ public class Site {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+	
+	
 	@ManyToMany(cascade=CascadeType.PERSIST)
 	public List<Client> getClients() {
 		if(clients == null)
@@ -38,6 +43,8 @@ public class Site {
 	public void setClients(List<Client> clients) {
 		this.clients = clients;
 	}
+	
+	
 	@ManyToMany(cascade=CascadeType.PERSIST)
 	public List<Batiment> getBatiments() {
 		if(batiments == null)
@@ -47,15 +54,14 @@ public class Site {
 	public void setBatiments(List<Batiment> batiments) {
 		this.batiments = batiments;
 	}
+	
+	
+	public Site() {this(0, "", "");}
 	public Site(int id, String nom, String adresse) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.adresse = adresse;
 	}
-	public Site() {
-		this(0, "", "");
-	}
-	
-	
+
 }

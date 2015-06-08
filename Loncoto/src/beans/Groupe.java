@@ -1,11 +1,22 @@
 package beans;
+import java.util.*;
 
+import javax.persistence.*;
+
+@Entity
 public class Groupe {
 
 	private int id;
 	private String nom;
+	private Set<Intervenant> intervenants;
 	
-	
+	@ManyToMany(mappedBy = "groupes")
+	public Set<Intervenant> getIntervenants() {
+		return intervenants;
+	}
+	public void setIntervenants(Set<Intervenant> intervenants) {
+		this.intervenants = intervenants;
+	}
 	public int getId() {
 		return id;
 	}

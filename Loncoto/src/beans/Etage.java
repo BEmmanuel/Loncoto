@@ -1,12 +1,16 @@
+
 package beans;
 
+import javax.persistence.*;
+
+@Entity
 public class Etage {
 	
 	private int id;
 	private int numeroEtage;
 	private Batiment batiment_id;
 	
-	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}

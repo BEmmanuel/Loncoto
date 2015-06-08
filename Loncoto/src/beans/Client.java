@@ -1,9 +1,10 @@
 package beans;
 
-
 import javax.persistence.*;
+
 import java.util.*;
 
+@Entity
 public class Client {
 
 	private int id;
@@ -17,6 +18,7 @@ public class Client {
 	public Set<Site> getSites() {return sites;}
 	public void setUsers(Set<Site> sites) {this.sites = sites;}
 	
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	public int getId() {
 		return id;
 	}

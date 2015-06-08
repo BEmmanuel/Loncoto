@@ -1,10 +1,9 @@
 package beans;
 
 import java.util.Date;
+import javax.persistence.*;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
+@Entity
 public class Intervention {
 	private int id;
 	private String numeroUnique;
@@ -16,6 +15,9 @@ public class Intervention {
 	private Materiel materiel;
 	private Intervenant intervenant;
 	
+	
+	
+	@Id @GeneratedValue
 	public int getId() {
 		return id;
 	}
