@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,6 +11,7 @@ public class Article {
 	private String nom;
 	private String description;
 	private SousFamille sousfamille;
+	private List<Materiel> materiels;
 	
 	@Id @GeneratedValue
 	public int getId() {
@@ -53,5 +56,13 @@ public class Article {
 	public String toString() {
 		return "Article [id=" + id + ", nom=" + nom + ", description="
 				+ description + ", sousfamille=" + sousfamille + "]";
+	}
+	
+	@OneToMany(mappedBy="article_id")
+	public List<Materiel> getMateriels() {
+		return materiels;
+	}
+	public void setMateriels(List<Materiel> materiels) {
+		this.materiels = materiels;
 	}
 }

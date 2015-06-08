@@ -1,11 +1,16 @@
 package beans;
 
+import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
 public class Famille {
 	private int id;
 	private String nom;
+	private List<SousFamille> sousfamilles;
 	
-	
+	@Id @GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -30,6 +35,14 @@ public class Famille {
 	@Override
 	public String toString() {
 		return "Famille [id=" + id + ", nom=" + nom + "]";
+	}
+	
+	@OneToMany(mappedBy="famille")
+	public List<SousFamille> getSousfamilles() {
+		return sousfamilles;
+	}
+	public void setSousfamilles(List<SousFamille> sousfamilles) {
+		this.sousfamilles = sousfamilles;
 	}
 	
 	

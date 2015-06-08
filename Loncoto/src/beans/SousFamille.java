@@ -1,11 +1,18 @@
 package beans;
 
+import java.util.*;
+
+import javax.persistence.*;
+
+@Entity
 public class SousFamille {
 	
 	private int id;
 	private String nom;
 	private Famille famille;
+	private List<Article> articles;
 	
+	@Id @GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -18,6 +25,9 @@ public class SousFamille {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name="famille_id")
 	public Famille getFamille() {
 		return famille;
 	}
@@ -37,6 +47,16 @@ public class SousFamille {
 	public String toString() {
 		return "SousFamille [id=" + id + ", nom=" + nom + ", famille="
 				+ famille + "]";
+	}
+	
+	@OneToMany(mappedBy="sousfamille")
+	public List<Article> getArticles() {
+		if(articles == null)
+			articles = new ArrayList<Article>();
+		return articles;
+	}
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
 	}
 	
 	
