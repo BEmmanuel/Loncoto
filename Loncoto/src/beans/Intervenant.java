@@ -1,11 +1,44 @@
 package beans;
-
+import javax.persistence.*;
+import java.util.*;
+@Entity
 public class Intervenant {
 
 	private int id;
 	private String nom;
+	private Set<Intervention> interventions;
+	private Set<Groupe> groupes;
 	
 	
+	
+	public Set<Groupe> getGroupes() {
+		return groupes;
+	}
+
+	public void setGroupes(Set<Groupe> groupes) {
+		this.groupes = groupes;
+	}
+
+	@OneToMany(mappedBy = "intervenant")
+	public Set<Intervention> getInterventions() {
+		if(interventions == null)
+			interventions =  new HashSet<Intervention>();
+		return interventions;
+	}
+	
+	public void setInterventions(Set<Intervention> interventions) {
+		this.interventions = interventions;
+	}
+	
+	public void addIntervention(Intervention intervention) {
+		if (intervention != null && !getInterventions().contains(intervention))
+		{
+			intervention.setIntervenant(this);
+			getInterventions().contains(intervention);
+		}
+	}
+	
+	@Id @GeneratedValue
 	public int getId() {
 		return id;
 	}

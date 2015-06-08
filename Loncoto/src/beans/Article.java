@@ -1,14 +1,16 @@
 package beans;
 
+import javax.persistence.*;
+
+@Entity
 public class Article {
 
 	private int id;
-	private String noSerie;
 	private String nom;
 	private String description;
 	private SousFamille sousfamille;
 	
-	
+	@Id @GeneratedValue
 	public int getId() {
 		return id;
 	}
@@ -27,6 +29,9 @@ public class Article {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name="sousfamille_id")
 	public SousFamille getSousfamille() {
 		return sousfamille;
 	}

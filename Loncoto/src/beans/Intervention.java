@@ -16,21 +16,7 @@ public class Intervention {
 	private Intervenant intervenant;
 	
 	
-	@ManyToOne
-	public Materiel getMateriel() {
-		return materiel;
-	}
-	public void setMateriel(Materiel materiel) {
-		this.materiel = materiel;
-	}
 	
-	@ManyToOne
-	public Intervenant getIntervenant() {
-		return intervenant;
-	}
-	public void setIntervenant(Intervenant intervenant) {
-		this.intervenant = intervenant;
-	}
 	@Id @GeneratedValue
 	public int getId() {
 		return id;
@@ -97,6 +83,23 @@ public class Intervention {
 				+ ", datePlanifie=" + datePlanifie + ", dateRealisation="
 				+ dateRealisation + ", statut=" + statut + ", commentaire="
 				+ commentaire + ", duree=" + duree + "]";
+	}
+	
+	@ManyToOne
+	@JoinColumn(name="materiel_id")
+	public Materiel getMateriel() {
+		return materiel;
+	}
+	public void setMateriel(Materiel materiel) {
+		this.materiel = materiel;
+	}
+	@ManyToOne
+	@JoinColumn(name="intervenant_id")
+	public Intervenant getIntervenant() {
+		return intervenant;
+	}
+	public void setIntervenant(Intervenant intervenant) {
+		this.intervenant = intervenant;
 	}
 	
 }
