@@ -48,7 +48,7 @@ public class Batiment {
 		return "Batiment [id=" + id + ", nom=" + nom + "]";
 	}
 	
-	@OneToMany(mappedBy="site")
+	@OneToMany(mappedBy="batiment_id")
 	public List<Etage> getEtages() {
 		return etages;
 	}
