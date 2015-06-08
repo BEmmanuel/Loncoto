@@ -7,10 +7,46 @@ public class Intervenant {
 
 	private int id;
 	private String nom;
+	private String prenom;
+	private String login;
+	private String password;
+	private String role;
 	private Set<Intervention> interventions;
 	private Set<Groupe> groupes;
 	
 	
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
 	@ManyToMany
 	@JoinTable(name="intervenant_has_groupe",
 		joinColumns={@JoinColumn(name="intervenant_id")},
