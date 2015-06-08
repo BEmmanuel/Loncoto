@@ -35,7 +35,7 @@ public class Materiel {
 		this.numeroSerie = numeroSerie;
 	}
 	@ManyToOne
-	@JoinColumn()
+	@JoinColumn(name="client_id")
 	public Client getClient_id() {
 		return client_id;
 	}
