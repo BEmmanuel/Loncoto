@@ -12,6 +12,8 @@ public class Groupe {
 	
 	@ManyToMany(mappedBy = "groupes")
 	public Set<Intervenant> getIntervenants() {
+		if(intervenants == null)
+			intervenants = new HashSet<Intervenant>();
 		return intervenants;
 	}
 	public void setIntervenants(Set<Intervenant> intervenants) {

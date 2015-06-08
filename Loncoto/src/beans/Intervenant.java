@@ -16,6 +16,8 @@ public class Intervenant {
 		joinColumns={@JoinColumn(name="intervenant_id")},
 		inverseJoinColumns={@JoinColumn(name="groupe_id")})
 	public Set<Groupe> getGroupes() {
+		if(groupes == null)
+			groupes = new HashSet<Groupe>();
 		return groupes;
 	}
 
