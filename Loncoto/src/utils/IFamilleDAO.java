@@ -7,6 +7,6 @@ import beans.Famille;
 public interface IFamilleDAO {
 
 	public List<Famille> findAll();
-	public List<Famille> findByID(int id);
+	public Famille findByID(int id);
 	public Famille save(Famille famille);
 }
