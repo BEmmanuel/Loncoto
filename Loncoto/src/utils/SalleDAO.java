@@ -2,26 +2,39 @@ package utils;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import beans.Salle;
 
 public class SalleDAO implements ISalleDAO {
 
-	@Override
+	EntityManager em;
+	@PersistenceContext
+	public void setEntityManager(EntityManager em) {
+		this.em = em;
+	}
+	@Transactional
 	public List<Salle> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return em.createQuery("from Salle", Salle.class).getResultList();
 	}
 
-	@Override
+	@Transactional
 	public Salle findByID(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Salle.class, id);
 	}
 
-	@Override
+	@Transactional
 	public Salle save(Salle salle) {
-		// TODO Auto-generated method stub
-		return null;
+		if(salle.getId()>0) {
+			em.merge(salle);
+		} else {
+			em.persist(salle);
+		}
+		return salle;
 	}
 
 }

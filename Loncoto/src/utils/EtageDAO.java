@@ -2,26 +2,38 @@ package utils;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import beans.Etage;
 
 public class EtageDAO implements IEtageDAO {
 
-	@Override
+	EntityManager em;
+	@PersistenceContext
+	public void setEntityManager(EntityManager em) {
+		this.em = em;
+	}
+	@Transactional
 	public List<Etage> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return em.createQuery("from Etage", Etage.class).getResultList();
 	}
 
-	@Override
+	@Transactional
 	public Etage findByID(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Etage.class, id);
 	}
 
-	@Override
+	@Transactional
 	public Etage save(Etage etage) {
-		// TODO Auto-generated method stub
-		return null;
+		if(etage.getId()>0){
+			em.merge(etage);
+		} else {
+			em.persist(etage);
+		}
+		return etage;
 	}
 
 }
