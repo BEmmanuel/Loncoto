@@ -3,6 +3,7 @@ package beans;
 public class Article {
 
 	private int id;
+	private String noSerie;
 	private String nom;
 	private String description;
 	private SousFamille sousfamille;

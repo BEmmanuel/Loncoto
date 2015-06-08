@@ -1,11 +1,10 @@
 package beans;
 
-import java.io.Serializable;
 
 import javax.persistence.*;
 import java.util.*;
 
-public class Client implements Serializable {
+public class Client {
 
 	private int id;
 	private String nom;

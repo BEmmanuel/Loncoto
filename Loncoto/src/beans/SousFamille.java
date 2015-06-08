@@ -4,8 +4,7 @@ public class SousFamille {
 	
 	private int id;
 	private String nom;
-	private Famille famille_id;
-	
+	private Famille famille;
 	
 	public int getId() {
 		return id;
@@ -19,25 +18,27 @@ public class SousFamille {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	public Famille getFamille_id() {
-		return famille_id;
+	public Famille getFamille() {
+		return famille;
 	}
-	public void setFamille_id(Famille famille_id) {
-		this.famille_id = famille_id;
+	public void setFamille(Famille famille) {
+		this.famille = famille;
 	}
 	
-	
-	public SousFamille() {this(0, "");}
 	public SousFamille(int id, String nom) {
+		super();
 		this.id = id;
 		this.nom = nom;
 	}
-	
-	
+	public SousFamille() {
+		this(0, "");
+	}
 	@Override
 	public String toString() {
-		return "SousFamille [id=" + id + ", nom=" + nom + ", famille_id="
-				+ famille_id + "]";}
+		return "SousFamille [id=" + id + ", nom=" + nom + ", famille="
+				+ famille + "]";
+	}
+	
 	
 	
 }

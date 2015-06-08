@@ -1,5 +1,6 @@
 package beans;
 
+
 public class Famille {
 	private int id;
 	private String nom;

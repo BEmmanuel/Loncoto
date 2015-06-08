@@ -1,22 +1,16 @@
 package beans;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
-import java.util.*;
 
-public class Site implements Serializable {
-
+public class Site {
 	private int id;
 	private String nom;
 	private String adresse;
-	private Set<Client> clients;
-	
-	
-	@ManyToMany(cascade=CascadeType.PERSIST)
-	public Set<Client> getClients() {return clients;}
-	public void setUsers(Set<Client> clients) {this.clients = clients;}
-	
+	private List<Client> clients;
+	private List<Batiment> batiments;
 	public int getId() {
 		return id;
 	}
@@ -35,20 +29,33 @@ public class Site implements Serializable {
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
-	
-	
-	public Site() {this(0, "", "");}
+	@ManyToMany(cascade=CascadeType.PERSIST)
+	public List<Client> getClients() {
+		if(clients == null)
+			clients = new ArrayList<Client>();
+		return clients;
+	}
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+	@ManyToMany(cascade=CascadeType.PERSIST)
+	public List<Batiment> getBatiments() {
+		if(batiments == null)
+			batiments = new ArrayList<Batiment>();
+		return batiments;
+	}
+	public void setBatiments(List<Batiment> batiments) {
+		this.batiments = batiments;
+	}
 	public Site(int id, String nom, String adresse) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.adresse = adresse;
 	}
+	public Site() {
+		this(0, "", "");
+	}
 	
-	
-	@Override
-	public String toString() {
-		return "Site [id=" + id + ", nom=" + nom + ", adresse=" + adresse + "]";
-	}	
 	
 }
