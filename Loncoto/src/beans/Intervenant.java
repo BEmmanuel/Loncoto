@@ -9,10 +9,19 @@ public class Intervenant {
 	private String nom;
 	private String email;
 	private String password;
+	private String prenom;
 	private Set<Intervention> interventions;
 	private Set<Groupe> groupes;
 	
 	
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
 	@ManyToMany
 	@JoinTable(name="intervenant_has_groupe",
 		joinColumns={@JoinColumn(name="intervenant_id")},

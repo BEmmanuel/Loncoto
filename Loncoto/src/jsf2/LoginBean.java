@@ -46,7 +46,7 @@ public class LoginBean {
 	}
 	
 	public String login(){
-		if(getIntervenantDAO().login(getEmail(), getPassword())) {
+		if(getIntervenantDAO().findByUsernameAndPassword(getEmail(), getPassword()) != null) {
 			return "index";
 		} else {
 			return "";
