@@ -10,9 +10,6 @@ import org.springframework.stereotype.Component;
 
 import com.sun.faces.facelets.tag.jstl.core.SetHandler;
 
-
-
-
 @Component
 @ManagedBean
 public class EditBean {
