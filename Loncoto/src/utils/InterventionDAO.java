@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import beans.Intervenant;
 import beans.Intervention;
 
 public class InterventionDAO implements IInterventionDAO {
@@ -48,6 +50,13 @@ public class InterventionDAO implements IInterventionDAO {
 		}
 		return intervention;
 		
+	}
+	
+	public List<Intervention> findByIntervenant(int intervenantId) {
+		Query q = em.createQuery("select inter from Intervention as inter where inter.intervenant_id=:intervenant"
+				, Intervenant.class);
+		q.setParameter("intervenant", intervenantId);
+		return q.getResultList();
 	}
 
 }
