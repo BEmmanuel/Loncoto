@@ -13,9 +13,9 @@
 <h1 class="title">Gest ' LONCOTO</h1>
 <h:form>
 	<h:panelGrid>
-        <h:outputLabel value="Username"  /><h:inputText value="#{loginBean.email}" style="background:#028575;" />
-        <h:outputLabel value="Password" id="labelPass" /><h:inputSecret value="#{loginBean.password}" style="background:#028575;"/>
-        <h:commandButton value="sauver" action="#{loginBean.login}" />
+        <h:outputLabel value="Username" class="labelPortail" /><h:inputText value="#{loginBean.email}" class="inputPortail" />
+        <h:outputLabel value="Password" class="labelPortail" /><h:inputSecret value="#{loginBean.password}" class="inputPortail" />
+        <h:commandButton value="sauver" action="#{loginBean.login}"  class="buttonConnexion"/>
     </h:panelGrid>
 </h:form>
 </div>
