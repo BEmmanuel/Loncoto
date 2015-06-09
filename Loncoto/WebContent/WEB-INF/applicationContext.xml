@@ -44,6 +44,18 @@
 	<property name="entityManagerFactory" ref="entityManagerFactory" />
 </bean>
 
+<bean id="ArticleDAO" class="utils.ArticleDAO" />
+<bean id="BatimentDAO" class="utils.BatimentDAO" />
+<bean id="ClientDAO" class="utils.ClientDAO" />
+<bean id="EtageDAO" class="utils.EtageDAO" />
+<bean id="FamilleDAO" class="utils.FamilleDAO" />
+<bean id="GroupeDAO" class="utils.GroupeDAO" />
+<bean id="IntervenantDAO" class="utils.IntervenantDAO" />
+<bean id="InterventionDAO" class="utils.InterventionDAO" />
+<bean id="MaterielDAO" class="utils.MaterielDAO" />
+<bean id="SalleDAO" class="utils.SalleDAO" />
+<bean id="SiteDAO" class="utils.SiteDAO" />
+<bean id="SousFamilleDAO" class="utils.SousFamilleDAO" />
 
 <tx:annotation-driven transaction-manager="transactionManager" />
 

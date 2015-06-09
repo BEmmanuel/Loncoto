@@ -45,9 +45,9 @@ public class LoginBean {
 		Intervenant u = getIntervenantDAO().findByUsernameAndPassword(getEmail(), getPassword());
 		if(u != null) {
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", u);
-			return "index";
+			return "liste";
 		} else {
-			return "";
+			return "login";
 		}
 	}
 }
