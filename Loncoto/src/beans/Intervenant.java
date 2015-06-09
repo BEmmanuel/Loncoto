@@ -7,6 +7,8 @@ public class Intervenant {
 
 	private int id;
 	private String nom;
+	private String email;
+	private String password;
 	private Set<Intervention> interventions;
 	private Set<Groupe> groupes;
 	
@@ -70,6 +72,22 @@ public class Intervenant {
 	@Override
 	public String toString() {
 		return "Intervenant [id=" + id + ", nom=" + nom + "]";
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 }

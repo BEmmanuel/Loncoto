@@ -1,6 +1,6 @@
 package beans;
 
-import java.util.List;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -39,12 +39,16 @@ public class Famille {
 	
 	@OneToMany(mappedBy="famille")
 	public List<SousFamille> getSousfamilles() {
+		if(sousfamilles == null)
+			sousfamilles = new ArrayList<SousFamille>();
 		return sousfamilles;
 	}
 	public void setSousfamilles(List<SousFamille> sousfamilles) {
 		this.sousfamilles = sousfamilles;
 	}
-	
+	public void addSousFamille(SousFamille sf) {
+		getSousfamilles().add(sf);
+	}
 	
 	
 	

@@ -52,4 +52,13 @@ public class IntervenantDAO implements IIntervenantDAO {
 		return intervenant;
 	}
 
+	@Transactional
+	public boolean login(String email, String password) {
+		boolean res = false;
+		Intervenant inter  = em.find(Intervenant.class, email);
+		if(inter != null && inter.getPassword() == password) {
+			res = true;
+		}
+		return res;
+	}
 }
