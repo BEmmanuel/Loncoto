@@ -1,16 +1,12 @@
 package jsf2;
 
-import java.util.Date;
-import java.util.List;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.springframework.stereotype.Component;
 
+import beans.Intervenant;
 import utils.IIntervenantDAO;
-
-import com.sun.faces.facelets.tag.jstl.core.SetHandler;
 
 
 @Component
@@ -46,7 +42,9 @@ public class LoginBean {
 	}
 	
 	public String login(){
-		if(getIntervenantDAO().findByUsernameAndPassword(getEmail(), getPassword()) != null) {
+		Intervenant u = getIntervenantDAO().findByUsernameAndPassword(getEmail(), getPassword());
+		if(u != null) {
+			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("user", u);
 			return "index";
 		} else {
 			return "";

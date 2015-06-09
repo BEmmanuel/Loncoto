@@ -31,7 +31,7 @@ public class ListeBean {
 	private IInterventionDAO interventionDAO;
 	private IIntervenantDAO intervenantDAO;
 	private IMaterielDAO materielDAO;
-	private List<Intervention> interventons;
+	private List<Intervention> interventions;
 	
 	
 	public IInterventionDAO getInterventionDAO() {
@@ -121,8 +121,8 @@ public class ListeBean {
 		return getInterventionDAO().findAll();
 	}
 
-	public void setInterventons(List<Intervention> interventons) {
-		this.interventons = interventons;
+	public void setInterventons(List<Intervention> interventions) {
+		this.interventions = interventions;
 	}
 	
 	public String saveIntervention(){
