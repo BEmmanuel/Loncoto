@@ -18,15 +18,29 @@ public class AdminBean {
 	private List<Materiel> materiels;
 	private List<Intervention> interventions;
 	private List<Intervenant> intervenants;
+	private List<Client> clients;
 	private IIntervenantDAO intervenantDAO;
 	private IInterventionDAO interventionDAO;
 	private IMaterielDAO materielDAO;
+	private IClientDAO clientDAO;
 	private int intervenantID;
 	private int materielID;
 	private int clientID;
 	
 	
 	
+	public IClientDAO getClientDAO() {
+		return clientDAO;
+	}
+	public void setClientDAO(IClientDAO clientDAO) {
+		this.clientDAO = clientDAO;
+	}
+	public List<Client> getClients() {
+		return getClientDAO().findAllWitchIntervention();
+	}
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
 	public int getMaterielID() {
 		return materielID;
 	}
@@ -46,14 +60,18 @@ public class AdminBean {
 		this.intervenantID = intervenantID;
 	}
 	public List<Materiel> getMateriels() {
-		return getMaterielDAO().findAll();
+		return getMaterielDAO().findAllWithIntervention();
 	}
 	public void setMateriels(List<Materiel> materiels) {
 		this.materiels = materiels;
 	}
 	public List<Intervention> getInterventions() {
-		if(getIntervenantID()==0 && getMaterielID()==0 && getClientID()==0 )
+		System.out.println("entrer dans getInterventions---------------");
+		System.out.println("valeur de clientID est " + getClientID());
+		if(getIntervenantID()==0 && getMaterielID()==0 && getClientID()==0 ){
+			System.out.println("appel de findALL");
 			return getInterventionDAO().findAll();
+		}
 		else
 			return getInterventionDAO().find(getIntervenantID(),getMaterielID(),getClientID());
 	}
@@ -61,7 +79,9 @@ public class AdminBean {
 		this.interventions = interventions;
 	}
 	public List<Intervenant> getIntervenants() {
-		return getIntervenantDAO().findAll();
+		System.out.println("appel de getIntervenants");
+		System.out.println("--------------------------");
+		return getIntervenantDAO().findAllWitchIntervention();
 	}
 	public void setIntervenants(List<Intervenant> intervenants) {
 		this.intervenants = intervenants;
@@ -85,8 +105,7 @@ public class AdminBean {
 		this.materielDAO = materielDAO;
 	}
 	
-	public String filterInt(AjaxBehaviorEvent evt){
+	public void filterInt(AjaxBehaviorEvent evt){
 		
-		return "";
 	}
 }

@@ -26,13 +26,16 @@ public class InterventionDAO implements IInterventionDAO {
 	@Override
 	@Transactional
 	public List<Intervention> findAll() {
+		System.out.println("ini de findALL");
+		System.out.println("-------------------------------------------------------");
+		
 		return em.createQuery("from Intervention",Intervention.class).getResultList();
 	}
 	
 	@Override
 	@Transactional
 	public List<Intervention> find(int intervenantID, int materielID, int clientID){
-		String ejbstring = "select DISTINCT inter from Intervention as inter ";
+		String ejbstring = "select DISTINCT i from Intervention as i ";
 		Query q;
 		int compteur = 0;
 		if(intervenantID != 0)
@@ -46,14 +49,14 @@ public class InterventionDAO implements IInterventionDAO {
 				ejbstring += ", IN(i.materiel) as ma, IN(ma.client_id) as client";
 		}
 		
-		ejbstring += "where";
+		ejbstring += " where ";
 		if(intervenantID != 0){
 			ejbstring += "iv.id =:ivid";
 			compteur++;
 		}
 		if(materielID != 0){
 			if(compteur != 0)
-				ejbstring += "AND ma.id =:maid";
+				ejbstring += " AND ma.id =:maid";
 			else
 				ejbstring += "ma.id =:maid";
 			compteur++;
@@ -62,10 +65,11 @@ public class InterventionDAO implements IInterventionDAO {
 		
 		if(clientID != 0){
 			if(compteur != 0)
-				ejbstring += "AND client.id = :clid";
+				ejbstring += " AND client.id = :clid";
 			else
-				ejbstring = "client.id = :clid";
+				ejbstring += "client.id = :clid";
 		}
+		
 		
 		q = em.createQuery(ejbstring);
 		if(intervenantID != 0)

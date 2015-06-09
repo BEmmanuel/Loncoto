@@ -12,8 +12,17 @@ public class Client {
 	private String numeroTelephone;
 	private String adresse;
 	private Set<Site> sites;
+	private Set<Materiel> materiels;
 	
-	
+	@OneToMany(mappedBy="client_id")
+	public Set<Materiel> getMateriels() {
+		if(materiels == null)
+			materiels = new HashSet<Materiel>();
+		return materiels;
+	}
+	public void setMateriels(Set<Materiel> materiels) {
+		this.materiels = materiels;
+	}
 	public void setSites(Set<Site> sites) {
 		this.sites = sites;
 	}

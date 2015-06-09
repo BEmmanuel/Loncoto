@@ -47,6 +47,7 @@
 <bean id="intervenantDAO" class="utils.IntervenantDAO" />
 <bean id="interventionDAO" class="utils.InterventionDAO" />
 <bean id="materielDAO" class="utils.MaterielDAO" />
+<bean id="clientDAO" class="utils.ClientDAO" />
 
 <tx:annotation-driven transaction-manager="transactionManager" />
 
