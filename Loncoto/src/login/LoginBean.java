@@ -12,7 +12,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class LoginBean implements Serializable {
 
-	private static final String[] users = {"kate:123456"};
+	private static final String[] users = {"root:1234"};
 	
 	private String username;
 	private String password;
