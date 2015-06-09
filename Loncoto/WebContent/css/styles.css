@@ -1,0 +1,54 @@
+*
+{
+	margin: 0;
+	border: 0;
+	padding: 0;
+	font-family: Arial;
+	
+}
+
+html 
+{
+  background-color: #eeeeee;
+  width : 960px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+#body
+{
+	background: #DDDDDD;
+}
+
+#divPortail
+{
+	width: 600px;
+	height: 350px;
+	margin: 125px auto;
+	border : 2px solid #000000;
+	border-radius: 15px;
+	background: #FFFFFF;
+}
+
+#divPortail>h1
+{
+	background: #000000;
+	color: #FFFFFF;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 10px 10px 0 0;
+	padding: 5px;
+}
+
+div > #labelUser
+{
+	background:#028575;
+	color: #2506fe;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	padding: 2px;
+}
+
