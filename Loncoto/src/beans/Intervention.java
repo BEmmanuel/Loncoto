@@ -98,9 +98,11 @@ public class Intervention {
 	public void setMateriel(Materiel materiel) {
 		this.materiel = materiel;
 	}
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="intervenant_id")
 	public Intervenant getIntervenant() {
+		if(intervenant == null)
+			intervenant = new Intervenant();
 		return intervenant;
 	}
 	public void setIntervenant(Intervenant intervenant) {

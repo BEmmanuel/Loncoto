@@ -20,7 +20,7 @@ public class AdminBean {
 	private List<Intervenant> intervenants;
 	private List<Client> clients;
 	private List<Site> sites;
-	//private List<Article> articles;
+	private List<Article> articles;
 	private IIntervenantDAO intervenantDAO;
 	private IInterventionDAO interventionDAO;
 	private IMaterielDAO materielDAO;
@@ -33,13 +33,13 @@ public class AdminBean {
 	
 	
 	
-//	public List<Article> getArticles() {
-//		return getArticleDAO().findAll();
-//	}
-//
-//	public void setArticles(List<Article> articles) {
-//		this.articles = articles;
-//	}
+	public List<Article> getArticles() {
+		return getArticleDAO().findAll();
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
 
 	public IArticleDAO getArticleDAO() {
 		return articleDAO;
@@ -126,12 +126,16 @@ public class AdminBean {
 		return intervenantDAO;
 	}
 	public void setIntervenantDAO(IIntervenantDAO intervenantDAO) {
+		System.out.println("injection de intervenantDAO dans AdminBean");
+		System.out.println("---------------------------------------------------");
 		this.intervenantDAO = intervenantDAO;
 	}
 	public IInterventionDAO getInterventionDAO() {
 		return interventionDAO;
 	}
 	public void setInterventionDAO(IInterventionDAO interventionDAO) {
+		System.out.println("injection de interventionDAO dans AdminBean");
+		System.out.println("---------------------------------------------------");
 		this.interventionDAO = interventionDAO;
 	}
 	public IMaterielDAO getMaterielDAO() {

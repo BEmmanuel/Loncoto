@@ -96,31 +96,31 @@
 </h:form>
 
 
-<!-- <h:form> -->
-<!-- 	<h:panelGroup> -->
-<!-- 		<table border="1"> -->
-<!-- 			<tr> -->
-<!-- 				<th>nom</th> -->
-<!-- 				<th>description</th> -->
-<!-- 				<th>nom de sousFamille</th> -->
-<!-- 				<th>action</th> -->
-<!-- 			</tr> -->
-<!-- 			<ui:repeat var="a" value="#{adminBean.articles}"> -->
-<!-- 			<tr> -->
-<!-- 				<td>#{a.nom}</td> -->
-<!-- 				<td>#{a.description}</td> -->
-<!-- 				<td>#{a.sousfamille.nom}</td> -->
-<!-- 				<td> -->
-<!-- 				<h:commandButton value="editer" action="#{editBean.editArticle}"> -->
-<!-- 					<f:param name="aid" value="#{a.id}" /> -->
-<!-- 				</h:commandButton> -->
+<h:form>
+	<h:panelGroup>
+		<table border="1">
+			<tr>
+				<th>nom</th>
+				<th>description</th>
+				<th>nom de sousFamille</th>
+				<th>action</th>
+			</tr>
+			<ui:repeat var="a" value="#{adminBean.articles}">
+			<tr>
+				<td>#{a.nom}</td>
+				<td>#{a.description}</td>
+				<td>#{a.sousfamille.nom}</td>
+				<td>
+				<h:commandButton value="editer" action="#{editBean.editArticle}">
+					<f:param name="aid" value="#{a.id}" />
+				</h:commandButton>
 				
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<!-- 			</ui:repeat> -->
-<!-- 		</table> -->
-<!-- 	</h:panelGroup> -->
-<!-- </h:form> -->
+				</td>
+			</tr>
+			</ui:repeat>
+		</table>
+	</h:panelGroup>
+</h:form>
 
 </div>
 </body>
