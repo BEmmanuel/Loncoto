@@ -4,6 +4,8 @@ import java.util.*;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="role", discriminatorType=DiscriminatorType.INTEGER)
+@DiscriminatorValue(value="1")
 public class Utilisateur {
 
 	private int id;

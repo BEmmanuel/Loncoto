@@ -3,6 +3,7 @@ package beans;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -10,6 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
+@DiscriminatorValue(value="2")
 public class Intervenant extends Utilisateur {
 	private Set<Intervention> interventions;
 	private Set<Groupe> groupes;
