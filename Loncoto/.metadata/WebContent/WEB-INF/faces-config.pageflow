@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14338354513820" configfile="/Loncoto/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="2098" id="pf14338355538221" referenceLink="//@navigationRule.12/@navigationCase.0/@toViewId|" outlinks="pf14338355538522 pf14338355538523 pf14338355538524 pf14338355538525 pf14338355538526 pf14338355538527 pf14338355538528 pf14338355538529 pf143383555385210 pf143383555385211 pf143383555385212 pf143383555385213 pf143383555385214" inlinks="pf14338355538522 pf143383555385215 pf143383555385216 pf143383555385217 pf143383555385218 pf143383555385219 pf143383555385220 pf143383555385221 pf143383555385222 pf143383555385223 pf143383555385224 pf143383555385225 pf143383555385226" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editIntervention.xhtml" x="122" y="178" id="pf143383555385427" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf143383555385215" inlinks="pf14338355538523" path="editIntervention.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editDocument.xhtml" x="554" y="2098" id="pf143383555385528" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf14338355538524" path="editDocument.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editGroupe.xhtml" x="122" y="562" id="pf143383555385529" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf143383555385217" inlinks="pf14338355538525" path="editGroupe.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editMateriel.xhtml" x="122" y="946" id="pf143383555385530" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf143383555385218" inlinks="pf14338355538526" path="editMateriel.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editArticle.xhtml" x="122" y="1330" id="pf143383555385531" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf143383555385219" inlinks="pf14338355538527" path="editArticle.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editSousFamille.xhtml" x="122" y="1714" id="pf143383555385532" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf143383555385220" inlinks="pf14338355538528" path="editSousFamille.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editFamille.xhtml" x="122" y="2098" id="pf143383555385633" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf143383555385221" inlinks="pf14338355538529" path="editFamille.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editClient.xhtml" x="122" y="2482" id="pf143383555385634" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf143383555385222" inlinks="pf143383555385210" path="editClient.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editSite.xhtml" x="122" y="2866" id="pf143383555385635" referenceLink="//@navigationRule.9/@fromViewId|" outlinks="pf143383555385223" inlinks="pf143383555385211" path="editSite.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editBatiment.xhtml" x="122" y="3250" id="pf143383555385736" referenceLink="//@navigationRule.10/@fromViewId|" outlinks="pf143383555385224" inlinks="pf143383555385212" path="editBatiment.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editEtage.xhtml" x="122" y="3634" id="pf143383555385737" referenceLink="//@navigationRule.11/@fromViewId|" outlinks="pf143383555385225" inlinks="pf143383555385213" path="editEtage.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editSalle.xhtml" x="122" y="4018" id="pf143383555385738" referenceLink="//@navigationRule.12/@fromViewId|" outlinks="pf143383555385226" inlinks="pf143383555385214" path="editSalle.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="editIntervenant.xhtml" x="122" y="4402" id="pf143383555385739" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf143383555385216" path="editIntervenant.xhtml"/>
+  <links id="pf14338355538523" target="pf143383555385427" source="pf14338355538221" outcome="login"/>
+  <links id="pf14338355538524" target="pf143383555385528" source="pf14338355538221" outcome="editIntervenant"/>
+  <links id="pf14338355538525" target="pf143383555385529" source="pf14338355538221" outcome="editGroupe"/>
+  <links id="pf14338355538526" target="pf143383555385530" source="pf14338355538221" outcome="editMateriel"/>
+  <links id="pf14338355538527" target="pf143383555385531" source="pf14338355538221" outcome="editArticle"/>
+  <links id="pf14338355538528" target="pf143383555385532" source="pf14338355538221" outcome="editSousFamille"/>
+  <links id="pf14338355538529" target="pf143383555385633" source="pf14338355538221" outcome="editFamille"/>
+  <links id="pf143383555385210" target="pf143383555385634" source="pf14338355538221" outcome="editClient"/>
+  <links id="pf143383555385211" target="pf143383555385635" source="pf14338355538221" outcome="editSite"/>
+  <links id="pf143383555385212" target="pf143383555385736" source="pf14338355538221" outcome="editBatiment"/>
+  <links id="pf143383555385213" target="pf143383555385737" source="pf14338355538221" outcome="editEtage"/>
+  <links id="pf143383555385214" target="pf143383555385738" source="pf14338355538221" outcome="editSalle"/>
+  <links id="pf143383555385215" target="pf14338355538221" source="pf143383555385427" outcome="save"/>
+  <links id="pf143383555385216" target="pf14338355538221" source="pf143383555385739" outcome="save"/>
+  <links id="pf143383555385217" target="pf14338355538221" source="pf143383555385529" outcome="save"/>
+  <links id="pf143383555385218" target="pf14338355538221" source="pf143383555385530" outcome="save"/>
+  <links id="pf143383555385219" target="pf14338355538221" source="pf143383555385531" outcome="save"/>
+  <links id="pf143383555385220" target="pf14338355538221" source="pf143383555385532" outcome="save"/>
+  <links id="pf143383555385221" target="pf14338355538221" source="pf143383555385633" outcome="save"/>
+  <links id="pf143383555385222" target="pf14338355538221" source="pf143383555385634" outcome="save"/>
+  <links id="pf143383555385223" target="pf14338355538221" source="pf143383555385635" outcome="save"/>
+  <links id="pf143383555385224" target="pf14338355538221" source="pf143383555385736" outcome="save"/>
+  <links id="pf143383555385225" target="pf14338355538221" source="pf143383555385737" outcome="save"/>
+  <links id="pf143383555385226" target="pf14338355538221" source="pf143383555385738" outcome="save"/>
+  <links id="pf14338355538522" target="pf14338355538221" source="pf14338355538221" outcome="liste">
+    <bendPoints d1Height="-36" d2Height="-36"/>
+    <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>
+    <bendPoints d1Width="-64" d2Width="-64"/>
+  </links>
+</pageflow:Pageflow>
