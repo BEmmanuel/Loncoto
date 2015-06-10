@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+<meta charset="UTF-8"></meta>
+<title>Edition d'intervention</title>
+</h:head>
+<body>
+<h:form>
+<h:inputHidden value="#{editBean.interventionID}" />
+datePlanification : <h:inputText value="#{editBean.datePlanification}">
+<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+</h:inputText>
+dateRealisation : <h:inputText value="#{editBean.dateRealisation}">
+<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+</h:inputText>
+Duree: <h:inputText value="#{editBean.interventionDuree}"/><br />
+Commentaire: <h:inputText value="#{editBean.interventionCommentaire}"/><br />
+status: <h:inputTextarea value="#{editBean.interventionStatus}"/><br />
+intervenant: <h:selectOneMenu value="#{editBean.intervenantID}">
+	<f:selectItems value="#{editBean.intervenants}" var="i" itemValue="#{i.id}" itemLabel="#{i.nom}" />
+</h:selectOneMenu><br />
+materiel:  <h:selectOneMenu value="#{editBean.materielID}">
+			<f:selectItems value="#{editBean.materiels}" var="m"
+				itemValue="#{m.id}" itemLabel="#{m.numeroSerie}" />
+		</h:selectOneMenu>
+		<br />
+<h:commandButton value="sauver" action="#{editBean.saveIntervention}" />
+</h:form>
+</body>
+</html>
