@@ -48,6 +48,14 @@
 <bean id="interventionDAO" class="utils.InterventionDAO" />
 <bean id="materielDAO" class="utils.MaterielDAO" />
 <bean id="clientDAO" class="utils.ClientDAO" />
+<bean id="siteDAO" class="utils.SiteDAO" />
+<bean id="batimentDAO" class="utils.BatimentDAO" />
+<bean id="salleDAO" class="utils.SalleDAO" />
+<bean id="articleDAO" class="utils.ArticleDAO" />
+<bean id="etageDAO" class="utils.EtageDAO" />
+<bean id="familleDAO" class="utils.FamilleDAO" />
+<bean id="sousFamilleDAO" class="utils.SousFamilleDAO" />
+
 
 <tx:annotation-driven transaction-manager="transactionManager" />
 
