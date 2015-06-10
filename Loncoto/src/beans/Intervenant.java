@@ -16,6 +16,8 @@ public class Intervenant extends Utilisateur {
 	private Set<Intervention> interventions;
 	private Set<Groupe> groupes;
 	
+	
+	
 	@ManyToMany
 	@JoinTable(name="intervenant_has_groupe",
 		joinColumns={@JoinColumn(name="intervenant_id")},

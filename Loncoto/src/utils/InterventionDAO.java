@@ -109,7 +109,7 @@ public class InterventionDAO implements IInterventionDAO {
 	}
 	
 	public List<Intervention> findByIntervenant(int intervenantId) {
-		Query q = em.createQuery("select inter from Intervention as inter where inter.intervenant=:intervenant"
+		Query q = em.createQuery("select inter from Intervention as inter where inter.intervenant.id =:intervenant"
 				, Intervention.class);
 		q.setParameter("intervenant", intervenantId);
 		return q.getResultList();

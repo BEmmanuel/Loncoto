@@ -20,7 +20,7 @@
 
 <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
-<context:component-scan base-package="jsf2,rest"></context:component-scan>
+<context:component-scan base-package="jsf2,login"></context:component-scan>
 
 <bean id="dataSource"
 	  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -44,17 +44,22 @@
 	<property name="entityManagerFactory" ref="entityManagerFactory" />
 </bean>
 
+
+
+<bean id="articleDAO" class="utils.ArticleDAO" />
+<bean id="batimentDAO" class="utils.BatimentDAO" />
+<bean id="clientDAO" class="utils.ClientDAO" />
+<bean id="etageDAO" class="utils.EtageDAO" />
+<bean id="familleDAO" class="utils.FamilleDAO" />
+<bean id="groupeDAO" class="utils.GroupeDAO" />
 <bean id="intervenantDAO" class="utils.IntervenantDAO" />
 <bean id="interventionDAO" class="utils.InterventionDAO" />
 <bean id="materielDAO" class="utils.MaterielDAO" />
-<bean id="clientDAO" class="utils.ClientDAO" />
-<bean id="siteDAO" class="utils.SiteDAO" />
-<bean id="batimentDAO" class="utils.BatimentDAO" />
 <bean id="salleDAO" class="utils.SalleDAO" />
-<bean id="articleDAO" class="utils.ArticleDAO" />
-<bean id="etageDAO" class="utils.EtageDAO" />
-<bean id="familleDAO" class="utils.FamilleDAO" />
+<bean id="siteDAO" class="utils.SiteDAO" />
 <bean id="sousFamilleDAO" class="utils.SousFamilleDAO" />
+<bean id="navigationBean" class="login.NavigationBean" />
+
 
 
 <tx:annotation-driven transaction-manager="transactionManager" />

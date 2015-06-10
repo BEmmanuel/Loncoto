@@ -21,7 +21,10 @@ public class EditBean {
 	IInterventionDAO interventionDAO;
 	IIntervenantDAO intervenantDAO;
 	IMaterielDAO materielDAO;
+	IArticleDAO articleDAO;
 	ISiteDAO siteDAO;
+	IClientDAO clientDAO;
+	ISousFamilleDAO sousFamilleDAO;
 	private int interventionID;
 	private String interventionCommentaire;
 	private Date datePlanification;
@@ -33,13 +36,85 @@ public class EditBean {
 	
 	private List<Intervenant> intervenants;
 	private List<Materiel> materiels;
+	private List<SousFamille> sousFamilles;
 	private int siteID;
 	private String siteNom;
 	private String siteAdresse;
 	
+	private int articleID;
+	private String articleNom;
+	private String articleDescription;
+	private int articleSousFamilleId;
 	
 	
 	
+	
+	
+	
+	public ISousFamilleDAO getSousFamilleDAO() {
+		return sousFamilleDAO;
+	}
+
+	public void setSousFamilleDAO(ISousFamilleDAO sousFamilleDAO) {
+		this.sousFamilleDAO = sousFamilleDAO;
+	}
+
+	public List<SousFamille> getSousFamilles() {
+		return getSousFamilleDAO().findAll();
+	}
+
+	public void setSousFamilles(List<SousFamille> sousFamilles) {
+		this.sousFamilles = sousFamilles;
+	}
+
+	public int getArticleSousFamilleId() {
+		return articleSousFamilleId;
+	}
+
+	public void setArticleSousFamilleId(int articleSousFamilleId) {
+		this.articleSousFamilleId = articleSousFamilleId;
+	}
+
+	public int getArticleID() {
+		return articleID;
+	}
+
+	public void setArticleID(int articleID) {
+		this.articleID = articleID;
+	}
+
+	public String getArticleNom() {
+		return articleNom;
+	}
+
+	public void setArticleNom(String articleNom) {
+		this.articleNom = articleNom;
+	}
+
+	public String getArticleDescription() {
+		return articleDescription;
+	}
+
+	public void setArticleDescription(String articleDescription) {
+		this.articleDescription = articleDescription;
+	}
+
+	public IArticleDAO getArticleDAO() {
+		return articleDAO;
+	}
+
+	public void setArticleDAO(IArticleDAO articleDAO) {
+		this.articleDAO = articleDAO;
+	}
+
+	public IClientDAO getClientDAO() {
+		return clientDAO;
+	}
+
+	public void setClientDAO(IClientDAO clientDAO) {
+		this.clientDAO = clientDAO;
+	}
+
 	public int getSiteID() {
 		return siteID;
 	}
@@ -251,5 +326,35 @@ public class EditBean {
 		
 		return "adminAccueil.xhtml?faces-redirect=true";
 	
+	}
+	
+	
+	public String editArticle(){
+		int id = Integer.parseInt(FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getRequestParameterMap()
+				.get("aid"));
+		
+		Article article = getArticleDAO().findByID(id);
+		
+		setArticleID(id);
+		setArticleDescription(article.getDescription());
+		setArticleNom(article.getNom());
+		setArticleSousFamilleId(article.getSousfamille().getId());
+		
+		return "editArticle.xhtml";
+	}
+	
+	public String saveArticle(){
+		Article article = new Article();
+		article.setId(getArticleID());
+		article.setDescription(getArticleDescription());
+		article.setNom(getArticleNom());
+		SousFamille sousFamille = getSousFamilleDAO().findByID(getArticleSousFamilleId());
+		article.setSousfamille(sousFamille);
+		getArticleDAO().save(article);
+		
+		return "adminAccueil.xhtml?faces-redirect=true";
 	}
 }

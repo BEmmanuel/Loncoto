@@ -7,14 +7,13 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import beans.Intervenant;
+import beans.*;
 
 import javax.persistence.*;
 
 public class IntervenantDAO implements IIntervenantDAO {
 	
 	private EntityManager em;
-	
 	
 	public EntityManager getEm() {
 		return em;
@@ -62,13 +61,13 @@ public class IntervenantDAO implements IIntervenantDAO {
 
 	@Override
 	@Transactional
-	public Intervenant findByUsernameAndPassword(String login,
+	public Utilisateur findByUsernameAndPassword(String login,
 			String password) {
-		Query q = em.createQuery("select inter from Intervenant as inter where inter.login.id=:login and inter.password =:password"
-				, Intervenant.class);
+		Query q = em.createQuery("select inter from Utilisateur as inter where inter.email=:login and inter.password =:password"
+				, Utilisateur.class);
 		q.setParameter("login", login);
 		q.setParameter("password", password);
-		List<Intervenant> inter = q.getResultList();
+		List<Utilisateur> inter = q.getResultList();
 		if(inter.size()==0)
 			return null;
 		else if (inter.size()==1) {

@@ -7,32 +7,39 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.catalina.tribes.group.GroupChannel.InterceptorIterator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import beans.Intervenant;
+import beans.Utilisateur;
+import utils.IIntervenantDAO;
+
+@Component
 @ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable {
 
-	private static final String[] users = {"root:1234"};
-	
 	private String username;
 	private String password;
-	
+	private IIntervenantDAO intervenantDAO;
 	private boolean connect;
 
-	@ManagedProperty(value="#{navigationBean}")
+	
 	private NavigationBean navigationBean;
 	
 	
 	public String doLogin() {
-		
-		for (String user: users) {
-			String dbUsername = user.split(":")[0];
-			String dbPassword = user.split(":")[1];
+		System.out.println("doLogin()");
+		Utilisateur inter = getIntervenantDAO().findByUsernameAndPassword(username, password);
+		System.out.println(inter);
 			
-			if (dbUsername.equals(username) && dbPassword.equals(password)) {
-				connect = true;
-				return navigationBean.redirectToWelcome();
-			}
+		if (inter != null) {
+			connect = true;
+			System.out.println("connecté");
+			return navigationBean.toWelcome();
 		}
 		
 		FacesMessage msg = new FacesMessage("Login ou mot de passe incorrecte !", "ERROR MSG");
@@ -75,7 +82,18 @@ public class LoginBean implements Serializable {
 	}
 
 	public void setNavigationBean(NavigationBean navigationBean) {
+		System.out.println("navigationBean");
 		this.navigationBean = navigationBean;
 	}
 	
+	public IIntervenantDAO getIntervenantDAO() {
+		return intervenantDAO;
+	}
+	
+	@Autowired
+	public void setIntervenantDAO(IIntervenantDAO intervenantDAO) {
+		System.out.println("injection DAO");
+		this.intervenantDAO = intervenantDAO;
+	}
+
 }
