@@ -11,5 +11,5 @@ public interface IIntervenantDAO {
 	public Intervenant findByID(int id);
 	public Utilisateur findByUsernameAndPassword(String login, String password);
 	public Intervenant save(Intervenant intervenant);
-	
+	public List<Intervenant> findAllWitchIntervention();
 }

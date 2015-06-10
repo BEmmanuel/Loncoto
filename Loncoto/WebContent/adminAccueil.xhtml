@@ -3,19 +3,40 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<head>
-<meta charset="UTF-8">
+<h:head>
+<meta charset="UTF-8"></meta>
 <title>Page Accueil pour admin</title>
-</head>
+</h:head>
 <body>
 <div align="center">
 <h:form>
-<h:selectOneMenu value="#{AdminBean.intervenantID}" >
-	<f:selectItems value="#{AdminBean.intervenants}"
+
+<h:selectOneMenu value="#{adminBean.intervenantID}" >
+	<f:selectItem itemValue="0" itemLabel="--select--" />
+	<f:selectItems value="#{adminBean.intervenants}"
 					var="i"
 	 				itemValue="#{i.id}"
 	 				itemLabel="#{i.nom}" />
-	<f:ajax render="listecontent" listener="#{AdminBean.filterInt}" />
+	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
+</h:selectOneMenu><br />
+
+
+<h:selectOneMenu value="#{adminBean.materielID}" >
+	<f:selectItem itemValue="0" itemLabel="--select--" />
+	<f:selectItems value="#{adminBean.materiels}"
+					var="m"
+	 				itemValue="#{m.id}"
+	 				itemLabel="#{m.numeroSerie}" />
+	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
+</h:selectOneMenu><br />
+
+<h:selectOneMenu value="#{adminBean.clientID}" >
+	<f:selectItem itemValue="0" itemLabel="--select--" />
+	<f:selectItems value="#{adminBean.clients}"
+					var="c"
+	 				itemValue="#{c.id}"
+	 				itemLabel="#{c.nom}" />
+	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
 </h:selectOneMenu><br />
 
 <h:panelGroup id="listecontent">
@@ -28,7 +49,7 @@
 	<th>commentaire</th>
 	<th>action</th>
 	</tr>
-	<ui:repeat var="i"  value="#{AdminBean.interventions}">
+	<ui:repeat var="i"  value="#{adminBean.interventions}">
 	<tr>
 		<td>#{i.numeroUnique}</td>
 		<td>#{i.datePlanifie}</td>
@@ -36,17 +57,45 @@
 		<td>#{i.statut}</td>
 		<td>#{i.commentaire}</td>
 		<td>
-		<h:commandButton value="editer" action="#{AdminBean.editIntervention}">
-			<f:param name="id" value="#{i.ID}" />
+		<h:commandButton value="editer" action="#{editBean.editIntervention}">
+			<f:param name="id" value="#{i.id}" />
 		</h:commandButton>
 		</td>
 	</tr>
 	</ui:repeat>
 </table>
 </h:panelGroup>
-<h:commandButton value="creer intervention" action="#{AdminBean.createIntervention}"/>
+<h:commandButton value="creer intervention" action="#{adminBean.createIntervention}"/>
 
 </h:form>
+
+
+
+
+<h:form>
+	<h:panelGroup id="listecontent2">
+		<table border="1">
+			<tr>
+				<th>nom</th>
+				<th>adresse</th>
+				<th>action</th>
+			</tr>
+			<ui:repeat var="s" value="#{adminBean.sites}">
+			<tr>
+				<td>#{s.nom}</td>
+				<td>#{s.adresse}</td>
+				<td>
+				<h:commandButton value="editer" action="#{editBean.editSite}">
+					<f:param name="sid" value="#{s.id}" />
+				</h:commandButton>
+				</td>
+			</tr>	
+			</ui:repeat>	
+		</table>
+	</h:panelGroup>
+</h:form>
+
+
 </div>
 </body>
 </html>

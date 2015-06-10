@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import beans.Intervenant;
 import beans.Materiel;
 
 public class MaterielDAO implements IMaterielDAO {
@@ -38,4 +39,9 @@ public class MaterielDAO implements IMaterielDAO {
 		return materiel;
 	}
 
+	@Override
+	@Transactional
+	public List<Materiel> findAllWithIntervention() {
+		return em.createQuery("select mat from Materiel as mat , IN(mat.interventions) as interventions where interventions.size > 0 ", Materiel.class).getResultList();
+	}
 }

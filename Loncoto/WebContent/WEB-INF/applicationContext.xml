@@ -45,6 +45,7 @@
 </bean>
 
 
+
 <bean id="articleDAO" class="utils.ArticleDAO" />
 <bean id="batimentDAO" class="utils.BatimentDAO" />
 <bean id="clientDAO" class="utils.ClientDAO" />
@@ -58,6 +59,7 @@
 <bean id="siteDAO" class="utils.SiteDAO" />
 <bean id="sousFamilleDAO" class="utils.SousFamilleDAO" />
 <bean id="navigationBean" class="login.NavigationBean" />
+
 
 
 <tx:annotation-driven transaction-manager="transactionManager" />

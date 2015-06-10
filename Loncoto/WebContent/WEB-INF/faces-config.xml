@@ -9,6 +9,7 @@
                 org.springframework.web.jsf.el.SpringBeanFacesELResolver
         </el-resolver>
     </application>
+
     <navigation-rule>
     	<from-view-id>/index.xhtml</from-view-id>
     	<navigation-case>
@@ -68,20 +69,7 @@
    			<to-view-id>editSalle.xhtml</to-view-id>
    		</navigation-case>
     </navigation-rule>
-    <navigation-rule>
-    	<from-view-id>editIntervention.xhtml</from-view-id>
-    	<navigation-case>
-    		<from-outcome>save</from-outcome>
-    		<to-view-id>index.xhtml</to-view-id>
-    	</navigation-case>
-    </navigation-rule>
-    <navigation-rule>
-    	<from-view-id>editIntervenant.xhtml</from-view-id>
-    	<navigation-case>
-    		<from-outcome>save</from-outcome>
-    		<to-view-id>index.xhtml</to-view-id>
-    	</navigation-case>
-    </navigation-rule>
+    
     <navigation-rule>
     	<from-view-id>editGroupe.xhtml</from-view-id>
     	<navigation-case>

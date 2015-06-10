@@ -37,7 +37,13 @@ public class IntervenantDAO implements IIntervenantDAO {
 	public List<Intervenant> findAll() {
 		return em.createQuery("from Intervenant",Intervenant.class).getResultList();
 	}
-
+	
+	@Override
+	@Transactional
+	public List<Intervenant> findAllWitchIntervention(){
+		return em.createQuery("select inter from Intervenant as inter , IN(inter.interventions) as interventions where interventions.size > 0 ", Intervenant.class).getResultList();
+	}
+	
 	@Override
 	@Transactional
 	public Intervenant findByID(int id) {

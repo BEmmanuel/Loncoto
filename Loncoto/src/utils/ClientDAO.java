@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +9,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import beans.Client;
+import beans.Intervenant;
+import beans.Materiel;
 
 public class ClientDAO implements IClientDAO {
 	
@@ -49,6 +52,22 @@ public class ClientDAO implements IClientDAO {
 			client = em.merge(client);
 		}
 		return client;
+	}
+	@Override
+	@Transactional
+	public List<Client> findAllWitchIntervention() {
+		
+		List<Client> clients = new ArrayList<Client>();
+		List<Materiel> materiels =  em.createQuery("select mat from Materiel as mat , IN(mat.interventions) as interventions "
+				+ "where interventions.size > 0 ", Materiel.class).getResultList();
+		
+		for(Materiel mat : materiels ){
+			if(mat.getClient_id() instanceof Client)
+				clients.add(mat.getClient_id());
+		}
+		
+		return clients;
+		
 	}
 
 }
