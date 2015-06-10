@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.tribes.group.GroupChannel.InterceptorIterator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,11 @@ public class LoginBean implements Serializable {
 		System.out.println(inter);
 			
 		if (inter != null) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+			session.setAttribute("user", inter);
 			connect = true;
-			System.out.println("connecté");
+			System.out.println("connectï¿½");
 			return navigationBean.toWelcome();
 		}
 		
