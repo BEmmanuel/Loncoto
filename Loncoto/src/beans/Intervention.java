@@ -5,7 +5,7 @@ import java.util.Random;
 
 import javax.annotation.PostConstruct;
 import javax.persistence.*;
-import javax.persistence.*;
+
 @Entity
 public class Intervention {
 	private int id;

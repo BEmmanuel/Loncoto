@@ -3,12 +3,13 @@ package utils;
 import java.util.List;
 
 import beans.Intervenant;
+import beans.Utilisateur;
 
 public interface IIntervenantDAO {
 
 	public List<Intervenant> findAll();
 	public Intervenant findByID(int id);
-	public Intervenant findByUsernameAndPassword(String login, String password);
+	public Utilisateur findByUsernameAndPassword(String login, String password);
 	public Intervenant save(Intervenant intervenant);
 	
 }
