@@ -1,23 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<h:head>
-<title>Gest'LONCOTO</title>
-<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
-</h:head>
-<h:body id="body">
-
-<div align="center" id="divPortail">
-<h1 class="title">Gest ' LONCOTO</h1>
-<h:form>
-	<h:panelGrid>
-        <h:outputLabel value="Username" class="labelPortail" /><h:inputText value="#{loginBean.email}" class="inputPortail" />
-        <h:outputLabel value="Password" class="labelPortail" /><h:inputSecret value="#{loginBean.password}" class="inputPortail" />
-        <h:commandButton value="sauver" action="#{loginBean.login}"  class="buttonConnexion"/>
-    </h:panelGrid>
-</h:form>
-</div>
-<hr style="margin-top: 100px"/>
-</h:body></html>
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+ 
+    <h:head>
+        <title>Gest'LONCOTO</title>
+		<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+    </h:head>
+    <h:body>
+    	<div align="center" id="divPortail">
+    	<h1 class="title">Gest'LONCOTO</h1>
+    	<h:form id="login-form">
+    	   <h:outputLabel value="Username" class="labelPortail" />
+    	   <h:inputText value="#{loginBean.username}" class="inputPortail"/>
+    	   <br/>
+    	   <h:outputLabel value="Password" class="labelPortail" />
+    	   <h:inputSecret value="#{loginBean.password}" class="inputPortail"/>
+    	   <br/>
+    	   <h:commandButton id="button" value="Login" action="#{loginBean.doLogin}" class="buttonConnexion"/>
+    	   <br/>
+    	   <h:messages />
+    	   <br/>
+    	</h:form>
+    	</div>
+    </h:body>
+</html>

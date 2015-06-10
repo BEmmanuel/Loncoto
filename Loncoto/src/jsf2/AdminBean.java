@@ -19,15 +19,33 @@ public class AdminBean {
 	private List<Intervention> interventions;
 	private List<Intervenant> intervenants;
 	private List<Client> clients;
+	private List<Site> sites;
 	private IIntervenantDAO intervenantDAO;
 	private IInterventionDAO interventionDAO;
 	private IMaterielDAO materielDAO;
 	private IClientDAO clientDAO;
+	private ISiteDAO siteDAO;
 	private int intervenantID;
 	private int materielID;
 	private int clientID;
 	
 	
+	
+	public ISiteDAO getSiteDAO() {
+		return siteDAO;
+	}
+
+	public void setSiteDAO(ISiteDAO siteDAO) {
+		this.siteDAO = siteDAO;
+	}
+
+	public List<Site> getSites() {
+		return getSiteDAO().findAll();
+	}
+	
+	public void setSites(List<Site> sites) {
+		this.sites = sites;
+	}
 	
 	public IClientDAO getClientDAO() {
 		return clientDAO;
