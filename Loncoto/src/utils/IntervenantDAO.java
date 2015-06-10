@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import beans.Intervenant;
+
 import javax.persistence.*;
 
 public class IntervenantDAO implements IIntervenantDAO {
