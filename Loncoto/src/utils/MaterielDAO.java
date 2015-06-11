@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,5 +44,12 @@ public class MaterielDAO implements IMaterielDAO {
 	@Transactional
 	public List<Materiel> findAllWithIntervention() {
 		return em.createQuery("select mat from Materiel as mat , IN(mat.interventions) as interventions where interventions.size > 0 ", Materiel.class).getResultList();
+	}
+
+	@Override
+	public List<Materiel> findByClientId(int id) {
+		Query q = em.createQuery("select mat from Materiel as mat, IN(mat.clients) as clients where clients.id = :id");
+		q.setParameter("id", id);
+		return q.getResultList();
 	}
 }

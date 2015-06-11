@@ -10,4 +10,5 @@ public interface IMaterielDAO {
 	public Materiel findByID(int id);
 	public Materiel save(Materiel materiel);
 	public List<Materiel> findAllWithIntervention();
+	public List<Materiel> findByClientId(int id);
 }
