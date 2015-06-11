@@ -1,10 +1,11 @@
 package beans;
 
-import java.util.HashSet;
-import java.util.Set;
+
+import java.util.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -14,21 +15,21 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue(value="2")
 public class Intervenant extends Utilisateur {
 	private Set<Intervention> interventions;
-	private Set<Groupe> groupes;
+	private List<Groupe> groupes;
 	
 	
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="intervenant_has_groupe",
 		joinColumns={@JoinColumn(name="intervenant_id")},
 		inverseJoinColumns={@JoinColumn(name="groupe_id")})
-	public Set<Groupe> getGroupes() {
+	public List<Groupe> getGroupes() {
 		if(groupes == null)
-			groupes = new HashSet<Groupe>();
+			groupes = new ArrayList<Groupe>();
 		return groupes;
 	}
 
-	public void setGroupes(Set<Groupe> groupes) {
+	public void setGroupes(List<Groupe> groupes) {
 		this.groupes = groupes;
 	}
 
