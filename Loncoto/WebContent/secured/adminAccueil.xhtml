@@ -65,8 +65,7 @@
 		</ui:repeat>
 	</table>
 </h:panelGroup>
-<h:commandButton value="creer intervention" action="#{adminBean.createIntervention}" class="buttonStyle"/>
-
+<h:commandButton value="creer intervention" action="#{editBean.createIntervention}" class="buttonStyle"/>
 </h:form>
 
 
@@ -121,6 +120,89 @@
 		</table>
 	</h:panelGroup>
 </h:form>
+
+
+<h:form>
+	<h:panelGroup>
+		<table border="1">
+			<tr>
+				<th>numeroSerie</th>
+				<th>nom de client</th>
+				<th>nom d'article</th>
+				<th>action</th>
+			</tr>
+			<ui:repeat var="m" value="#{adminBean.materiels2}">
+			<tr>
+				<td>#{m.numeroSerie}</td>
+				<td>#{m.client_id.nom}</td>
+				<td>#{m.article_id.nom}</td>
+				<td>
+				<h:commandButton value="editer" action="#{editBean.editMateriel}">
+					<f:param name="mid" value="#{m.id}" />
+				</h:commandButton>
+				
+				</td>
+			</tr>
+			</ui:repeat>
+		</table>
+	</h:panelGroup>
+</h:form>
+
+
+<h:form>
+	<h:panelGroup>
+		<table border="1">
+			<tr>
+				<th>nom</th>
+				<th>numeroTelephone</th>
+				<th>action</th>
+			</tr>
+			<ui:repeat var="c" value="#{adminBean.clients2}">
+			<tr>
+				<td>#{c.nom}</td>
+				<td>#{c.numeroTelephone}</td>
+				<td>
+				<h:commandButton value="editer" action="#{editBean.editClient}">
+					<f:param name="clientId" value="#{c.id}" />
+				</h:commandButton>
+				</td>
+			</tr>
+			</ui:repeat>
+		</table>
+	</h:panelGroup>
+</h:form>
+
+<h:form>
+	<h:panelGroup>
+		<table border="1">
+			<tr>
+				<th>nom</th>
+				<th>prenom</th>
+				<th>email</th>
+				<th>groupe</th>
+				<th>action</th>
+			</tr>
+			<ui:repeat var="i" value="#{adminBean.intervenants2}">
+			<tr>
+				<td>#{i.nom}</td>
+				<td>#{i.prenom}</td>
+				<td>#{i.email}</td>
+				<td>
+					<ui:repeat var="g" value="#{i.groupes}"> 
+						#{g.nom}  
+					</ui:repeat>
+				</td>
+				<td>
+				<h:commandButton value="editer" action="#{editBean.editIntervenant}">
+					<f:param name="id" value="#{i.id}" />
+				</h:commandButton>
+				</td>
+			</tr>
+			</ui:repeat>
+		</table>
+	</h:panelGroup>
+</h:form>
+
 
 </div>
 </h:body>

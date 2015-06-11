@@ -65,7 +65,7 @@
 	</ui:repeat>
 </table>
 </h:panelGroup>
-<h:commandButton value="creer intervention" action="#{adminBean.createIntervention}"/>
+<h:commandButton value="creer intervention" action="#{editBean.createIntervention}"/>
 
 </h:form>
 
@@ -194,7 +194,7 @@
 					</ui:repeat>
 				</td>
 				<td>
-				<h:commandButton value="editer" action="#{editBean.intervenant}">
+				<h:commandButton value="editer" action="#{editBean.editIntervenant2}">
 					<f:param name="id" value="#{i.id}" />
 				</h:commandButton>
 				</td>

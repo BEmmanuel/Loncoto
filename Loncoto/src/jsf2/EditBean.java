@@ -1,12 +1,12 @@
 package jsf2;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.hibernate.id.IdentityGenerator.GetGeneratedKeysDelegate;
 import org.springframework.stereotype.Component;
 
 import utils.*;
@@ -24,6 +24,7 @@ public class EditBean {
 	IArticleDAO articleDAO;
 	ISiteDAO siteDAO;
 	IClientDAO clientDAO;
+	IGroupeDAO groupeDAO;
 	ISousFamilleDAO sousFamilleDAO;
 	private int interventionID;
 	private String interventionCommentaire;
@@ -40,6 +41,7 @@ public class EditBean {
 	private List<SousFamille> sousFamilles;
 	private List<Client> clients;
 	private List<Article> articles;
+	private List<Groupe> groupes2;
 	private int siteID;
 	private String siteNom;
 	private String siteAdresse;
@@ -60,12 +62,51 @@ public class EditBean {
 	
 	private int intervenantID2;
 	private String intervenantNom;
+	private String intervenantPrenom2;
 	private String intervenantEmail;
+
+	private int[] groupeIDS;
 	private String intervenantPrenom;
 	private String intervenantPassword;
 	private List<Groupe> groupes;
 	
 	
+	
+
+	public List<Groupe> getGroupes2() {
+		return getGroupeDAO().findAll();
+	}
+
+	public void setGroupes2(List<Groupe> groupes2) {
+		this.groupes2 = groupes2;
+	}
+
+	public String getIntervenantPrenom2() {
+		return intervenantPrenom2;
+	}
+
+	public void setIntervenantPrenom2(String intervenantPrenom2) {
+		this.intervenantPrenom2 = intervenantPrenom2;
+	}
+
+	
+
+	public int[] getGroupeIDS() {
+		return groupeIDS;
+	}
+
+	public void setGroupeIDS(int[] groupeIDS) {
+		this.groupeIDS = groupeIDS;
+	}
+
+	public IGroupeDAO getGroupeDAO() {
+		return groupeDAO;
+	}
+
+	public void setGroupeDAO(IGroupeDAO groupeDAO) {
+		this.groupeDAO = groupeDAO;
+	}
+
 	public int getIntervenantID2() {
 		return intervenantID2;
 	}
@@ -73,6 +114,8 @@ public class EditBean {
 	public void setIntervenantID2(int intervenantID2) {
 		this.intervenantID2 = intervenantID2;
 	}
+
+	
 
 	public String getIntervenantNom() {
 		return intervenantNom;
@@ -389,7 +432,11 @@ public class EditBean {
 	public void setInterventionDAO(IInterventionDAO interventionDAO) {
 		this.interventionDAO = interventionDAO;
 	}
-
+	
+	public String createIntervention(){
+		setInterventionID(0);
+		return "createIntervention.xhtml";
+	}
 
 
 	public String editIntervention(){
@@ -571,6 +618,32 @@ public class EditBean {
 		
 	}
 	
+	
+	public String editIntervenant2(){
+		int id =  Integer.parseInt(FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getRequestParameterMap()
+				.get("id"));
+		
+		Intervenant intervenant = getIntervenantDAO().findByID(id);
+		
+		setIntervenantID2(id);
+		setIntervenantEmail(intervenant.getEmail());
+		setIntervenantNom(intervenant.getNom());
+		setIntervenantPrenom2(intervenant.getPrenom());
+		List<Groupe> intervenantGroupes =  intervenant.getGroupes();
+		int[] groupeIDS = new int[intervenantGroupes.size()];
+		for(int i = 0; i<intervenantGroupes.size();i++){
+			groupeIDS[i] = intervenantGroupes.get(i).getId();
+		}
+		setGroupeIDS(groupeIDS);
+
+		
+		return "editIntervenant2.xhtml";
+	}
+	
+	
 	public String createIntervenant(){
 		
 		
@@ -587,10 +660,44 @@ public class EditBean {
 		
 	}
 	
+	public String createIntervenant2(){
+		
+		
+		Intervenant intervenant = new Intervenant();
+		
+		
+		setIntervenantID2(intervenant.getId());
+		setIntervenantEmail(intervenant.getEmail());
+		setIntervenantNom(intervenant.getNom());
+		setIntervenantPrenom(intervenant.getPrenom());
+		setIntervenantPassword(intervenant.getPassword());
+		
+		return "editIntervenant.xhtml";
+		
+	}
+	
 	public String saveIntervenant(){
 		Utilisateur utilisateur = new Utilisateur(getIntervenantID(), getIntervenantNom(), getIntervenantPrenom(), getIntervenantEmail(), getIntervenantPassword());
 		getIntervenantDAO().save(utilisateur);
 		return "index.xhtml";
+	}
+	
+	public String saveIntervenant2(){
+		Intervenant intervenant = new Intervenant();
+		
+		intervenant.setEmail(getIntervenantEmail());
+		intervenant.setNom(getIntervenantNom());
+		intervenant.setPrenom(getIntervenantPrenom2());
+		intervenant.setId(getIntervenantID2());
+		List<Groupe> groupes = new ArrayList<Groupe>();
+		for(int i = 0;i<getGroupeIDS().length;i++){
+			Groupe groupe = getGroupeDAO().findByID(getGroupeIDS()[i]);
+			groupes.add(groupe);
+		}
+		
+		intervenant.setGroupes(groupes);
+		getIntervenantDAO().save(intervenant);
+		return "adminAccueil.xhtml?faces-redirect=true";
 	}
 	
 	

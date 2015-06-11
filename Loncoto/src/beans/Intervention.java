@@ -109,7 +109,7 @@ public class Intervention {
 		this.intervenant = intervenant;
 	}
 	
-	@PostConstruct
+	@PrePersist
 	public void init(){
 		Random rd = new Random();
 		Long numeroUnique1 = System.currentTimeMillis() + rd.nextInt(1000);

@@ -28,8 +28,6 @@ public class LoginBean implements Serializable {
 	private String password;
 	private IIntervenantDAO intervenantDAO;
 	private boolean connect;
-
-	
 	private NavigationBean navigationBean;
 	
 	
