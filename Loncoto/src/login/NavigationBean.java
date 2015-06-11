@@ -26,5 +26,7 @@ public class NavigationBean implements Serializable {
 		return "/secured/index.xhtml";
 	}
 	
-	
+	public String toAddUser() {
+		return "/secured/addUser.xhtml";
+	}
 }

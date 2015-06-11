@@ -16,9 +16,11 @@ import login.LoginBean;
 
 public class LoginFilter implements Filter {
 
+	private LoginBean loginBean;
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		LoginBean loginBean = (LoginBean)((HttpServletRequest)request).getSession().getAttribute("loginBean");
+		
+		loginBean = (LoginBean)((HttpServletRequest)request).getSession().getAttribute("loginBean");
 		if (loginBean == null || !loginBean.isConnect()) {
 			String contextPath = ((HttpServletRequest)request).getContextPath();
 			((HttpServletResponse)response).sendRedirect(contextPath + "/login.xhtml");
