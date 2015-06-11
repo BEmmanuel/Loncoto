@@ -31,7 +31,7 @@ public class IntervenantRest {
 		this.intervenantDAO = intervenantDAO;
 	}
 
-	@RequestMapping("/intervenants")
+	@RequestMapping(value = "/intervenants", headers="Accept=*/*")
 	public @ResponseBody List<Intervenant> getContents() {
 		System.out.println("dans rest -> getContents");
 		return getIntervenantDAO().findAll();
