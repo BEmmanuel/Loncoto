@@ -12,5 +12,7 @@ public interface IInterventionDAO {
 	public Intervention save(Intervention intervention);
 
 	public List<Intervention> find(int intervenantID, int materielID, int clientID);
+	List<Intervention> findByIntervenant(int intervenantId);
+	List<Intervention> findByGroup(int intervenantId);
 
 }

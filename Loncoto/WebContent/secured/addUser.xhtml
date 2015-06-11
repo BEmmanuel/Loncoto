@@ -30,7 +30,10 @@
     	   <br/>
     	   <h:inputSecret value="" class="inputForm"/>
     	   <br/>
-    	   <h:inputText value="" class="inputForm"/>
+    	   <h:selectOneMenu value="" class="inputForm">
+    	   		<f:selectItem id="item1" itemLabel="Intervenant" itemValue="2" />
+    	   		<f:selectItem id="item2" itemLabel="Administrateur" itemValue="3" />
+    	   </h:selectOneMenu>
     	</div>
     	   <br/>
     	   <h:commandButton id="button" value="Ajouter" action="#{loginBean.doLogin}" class="buttonConnexion"/>

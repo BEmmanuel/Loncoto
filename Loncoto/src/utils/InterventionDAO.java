@@ -108,6 +108,8 @@ public class InterventionDAO implements IInterventionDAO {
 		
 	}
 	
+	@Override
+	@Transactional
 	public List<Intervention> findByIntervenant(int intervenantId) {
 		Query q = em.createQuery("select inter from Intervention as inter where inter.intervenant.id =:intervenant"
 				, Intervention.class);
@@ -115,6 +117,8 @@ public class InterventionDAO implements IInterventionDAO {
 		return q.getResultList();
 	}
 	
+	@Override
+	@Transactional
 	public List<Intervention> findByGroup(int intervenantId) {
 		Query q = em.createQuery("select distinct inter from Intervention as inter, in (inter.intervenant) as iv where iv.groupe = (select ive.groupe from intervenant as ive where ive.id = :id)"
 				, Intervention.class);
