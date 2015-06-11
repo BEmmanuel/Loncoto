@@ -35,10 +35,11 @@ public class LoginBean implements Serializable {
 		System.out.println("doLogin()");
 		Utilisateur inter = getIntervenantDAO().findByUsernameAndPassword(username, password);
 		System.out.println(inter);
-			
+		
 		if (inter != null) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+			System.out.println("session dans dologin est : " + session);
 			session.setAttribute("user", inter);
 			connect = true;
 			if(inter instanceof Administrateur)
