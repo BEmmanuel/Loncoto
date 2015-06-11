@@ -8,15 +8,15 @@ public class Groupe {
 
 	private int id;
 	private String nom;
-	private Set<Intervenant> intervenants;
+	private List<Intervenant> intervenants;
 	
 	@ManyToMany(mappedBy = "groupes")
-	public Set<Intervenant> getIntervenants() {
+	public List<Intervenant> getIntervenants() {
 		if(intervenants == null)
-			intervenants = new HashSet<Intervenant>();
+			intervenants = new ArrayList<Intervenant>();
 		return intervenants;
 	}
-	public void setIntervenants(Set<Intervenant> intervenants) {
+	public void setIntervenants(List<Intervenant> intervenants) {
 		this.intervenants = intervenants;
 	}
 	@Id @GeneratedValue

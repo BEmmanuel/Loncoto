@@ -16,9 +16,12 @@ import utils.*;
 @RequestScoped
 public class AdminBean {
 	private List<Materiel> materiels;
+	private List<Materiel> materiels2;
 	private List<Intervention> interventions;
 	private List<Intervenant> intervenants;
+	private List<Intervenant> intervenants2;
 	private List<Client> clients;
+	private List<Client> clients2;
 	private List<Site> sites;
 	private List<Article> articles;
 	private IIntervenantDAO intervenantDAO;
@@ -33,6 +36,31 @@ public class AdminBean {
 	
 	
 	
+	
+	public List<Intervenant> getIntervenants2() {
+		return getIntervenantDAO().findAll();
+	}
+
+	public void setIntervenants2(List<Intervenant> intervenants2) {
+		this.intervenants2 = intervenants2;
+	}
+
+	public List<Materiel> getMateriels2() {
+		return getMaterielDAO().findAll();
+	}
+
+	public void setMateriels2(List<Materiel> materiels2) {
+		this.materiels2 = materiels2;
+	}
+
+	public List<Client> getClients2() {
+		return getClientDAO().findAll();
+	}
+
+	public void setClients2(List<Client> clients2) {
+		this.clients2 = clients2;
+	}
+
 	public List<Article> getArticles() {
 		return getArticleDAO().findAll();
 	}

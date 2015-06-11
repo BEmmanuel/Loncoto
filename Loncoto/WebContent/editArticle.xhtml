@@ -17,7 +17,7 @@ SousFamille: <h:selectOneMenu value="#{editBean.articleSousFamilleId}">
 	<f:selectItems value="#{editBean.sousFamilles}" var="sf" itemValue="#{sf.id}" itemLabel="#{sf.nom}" />
 </h:selectOneMenu><br />
 
-<h:commandButton value="sauver" action="#{editBean.saveIntervention}" />
+<h:commandButton value="sauver" action="#{editBean.saveArticle}" />
 </h:form>
 </body>
 </html>

@@ -43,7 +43,6 @@ public class LoginBean implements Serializable {
 			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
 			session.setAttribute("user", inter);
 			connect = true;
-			System.out.println("connect�");
 			if(inter instanceof Administrateur)
 				return navigationBean.toWelcomeAdmin();
 			else

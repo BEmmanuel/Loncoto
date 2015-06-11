@@ -34,9 +34,12 @@ public class EditBean {
 	private int intervenantID;
 	private int materielID;
 	
+	
 	private List<Intervenant> intervenants;
 	private List<Materiel> materiels;
 	private List<SousFamille> sousFamilles;
+	private List<Client> clients;
+	private List<Article> articles;
 	private int siteID;
 	private String siteNom;
 	private String siteAdresse;
@@ -46,11 +49,121 @@ public class EditBean {
 	private String articleDescription;
 	private int articleSousFamilleId;
 	
+	private int materielID2;
+	private String materielNumeroSerie;
+	private int materielClientID;
+	private int materielArticleID;
+	
+	private int clientID;
+	private String clientNom;
+	private String clientNumeroTelephone;
+	
+	private int intervenantID2;
+	private String intervenantNom;
+	private String intervenantEmail;
 	
 	
 	
+	public int getIntervenantID2() {
+		return intervenantID2;
+	}
+
+	public void setIntervenantID2(int intervenantID2) {
+		this.intervenantID2 = intervenantID2;
+	}
+
+	public String getIntervenantNom() {
+		return intervenantNom;
+	}
+
+	public void setIntervenantNom(String intervenantNom) {
+		this.intervenantNom = intervenantNom;
+	}
+
+	public String getIntervenantEmail() {
+		return intervenantEmail;
+	}
+
+	public void setIntervenantEmail(String intervenantEmail) {
+		this.intervenantEmail = intervenantEmail;
+	}
+
+	public List<Article> getArticles() {
+		return getArticleDAO().findAll();
+	}
+
+	public void setArticles(List<Article> articles) {
+		this.articles = articles;
+	}
+
+	public List<Client> getClients() {
+		return getClientDAO().findAll();
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+
+	public int getMaterielClientID() {
+		return materielClientID;
+	}
+
+	public void setMaterielClientID(int materielClientID) {
+		this.materielClientID = materielClientID;
+	}
+
+	public int getMaterielArticleID() {
+		return materielArticleID;
+	}
+
+	public void setMaterielArticleID(int materielArticleID) {
+		this.materielArticleID = materielArticleID;
+	}
+
+	public int getMaterielID2() {
+		return materielID2;
+	}
+
+	public void setMaterielID2(int materielID2) {
+		this.materielID2 = materielID2;
+	}
+
+	public String getMaterielNumeroSerie() {
+		return materielNumeroSerie;
+	}
+
+	public void setMaterielNumeroSerie(String materielNumeroSerie) {
+		this.materielNumeroSerie = materielNumeroSerie;
+	}
+
+	public int getClientID() {
+		return clientID;
+	}
+
+	public void setClientID(int clientID) {
+		this.clientID = clientID;
+	}
+
 	
+
+	public String getClientNom() {
+		return clientNom;
+	}
+
+	public void setClientNom(String clientNom) {
+		this.clientNom = clientNom;
+	}
+
 	
+
+	public String getClientNumeroTelephone() {
+		return clientNumeroTelephone;
+	}
+
+	public void setClientNumeroTelephone(String clientNumeroTelephone) {
+		this.clientNumeroTelephone = clientNumeroTelephone;
+	}
+
 	public ISousFamilleDAO getSousFamilleDAO() {
 		return sousFamilleDAO;
 	}
@@ -357,4 +470,79 @@ public class EditBean {
 		
 		return "adminAccueil.xhtml?faces-redirect=true";
 	}
+	
+	public String editMateriel(){
+		int id = Integer.parseInt(FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getRequestParameterMap()
+				.get("mid"));
+		Materiel materiel = getMaterielDAO().findByID(id);
+		setMaterielID2(id);
+		setMaterielNumeroSerie(materiel.getNumeroSerie());
+		setMaterielClientID(materiel.getClient_id().getId());
+		setMaterielArticleID(materiel.getArticle_id().getId());
+		
+		return "editMateriel.xhtml";
+	}
+	
+	public String saveMateriel(){
+		Materiel materiel = new Materiel();
+		materiel.setId(getMaterielID2());
+		materiel.setNumeroSerie(getMaterielNumeroSerie());
+		materiel.setClient_id(getClientDAO().findByID(getMaterielClientID()));
+		materiel.setArticle_id(getArticleDAO().findByID(getMaterielArticleID()));
+		
+		getMaterielDAO().save(materiel);
+		
+		return "adminAccueil.xhtml?faces-redirect=true";
+	}
+	
+	public String editClient(){
+		int id = Integer.parseInt(FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getRequestParameterMap()
+				.get("clientId"));
+		
+		Client client = getClientDAO().findByID(id);
+		setClientID(id);
+		setClientNom(client.getNom());
+		setClientNumeroTelephone(client.getNumeroTelephone());
+		
+		return "editClient.xhtml";
+		
+	}
+	
+	public String saveClient(){
+		Client client = new Client();
+		client.setId(getClientID());
+		client.setNom(getClientNom());
+		client.setNumeroTelephone(getClientNumeroTelephone());
+		getClientDAO().save(client);
+		return "adminAccueil.xhtml?faces-redirect=true";
+	}
+	
+	public String editIntervenant(){
+		int id =  Integer.parseInt(FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getRequestParameterMap()
+				.get("id"));
+		
+		Intervenant intervenant = getIntervenantDAO().findByID(id);
+		setIntervenantID2(id);
+		setIntervenantEmail(intervenant.getEmail());
+		setIntervenantNom(intervenant.getNom());
+		
+		return "editIntervenant.xhtml";
+		
+	}
+	
+	public String saveIntervenant(){
+		Intervenant intervenant = new Intervenant();
+		return "";
+	}
+	
+	
 }

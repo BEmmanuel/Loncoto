@@ -19,6 +19,7 @@ public class LoginFilter implements Filter {
 
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+
 		LoginBean loginBean = (LoginBean)((HttpServletRequest)request).getSession().getAttribute("loginBean");
 		Utilisateur user = (Utilisateur) ((HttpServletRequest)request).getSession().getAttribute("user");
 		if ((loginBean == null || !loginBean.isConnect())&&user==null) {
