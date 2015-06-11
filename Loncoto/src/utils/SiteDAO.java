@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,6 +50,14 @@ public class SiteDAO implements ISiteDAO {
 			site = em.merge(site);
 		}
 		return site;
+	}
+
+	@Override
+	@Transactional
+	public List<Site> findByClientId(int id) {
+		Query q = em.createQuery("select s from Site as s, in(s.clients) as c where c.id = :id");
+		q.setParameter("id", id);
+		return q.getResultList();
 	}
 
 }

@@ -9,4 +9,5 @@ public interface ISiteDAO {
 	public List<Site> findAll();
 	public Site findByID(int id);
 	public Site save(Site site);
+	public List<Site> findByClientId(int id);
 }

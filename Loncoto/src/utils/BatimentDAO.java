@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -49,6 +50,14 @@ public class BatimentDAO implements IBatimentDAO {
 			batiment = em.merge(batiment);
 		}
 		return batiment;
+	}
+
+	@Override
+	@Transactional
+	public List<Batiment> findBySiteId(int id) {
+		Query q = em.createQuery("select bat from Batiment as bat, IN(bat.sites) as sites, where sites.id = :id");
+		q.setParameter("id", id);
+		return q.getResultList();
 	}
 
 }
