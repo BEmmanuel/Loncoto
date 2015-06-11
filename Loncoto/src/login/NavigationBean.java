@@ -26,7 +26,12 @@ public class NavigationBean implements Serializable {
 		return "/secured/index.xhtml";
 	}
 	
-	public String toAddUser() {
-		return "/secured/addUser.xhtml";
+	public String redirectToWelcomeAdmin() {
+		return "/secured/adminAccueil.xhtml?faces-redirect=true";
 	}
+	
+	public String toWelcomeAdmin() {
+		return "/secured/adminAccueil.xhtml";
+	}
+
 }
