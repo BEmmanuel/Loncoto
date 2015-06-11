@@ -29,7 +29,7 @@ public class SiteRest {
 		return siteDAO;
 	}
 
-	public void setBatimentDAO(ISiteDAO siteDAO) {
+	public void setSiteDAO(ISiteDAO siteDAO) {
 		this.siteDAO = siteDAO;
 	}
 
