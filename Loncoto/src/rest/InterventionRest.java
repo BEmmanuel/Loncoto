@@ -44,6 +44,12 @@ public class InterventionRest {
 		System.out.println("dans rest -> getContents");
 		return getInterventionDAO().findByIntervenant(((Intervenant) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).getAttribute("user")).getId());
 	}
+	
+	@RequestMapping("/myGroupInterventions")
+	public @ResponseBody List<Intervention> getMyGroupContents() {
+		System.out.println("dans rest -> getContents");
+		return getInterventionDAO().findByGroup(((Intervenant) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).getAttribute("user")).getId());
+	}
 
 	@RequestMapping("/interventions2")
 	public @ResponseBody Intervention findContent2(@RequestParam(value="cid", defaultValue="1") int id) {
