@@ -14,6 +14,7 @@ import org.apache.catalina.tribes.group.GroupChannel.InterceptorIterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import beans.Administrateur;
 import beans.Intervenant;
 import beans.Utilisateur;
 import utils.IIntervenantDAO;
@@ -43,7 +44,10 @@ public class LoginBean implements Serializable {
 			session.setAttribute("user", inter);
 			connect = true;
 			System.out.println("connect�");
-			return navigationBean.toWelcome();
+			if(inter instanceof Administrateur)
+				return navigationBean.toWelcomeAdmin();
+			else
+				return navigationBean.toWelcome();
 		}
 		
 		FacesMessage msg = new FacesMessage("Login ou mot de passe incorrecte !", "ERROR MSG");
