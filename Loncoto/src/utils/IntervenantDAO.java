@@ -32,6 +32,12 @@ public class IntervenantDAO implements IIntervenantDAO {
 	
 	@Override
 	@Transactional
+	public List<Utilisateur> findAllUtilisateur() {
+		return em.createQuery("from Utilisateur",Utilisateur.class).getResultList();
+	}
+	
+	@Override
+	@Transactional
 	public List<Intervenant> findAllWitchIntervention(){
 		return em.createQuery("select inter from Intervenant as inter , IN(inter.interventions) as interventions where interventions.size > 0 ", Intervenant.class).getResultList();
 	}
@@ -41,10 +47,16 @@ public class IntervenantDAO implements IIntervenantDAO {
 	public Intervenant findByID(int id) {
 		return em.find(Intervenant.class,id);
 	}
+	
+	@Override
+	@Transactional
+	public Utilisateur findUtilisateurByID(int id) {
+		return em.find(Utilisateur.class,id);
+	}
 
 	@Override
 	@Transactional
-	public Intervenant save(Intervenant intervenant) {
+	public Utilisateur save(Utilisateur intervenant) {
 		if (intervenant == null)
 			return intervenant;
 	

@@ -38,4 +38,5 @@ public class NavigationBean implements Serializable {
 		return "/secured/addUser.xhtml";
 	}
 
+	
 }

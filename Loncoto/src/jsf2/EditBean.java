@@ -61,7 +61,9 @@ public class EditBean {
 	private int intervenantID2;
 	private String intervenantNom;
 	private String intervenantEmail;
-	
+	private String intervenantPrenom;
+	private String intervenantPassword;
+	private List<Groupe> groupes;
 	
 	
 	public int getIntervenantID2() {
@@ -86,6 +88,30 @@ public class EditBean {
 
 	public void setIntervenantEmail(String intervenantEmail) {
 		this.intervenantEmail = intervenantEmail;
+	}
+
+	public String getIntervenantPrenom() {
+		return intervenantPrenom;
+	}
+
+	public void setIntervenantPrenom(String intervenantPrenom) {
+		this.intervenantPrenom = intervenantPrenom;
+	}
+
+	public String getIntervenantPassword() {
+		return intervenantPassword;
+	}
+
+	public void setIntervenantPassword(String intervenantPassword) {
+		this.intervenantPassword = intervenantPassword;
+	}
+
+	public List<Groupe> getGroupes() {
+		return groupes;
+	}
+
+	public void setGroupes(List<Groupe> groupes) {
+		this.groupes = groupes;
 	}
 
 	public List<Article> getArticles() {
@@ -530,18 +556,41 @@ public class EditBean {
 				.getRequestParameterMap()
 				.get("id"));
 		
-		Intervenant intervenant = getIntervenantDAO().findByID(id);
+		Utilisateur intervenant = getIntervenantDAO().findByID(id);
+		if(intervenant instanceof Intervenant) {
+			setGroupes(((Intervenant) intervenant).getGroupes());
+		} 
+		
 		setIntervenantID2(id);
 		setIntervenantEmail(intervenant.getEmail());
 		setIntervenantNom(intervenant.getNom());
+		setIntervenantPrenom(intervenant.getPrenom());
+		setIntervenantPassword(intervenant.getPassword());
+		
+		return "editIntervenant.xhtml";
+		
+	}
+	
+	public String createIntervenant(){
+		
+		
+		Utilisateur intervenant = new Utilisateur();
+		
+		
+		setIntervenantID2(intervenant.getId());
+		setIntervenantEmail(intervenant.getEmail());
+		setIntervenantNom(intervenant.getNom());
+		setIntervenantPrenom(intervenant.getPrenom());
+		setIntervenantPassword(intervenant.getPassword());
 		
 		return "editIntervenant.xhtml";
 		
 	}
 	
 	public String saveIntervenant(){
-		Intervenant intervenant = new Intervenant();
-		return "";
+		Utilisateur utilisateur = new Utilisateur(getIntervenantID(), getIntervenantNom(), getIntervenantPrenom(), getIntervenantEmail(), getIntervenantPassword());
+		getIntervenantDAO().save(utilisateur);
+		return "index.xhtml";
 	}
 	
 	
