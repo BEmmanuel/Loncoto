@@ -74,13 +74,26 @@ html
 	border: 1px solid #dedede;
 	background: #fefefe;
 }
-.buttonConnexion
+.buttonStyle
 {
 	display: block;
 	background: #dddddd;
 	border: 1px solid #000000;
 	color: #000000;
 	font-size: 18px;
+	text-align: center;
+	margin: 10px auto;
+	padding: 3px 10px;
+	border-radius: 5px;
+}
+
+.buttonTableau
+{
+	display: block;
+	background: #dddddd;
+	border: 1px solid #000000;
+	color: #000000;
+	font-size: 12px;
 	text-align: center;
 	margin: 10px auto;
 	padding: 3px 10px;
@@ -125,4 +138,36 @@ html
 	display: inline-block;
 	width: 470px;
 	padding: 20px 0;
+}
+
+.hForm
+{
+	margin: 20px 0;
+}
+
+.filtreAdminIndex
+{
+	display: inline-block;
+	margin: 5px;
+	border: 1px solid #dedede;
+	background: #fefefe;
+}
+
+.tableau
+{
+	border: 1px solid #333333;
+}
+
+.headerTableau
+{
+	border: 1px solid #333333;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.bodyTableau
+{
+	border: 1px solid #333333;
+	font-size: 12px;
 }
