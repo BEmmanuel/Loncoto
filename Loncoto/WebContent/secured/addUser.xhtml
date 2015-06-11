@@ -7,9 +7,9 @@
  
     <h:head>
         <title>Gest'LONCOTO</title>
-		<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+		<link href="../css/styles.css" rel="stylesheet" type="text/css"/> 
     </h:head>
-    <h:body id="body">
+    <h:body class="body">
     	
     	<h1 class="title">Gest'LONCOTO</h1>
     	<h2 class="sousTitle">Ajout d'un Utilisateur</h2>
@@ -21,20 +21,19 @@
     	   <h:outputLabel value="Password" class="labelForm" />
     	   <h:outputLabel value="Role" class="labelForm" />
     	</div>
-    	
     	<div id="blocInputs">
-    	   <h:inputText value="#{loginBean.username}" class="inputForm"/>
+    	   <h:inputText value="" class="inputForm"/>
     	   <br/>
-    	   <h:inputSecret value="#{loginBean.password}" class="inputForm"/>
+    	   <h:inputSecret value="" class="inputForm"/>
     	   <br/>
-    	   <h:inputText value="#{loginBean.username}" class="inputForm"/>
+    	   <h:inputText value="" class="inputForm"/>
     	   <br/>
-    	   <h:inputSecret value="#{loginBean.password}" class="inputForm"/>
+    	   <h:inputSecret value="" class="inputForm"/>
     	   <br/>
-    	   <h:inputText value="#{loginBean.username}" class="inputForm"/>
+    	   <h:inputText value="" class="inputForm"/>
     	</div>
     	   <br/>
-    	   <h:commandButton id="button" value="Login" action="#{loginBean.doLogin}" class="buttonConnexion"/>
+    	   <h:commandButton id="button" value="Ajouter" action="#{loginBean.doLogin}" class="buttonConnexion"/>
     	   <h:messages />
     	   <br/>
     	</h:form>
