@@ -1,12 +1,12 @@
 package jsf2;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.hibernate.id.IdentityGenerator.GetGeneratedKeysDelegate;
 import org.springframework.stereotype.Component;
 
 import utils.*;
@@ -24,6 +24,7 @@ public class EditBean {
 	IArticleDAO articleDAO;
 	ISiteDAO siteDAO;
 	IClientDAO clientDAO;
+	IGroupeDAO groupeDAO;
 	ISousFamilleDAO sousFamilleDAO;
 	private int interventionID;
 	private String interventionCommentaire;
@@ -40,6 +41,7 @@ public class EditBean {
 	private List<SousFamille> sousFamilles;
 	private List<Client> clients;
 	private List<Article> articles;
+	private List<Groupe> groupes;
 	private int siteID;
 	private String siteNom;
 	private String siteAdresse;
@@ -60,10 +62,46 @@ public class EditBean {
 	
 	private int intervenantID2;
 	private String intervenantNom;
+	private String intervenantPrenom;
 	private String intervenantEmail;
 	
+	private int[] groupeIDS;
 	
 	
+	
+
+	public String getIntervenantPrenom() {
+		return intervenantPrenom;
+	}
+
+	public void setIntervenantPrenom(String intervenantPrenom) {
+		this.intervenantPrenom = intervenantPrenom;
+	}
+
+	public List<Groupe> getGroupes() {
+		return getGroupeDAO().findAll();
+	}
+
+	public void setGroupes(List<Groupe> groupes) {
+		this.groupes = groupes;
+	}
+
+	public int[] getGroupeIDS() {
+		return groupeIDS;
+	}
+
+	public void setGroupeIDS(int[] groupeIDS) {
+		this.groupeIDS = groupeIDS;
+	}
+
+	public IGroupeDAO getGroupeDAO() {
+		return groupeDAO;
+	}
+
+	public void setGroupeDAO(IGroupeDAO groupeDAO) {
+		this.groupeDAO = groupeDAO;
+	}
+
 	public int getIntervenantID2() {
 		return intervenantID2;
 	}
@@ -71,6 +109,8 @@ public class EditBean {
 	public void setIntervenantID2(int intervenantID2) {
 		this.intervenantID2 = intervenantID2;
 	}
+
+	
 
 	public String getIntervenantNom() {
 		return intervenantNom;
@@ -363,7 +403,11 @@ public class EditBean {
 	public void setInterventionDAO(IInterventionDAO interventionDAO) {
 		this.interventionDAO = interventionDAO;
 	}
-
+	
+	public String createIntervention(){
+		setInterventionID(0);
+		return "createIntervention.xhtml";
+	}
 
 
 	public String editIntervention(){
@@ -534,14 +578,33 @@ public class EditBean {
 		setIntervenantID2(id);
 		setIntervenantEmail(intervenant.getEmail());
 		setIntervenantNom(intervenant.getNom());
-		
+		setIntervenantPrenom(intervenant.getPrenom());
+		List<Groupe> intervenantGroupes = intervenant.getGroupes();
+		int[] groupeIDS = new int[intervenantGroupes.size()];
+		for(int i = 0; i<intervenantGroupes.size();i++){
+			groupeIDS[i] = intervenantGroupes.get(i).getId();
+		}
+		setGroupeIDS(groupeIDS);
 		return "editIntervenant.xhtml";
 		
 	}
 	
 	public String saveIntervenant(){
 		Intervenant intervenant = new Intervenant();
-		return "";
+		
+		intervenant.setEmail(getIntervenantEmail());
+		intervenant.setNom(getIntervenantNom());
+		intervenant.setPrenom(getIntervenantPrenom());
+		intervenant.setId(getIntervenantID2());
+		List<Groupe> groupes = new ArrayList<Groupe>();
+		for(int i = 0;i<getGroupeIDS().length;i++){
+			Groupe groupe = getGroupeDAO().findByID(getGroupeIDS()[i]);
+			groupes.add(groupe);
+		}
+		
+		intervenant.setGroupes(groupes);
+		getIntervenantDAO().save(intervenant);
+		return "adminAccueil.xhtml?faces-redirect=true";
 	}
 	
 	
