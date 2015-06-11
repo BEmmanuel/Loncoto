@@ -26,7 +26,7 @@ public class GroupeDAO implements IGroupeDAO {
 	@Override
 	@Transactional
 	public List<Groupe> findAll() {
-		return em.createQuery("from Groups",Groupe.class).getResultList();
+		return em.createQuery("from Groupe",Groupe.class).getResultList();
 	}
 
 	@Override
