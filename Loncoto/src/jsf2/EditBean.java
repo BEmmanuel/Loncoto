@@ -478,6 +478,20 @@ public class EditBean {
 		return "adminAccueil.xhtml?faces-redirect=true";
 	}
 	
+	public String saveIntervention2(){
+		Intervention intervention = new Intervention();
+		intervention.setId(getInterventionID());
+		intervention.setDatePlanifie(getDatePlanification());
+		intervention.setCommentaire(getInterventionCommentaire());
+		
+		Intervenant intervenant = getIntervenantDAO().findByID(getIntervenantID());
+		Materiel materiel = getMaterielDAO().findByID(getMaterielID());
+		intervention.setIntervenant(intervenant);
+		intervention.setMateriel(materiel);
+		getInterventionDAO().save(intervention);
+		
+		return "adminAccueil.xhtml?faces-redirect=true";
+	}
 	
 	public String editSite(){
 		System.out.println("entre dans le methode editsite");
