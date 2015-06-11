@@ -34,7 +34,7 @@ public class LoginBean implements Serializable {
 		
 		if (inter != null) {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
-			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(false);
+			HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
 			System.out.println("session dans dologin est : " + session);
 			session.setAttribute("user", inter);
 			connect = true;
