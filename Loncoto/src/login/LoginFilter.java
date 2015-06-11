@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Utilisateur;
 import login.LoginBean;
 
 
@@ -19,7 +20,8 @@ public class LoginFilter implements Filter {
 	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		LoginBean loginBean = (LoginBean)((HttpServletRequest)request).getSession().getAttribute("loginBean");
-		if (loginBean == null || !loginBean.isConnect()) {
+		Utilisateur user = (Utilisateur) ((HttpServletRequest)request).getSession().getAttribute("user");
+		if ((loginBean == null || !loginBean.isConnect())&&user==null) {
 			String contextPath = ((HttpServletRequest)request).getContextPath();
 			((HttpServletResponse)response).sendRedirect(contextPath + "/login.xhtml");
 		}
