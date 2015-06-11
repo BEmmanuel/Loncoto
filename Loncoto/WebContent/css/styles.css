@@ -4,17 +4,23 @@
 	border: 0;
 	padding: 0;
 	font-family: Arial;
-	
 }
 
 html 
 {
   background-color: #eeeeee;
   width : 960px;
-  height: 600px;
   margin: 0 auto;
 }
 
+body
+{
+	background: #ffffff;
+	border: 2px solid #000000;
+	border-radius: 15px;
+	width : 960px;
+	margin: 20px auto;
+}
 
 #divPortail
 {
@@ -37,6 +43,17 @@ html
 	padding: 5px;
 }
 
+.sousTitle
+{
+	background: #dddddd;
+	color: #555555;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+	padding: 5px;
+}
+
+/*---login.xhtml---*/
 .labelPortail
 {
 	display: block;
@@ -47,7 +64,6 @@ html
 	margin: 10px auto 0px auto;
 	padding: 2px;
 }
-
 .inputPortail
 {
 	color: #000000;
@@ -58,7 +74,6 @@ html
 	border: 1px solid #dedede;
 	background: #fefefe;
 }
-
 .buttonConnexion
 {
 	display: block;
@@ -70,4 +85,44 @@ html
 	margin: 10px auto;
 	padding: 3px 10px;
 	border-radius: 5px;
+}
+/*---login.xhtml---*/
+
+.labelForm
+{
+	display: block;
+	color: #000000;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: right;
+	margin: 10px auto 0px auto;
+	padding: 7px 20px 7px 100px;
+}
+
+.inputForm
+{
+	display: block;
+	color: #000000;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	padding: 2px 5px;
+	border: 1px solid #dedede;
+	background: #fefefe;
+}
+
+#blocLabels
+{
+	float:left;
+	display: inline-block;
+	width: 400px;
+	padding: 9px 0;
+}
+
+#blocInputs
+{
+
+	display: inline-block;
+	width: 470px;
+	padding: 20px 0;
 }

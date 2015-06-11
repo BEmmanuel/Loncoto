@@ -26,4 +26,5 @@ public class NavigationBean implements Serializable {
 		return "/secured/index.xhtml";
 	}
 	
+	
 }

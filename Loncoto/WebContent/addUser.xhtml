@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html">
+ 
+    <h:head>
+        <title>Gest'LONCOTO</title>
+		<link href="./css/styles.css" rel="stylesheet" type="text/css"/> 
+    </h:head>
+    <h:body id="body">
+    	
+    	<h1 class="title">Gest'LONCOTO</h1>
+    	<h2 class="sousTitle">Ajout d'un Utilisateur</h2>
+    	<h:form id="addUserForm">
+    	<div id="blocLabels">
+    	   <h:outputLabel value="Nom" class="labelForm" />
+    	   <h:outputLabel value="Prénom" class="labelForm" />
+    	   <h:outputLabel value="Adresse Mail" class="labelForm" />
+    	   <h:outputLabel value="Password" class="labelForm" />
+    	   <h:outputLabel value="Role" class="labelForm" />
+    	</div>
+    	
+    	<div id="blocInputs">
+    	   <h:inputText value="#{loginBean.username}" class="inputForm"/>
+    	   <br/>
+    	   <h:inputSecret value="#{loginBean.password}" class="inputForm"/>
+    	   <br/>
+    	   <h:inputText value="#{loginBean.username}" class="inputForm"/>
+    	   <br/>
+    	   <h:inputSecret value="#{loginBean.password}" class="inputForm"/>
+    	   <br/>
+    	   <h:inputText value="#{loginBean.username}" class="inputForm"/>
+    	</div>
+    	   <br/>
+    	   <h:commandButton id="button" value="Login" action="#{loginBean.doLogin}" class="buttonConnexion"/>
+    	   <h:messages />
+    	   <br/>
+    	</h:form>
+    	
+    </h:body>
+</html>
