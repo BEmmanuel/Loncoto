@@ -116,15 +116,14 @@ html
 {
 	display: block;
 	color: #000000;
-	font-size: 20px;
-	font-weight: bold;
+	font-size: 18px;
 	text-align: left;
 	padding: 2px 5px;
 	border: 1px solid #dedede;
 	background: #fefefe;
 }
 
-#blocLabels
+.blocLabels
 {
 	float:left;
 	display: inline-block;
@@ -132,12 +131,12 @@ html
 	padding: 9px 0;
 }
 
-#blocInputs
+.blocInputs
 {
 
 	display: inline-block;
 	width: 470px;
-	padding: 20px 0;
+	padding: 24px 0;
 }
 
 .hForm
