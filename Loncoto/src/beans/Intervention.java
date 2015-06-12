@@ -103,7 +103,7 @@ public class Intervention {
 	public void setMateriel(Materiel materiel) {
 		this.materiel = materiel;
 	}
-	@ManyToOne(fetch=FetchType.EAGER,cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="intervenant_id")
 	public Intervenant getIntervenant() {
 		if(intervenant == null)
