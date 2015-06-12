@@ -577,7 +577,18 @@ public class EditBean {
 		return "adminAccueil.xhtml?faces-redirect=true";
 	
 	}
-	
+	public String createArticle(){
+		
+		
+		Article article = new Article();
+		
+		setArticleID(article.getId());
+		setArticleDescription(article.getDescription());
+		setArticleNom(article.getNom());
+		setArticleSousFamilleId(article.getSousfamille().getId());
+		
+		return "editArticle.xhtml";
+	}
 	
 	public String editArticle(){
 		int id = Integer.parseInt(FacesContext
