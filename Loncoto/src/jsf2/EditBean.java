@@ -619,6 +619,17 @@ public class EditBean {
 		return "adminAccueil.xhtml?faces-redirect=true";
 	}
 	
+	public String createMateriel(){
+		
+		Materiel materiel = new Materiel();
+		setMaterielID2(materiel.getId());
+		setMaterielNumeroSerie(materiel.getNumeroSerie());
+		setMaterielClientID(materiel.getClient_id().getId());
+		setMaterielArticleID(materiel.getArticle_id().getId());
+		
+		return "editMateriel.xhtml";
+	}
+	
 	public String editMateriel(){
 		int id = Integer.parseInt(FacesContext
 				.getCurrentInstance()
