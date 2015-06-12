@@ -12,12 +12,15 @@
         {
                 background:#66C1D4;
                 border-bottom:1px solid #146775;
+                padding: 4px 8px;
+                border-radius: 5px 5px 0 0;
         }
         .onglet_1
         {
                 background:#D7E9F2;
                 border-bottom:0px solid black;
-                padding-bottom:4px;
+                padding: 4px 8px;
+                border-radius: 5px 5px 0 0;
         }
         .contenu_onglet
         {
