@@ -81,12 +81,21 @@ html
 	border: 1px solid #000000;
 	color: #000000;
 	font-size: 18px;
-	text-align: center;
 	margin: 10px auto;
 	padding: 3px 10px;
 	border-radius: 5px;
 }
-
+.buttonReturn
+{
+	display: block;
+	background: #000000;
+	border: 1px solid #dddddd;
+	color: #FFFFFF;
+	font-size: 18px;
+	margin: 10px auto;
+	padding: 3px 10px;
+	border-radius: 7px;
+}
 .buttonTableau
 {
 	display: block;
@@ -127,7 +136,7 @@ html
 {
 	float:left;
 	display: inline-block;
-	width: 400px;
+	width: 470px;
 	padding: 8px 0;
 }
 
