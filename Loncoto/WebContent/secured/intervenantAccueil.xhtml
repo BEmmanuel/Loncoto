@@ -6,11 +6,14 @@
 <h:head>
 <meta charset="UTF-8"></meta>
 <title>Page Accueil pour intervenant</title>
-<link href="../css/fullcalendar.css" rel="stylesheet" type="text/css"/> 
-<link href="../css/fullcalendar.print.css" rel="stylesheet" type="text/css"/> 
-<script src="../js/moment.js" />
-<script src="../js/jquery.fullcalendar.js" />
-<script src="../js/fullcalendar.min.js" />
+
+<link rel="stylesheet" href="../css/jquery.mobile-1.2.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="../js/jquery.mobile-1.2.0.min.js"></script>
+    
+<script type='text/javascript' src="../js/fullcalendar167.js"></script>
+<link rel='stylesheet' type='text/css' href="../css/fullcalendar167.css" />
+<link rel='stylesheet' type='text/css' href="../css/fullcalendar.print167.css" />
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#planning").fullCalendar({
@@ -25,9 +28,8 @@ $(document).ready(function(){
 		events:[
 			<ui:repeat var="i"  value="#{intervenantBean.interventions}">
 			{
-				title: '#{i.numeroUnique}',
-				start: '#{i.datePlanifie.toString().substring(0,10)}'
-				
+				title: 'intervention de #{i.materiel.article_id.nom} chez #{i.materiel.client_id.nom} ',
+				start: new Date(#{i.datePlanifie.toString().substring(0,4)},#{i.datePlanifie.toString().substring(5,7)}-1,#{i.datePlanifie.toString().substring(8,10)},#{i.datePlanifie.toString().substring(11,13)},#{i.datePlanifie.toString().substring(14,16)},#{i.datePlanifie.toString().substring(17,19)})
 			},
 			</ui:repeat>
 			{
