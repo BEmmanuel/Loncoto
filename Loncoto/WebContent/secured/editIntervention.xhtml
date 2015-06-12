@@ -6,15 +6,18 @@
 <h:head>
 <meta charset="UTF-8"></meta>
 <title>Edition d'intervention</title>
+<link href="../css/jquery.datetimepicker.css" rel="stylesheet" type="text/css"/> 
+<script src="../js/jquery.js" />
+<script src="../js/jquery.datetimepicker.js" />
 </h:head>
 <body>
 <h:form>
 <h:inputHidden value="#{editBean.interventionID}" />
-datePlanification : <h:inputText value="#{editBean.datePlanification}">
-<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+datePlanification : <h:inputText value="#{editBean.datePlanification}" class="datetimepicker1">
+<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris" />
 </h:inputText>
 dateRealisation : <h:inputText value="#{editBean.dateRealisation}">
-<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris" class="datetimepicker2"/>
 </h:inputText>
 Duree: <h:inputText value="#{editBean.interventionDuree}"/><br />
 Commentaire: <h:inputText value="#{editBean.interventionCommentaire}"/><br />
@@ -29,5 +32,16 @@ materiel:  <h:selectOneMenu value="#{editBean.materielID}">
 		<br />
 <h:commandButton value="sauver" action="#{editBean.saveIntervention}" />
 </h:form>
+<SCRIPT type="text/javascript">
+	$(".datetimepicker1").datetimepicker({
+		  format:'Y-m-d H:i:s',
+		  lang:'en'
+		});
+	$(".datetimepicker2").datetimepicker({
+		  format:'Y-m-d H:i:s',
+		  lang:'en'
+		});
+
+</SCRIPT>
 </body>
 </html>
