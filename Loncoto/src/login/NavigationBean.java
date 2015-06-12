@@ -23,7 +23,7 @@ public class NavigationBean implements Serializable {
 	}
 	
 	public String toWelcome() {
-		return "/secured/intervenantAccueil.xhtml?faces-redirect=true";
+		return "/secured/index.xhtml";
 	}
 	
 	public String redirectToWelcomeAdmin() {

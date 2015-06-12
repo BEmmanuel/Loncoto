@@ -14,33 +14,32 @@
     	<h1 class="title">Gest'LONCOTO</h1>
     	<h2 class="sousTitle">Ajout d'un Utilisateur</h2>
     	<h:form>
-    	<div class="blocLabels">
-    	   <h:outputLabel value="Nom" class="labelForm" />
-    	   <h:outputLabel value="Prénom" class="labelForm" />
-    	   <h:outputLabel value="Adresse Mail" class="labelForm" />
-    	   <h:outputLabel value="Password" class="labelForm" />
-    	   <h:outputLabel value="Role" class="labelForm" />
-    	</div>
-    	<div class="blocInputs">
-    	   <h:inputText value="" class="inputForm"/>
-    	   <br/>
-    	   <h:inputSecret value="" class="inputForm"/>
-    	   <br/>
-    	   <h:inputText value="" class="inputForm"/>
-    	   <br/>
-    	   <h:inputSecret value="" class="inputForm"/>
-    	   <br/>
-    	   <h:selectOneMenu value="" class="inputForm">
-    	   		<f:selectItem id="item1" itemLabel="Intervenant" itemValue="2" />
-    	   		<f:selectItem id="item2" itemLabel="Administrateur" itemValue="3" />
-    	   </h:selectOneMenu>
-    	</div>
-    	   <br/>
-    	   <h:commandButton id="button" value="Ajouter" action="#{loginBean.doLogin}" class="buttonStyle"/>
-    	   <h:commandButton value="retour à l'accueil" action="#{navigationBean.redirectToWelcome}" class="buttonReturn"/>
-    	   <h:messages />
-    	   <br/>
+	    	<div class="blocLabels">
+	    	   <h:outputLabel value="Nom" class="labelForm" />
+	    	   <h:outputLabel value="Prénom" class="labelForm" />
+	    	   <h:outputLabel value="Adresse Mail" class="labelForm" />
+	    	   <h:outputLabel value="Password" class="labelForm" />
+	    	   <h:outputLabel value="Role" class="labelForm" />
+	    	</div>
+	    	<div class="blocInputs">
+	    	   <h:inputText value=""/>
+	    	   <br/>
+	    	   <h:inputSecret value="" class="inputForm"/>
+	    	   <br/>
+	    	   <h:inputText value="" class="inputForm"/>
+	    	   <br/>
+	    	   <h:inputSecret value="" class="inputForm"/>
+	    	   <br/>
+	    	   <h:selectOneMenu value="" class="inputForm">
+	    	   		<f:selectItem id="item1" itemLabel="Intervenant" itemValue="2" />
+	    	   		<f:selectItem id="item2" itemLabel="Administrateur" itemValue="3" />
+	    	   </h:selectOneMenu>
+	    	</div>
+	    	<br/>
+	    	<h:commandButton id="button" value="Ajouter" action="#{loginBean.doLogin}" class="buttonStyle"/>
+	    	<h:commandButton value="retour à l'accueil" action="#{navigationBean.redirectToWelcomeAdmin}" class="buttonReturn"/>
+	    	<h:messages />
+	    	<br/>
     	</h:form>
-    	
     </h:body>
 </html>

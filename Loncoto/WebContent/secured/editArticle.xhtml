@@ -25,7 +25,8 @@
 				</h:selectOneMenu><br/>
 				<h:inputText value="#{editBean.articleDescription}" class="inputForm"/><br />
 			</div><br />
-			<h:commandButton value="sauver" action="#{editBean.saveArticle}" class="buttonStyle"/>
+			<h:commandButton value="Modifier" action="#{editBean.saveArticle}" class="buttonStyle"/>
+			<h:commandButton value="retour à l'accueil" action="#{navigationBean.redirectToWelcomeAdmin}" class="buttonReturn"/>
 		</h:form>
 	</h:body>
 </html>
