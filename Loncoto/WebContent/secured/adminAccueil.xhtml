@@ -148,20 +148,20 @@
 	            <div class="contenu_onglet" id="contenu_onglet_materiel">
 	                <h:form>
 						<h:panelGroup>
-							<table border="1">
+							<table class="tableau">
 								<tr>
-									<th>numeroSerie</th>
-									<th>nom de client</th>
-									<th>nom d'article</th>
-									<th>action</th>
+									<th width="100" class="entete">numeroSerie</th>
+									<th width="100" class="entete">nom de client</th>
+									<th width="100" class="entete">nom d'article</th>
+									<th width="80" class="entete">action</th>
 								</tr>
 								<ui:repeat var="m" value="#{adminBean.materiels2}">
 								<tr>
-									<td>#{m.numeroSerie}</td>
-									<td>#{m.client_id.nom}</td>
-									<td>#{m.article_id.nom}</td>
-									<td>
-									<h:commandButton value="editer" action="#{editBean.editMateriel}">
+									<td class="colonneImpair">#{m.numeroSerie}</td>
+									<td class="colonnePair">#{m.client_id.nom}</td>
+									<td class="colonneImpair">#{m.article_id.nom}</td>
+									<td class="colonnePair">
+									<h:commandButton value="editer" action="#{editBean.editMateriel}" class="buttonTableau">
 										<f:param name="mid" value="#{m.id}" />
 									</h:commandButton>
 									
@@ -170,23 +170,24 @@
 								</ui:repeat>
 							</table>
 						</h:panelGroup>
+						<h:commandButton value="Ajouter un matériel" action="#{editBean.createMateriel}" class="buttonCreate"/>
 					</h:form>
 	            </div>
 	            <div class="contenu_onglet" id="contenu_onglet_client">
 	                <h:form>
 						<h:panelGroup>
-							<table border="1">
+							<table class="tableau">
 								<tr>
-									<th>nom</th>
-									<th>numeroTelephone</th>
-									<th>action</th>
+									<th width="100" class="entete">nom</th>
+									<th width="100" class="entete">numeroTelephone</th>
+									<th width="100" class="entete">action</th>
 								</tr>
 								<ui:repeat var="c" value="#{adminBean.clients2}">
 								<tr>
-									<td>#{c.nom}</td>
-									<td>#{c.numeroTelephone}</td>
-									<td>
-									<h:commandButton value="editer" action="#{editBean.editClient}">
+									<td class="colonnePair">#{c.nom}</td>
+									<td class="colonneImpair">#{c.numeroTelephone}</td>
+									<td class="colonnePair">
+									<h:commandButton value="editer" action="#{editBean.editClient}" class="buttonTableau">
 										<f:param name="clientId" value="#{c.id}" />
 									</h:commandButton>
 									</td>
