@@ -11,6 +11,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 @DiscriminatorValue(value="2")
 public class Intervenant extends Utilisateur {
@@ -32,8 +34,9 @@ public class Intervenant extends Utilisateur {
 	public void setGroupes(List<Groupe> groupes) {
 		this.groupes = groupes;
 	}
-
-	@OneToMany(mappedBy = "intervenant")
+    
+	@JsonIgnore
+	@OneToMany(mappedBy = "intervenant")	
 	public Set<Intervention> getInterventions() {
 		if(interventions == null)
 			interventions =  new HashSet<Intervention>();

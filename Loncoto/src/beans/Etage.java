@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Etage {
 	
@@ -26,6 +28,8 @@ public class Etage {
 	public void setNumeroEtage(int numeroEtage) {
 		this.numeroEtage = numeroEtage;
 	}
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="batiment_id")
 	public Batiment getBatiment_id() {
@@ -48,6 +52,8 @@ public class Etage {
 	public String toString() {
 		return "Etage [id=" + id + ", numeroEtage=" + numeroEtage + "]";
 	}
+	
+	@JsonIgnore
 	@OneToMany(mappedBy="etage_id")
 	public List<Salle> getSalles() {
 		return salles;

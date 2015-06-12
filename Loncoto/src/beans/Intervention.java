@@ -35,12 +35,17 @@ public class Intervention {
 	public void setNumeroUnique(String numeroUnique) {
 		this.numeroUnique = numeroUnique;
 	}
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDatePlanifie() {
 		return datePlanifie;
 	}
+	
 	public void setDatePlanifie(Date datePlanifie) {
 		this.datePlanifie = datePlanifie;
 	}
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getDateRealisation() {
 		return dateRealisation;
 	}

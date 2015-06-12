@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Article {
 
@@ -58,6 +60,7 @@ public class Article {
 				+ description + ", sousfamille=" + sousfamille + "]";
 	}
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="article_id")
 	public List<Materiel> getMateriels() {
 		return materiels;
