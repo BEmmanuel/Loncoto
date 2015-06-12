@@ -3,88 +3,84 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<h:head>
-<title>ACCUEIL</title>
-<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="../css/jquery.mobile-1.2.0.min.css" />
-<link rel="stylesheet" href="./css/jquery.mobile-1.2.0.min.css" />
-<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-<script src="../js/jquery.mobile-1.2.0.min.js"></script>
-    
-<script type='text/javascript' src="../js/fullcalendar167.js"></script>
-<script type='text/javascript' src="./js/fullcalendar167.js"></script>
-<link rel='stylesheet' type='text/css' href="../css/fullcalendar167.css" />
-<link rel='stylesheet' type='text/css' href="./css/fullcalendar167.css" />
-<link rel='stylesheet' type='text/css' href="../css/fullcalendar.print167.css" />
-<link rel='stylesheet' type='text/css' href="./css/fullcalendar.print167.css" />
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#planning").fullCalendar({
-		header: {
-			left: 'prev,next today',
-			center: 'title',
-			right: 'month,agendaWeek,agendaDay'
-		},
-		defaultDate: '2015-02-12',
-		editable: true,
-		eventLimit: true, // allow "more" link when too many events	
-		events:[
-			<ui:repeat var="i"  value="#{intervenantBean.interventions}">
-			{
-				title: 'intervention de #{i.materiel.article_id.nom} chez #{i.materiel.client_id.nom} ',
-				start: new Date(#{i.datePlanifie.toString().substring(0,4)},#{i.datePlanifie.toString().substring(5,7)}-1,#{i.datePlanifie.toString().substring(8,10)},#{i.datePlanifie.toString().substring(11,13)},#{i.datePlanifie.toString().substring(14,16)},#{i.datePlanifie.toString().substring(17,19)})
-			},
-			</ui:repeat>
-			{
-				
-			}
-		    ]
-	});
-});
-</script>
-</h:head>
-<h:body class="body">
-<div align="center">
-
-	<h:form>
-		<h:panelGroup id="listecontent">
-			<table border="1" >
-				<tr>
-				<th>numero unique</th>
-				<th>date planification</th>
-				<th>date realisation</th>
-				<th>statut</th>
-				<th>commentaire</th>
-				<th>action</th>
-				</tr>
-				<ui:repeat var="i"  value="#{intervenantBean.interventions}">
-				<tr>
-					<td>#{i.numeroUnique}</td>
-					<td>#{i.datePlanifie}</td>
-					<td>#{i.dateRealisation}</td>
-					<td>#{i.statut}</td>
-					<td>#{i.commentaire}</td>
-					<td>
-					<h:commandButton value="editer" action="#{editBean.editInterventionByIntervenant}">
-						<f:param name="id" value="#{i.id}" />
-					</h:commandButton>
-					</td>
-				</tr>
-				</ui:repeat>
-			</table>
-		</h:panelGroup>
-		
-		</h:form>
-</div>
-<div id="planning"></div>
-
-<h1 class="title">PLANIFICATION DES INTERVENTIONS</h1>
-<br/><br/>
-<div id="planning"></div><br/><br/>
-<h:form>
-	<h:commandButton id="button" value="Déconnexion" action="#{loginBean.doLogout}" class="buttonDeconnect"/>
-
-</h:form>
-</div>
-<hr style="margin-top: 100px"/>
-</h:body></html>
+	<h:head>
+		<title>ACCUEIL</title>
+		<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="../css/jquery.mobile-1.2.0.min.css" />
+		<link rel="stylesheet" href="./css/jquery.mobile-1.2.0.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+		<script src="../js/jquery.mobile-1.2.0.min.js"></script>
+		    
+		<script type='text/javascript' src="../js/fullcalendar167.js"></script>
+		<script type='text/javascript' src="./js/fullcalendar167.js"></script>
+		<link rel='stylesheet' type='text/css' href="../css/fullcalendar167.css" />
+		<link rel='stylesheet' type='text/css' href="./css/fullcalendar167.css" />
+		<link rel='stylesheet' type='text/css' href="../css/fullcalendar.print167.css" />
+		<link rel='stylesheet' type='text/css' href="./css/fullcalendar.print167.css" />
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$("#planning").fullCalendar({
+				header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,agendaWeek,agendaDay'
+				},
+				defaultDate: '2015-02-12',
+				editable: true,
+				eventLimit: true, // allow "more" link when too many events	
+				events:[
+					<ui:repeat var="i"  value="#{intervenantBean.interventions}">
+					{
+						title: 'intervention de #{i.materiel.article_id.nom} chez #{i.materiel.client_id.nom} ',
+						start: new Date(#{i.datePlanifie.toString().substring(0,4)},#{i.datePlanifie.toString().substring(5,7)}-1,#{i.datePlanifie.toString().substring(8,10)},#{i.datePlanifie.toString().substring(11,13)},#{i.datePlanifie.toString().substring(14,16)},#{i.datePlanifie.toString().substring(17,19)})
+					},
+					</ui:repeat>
+					{
+						
+					}
+				    ]
+			});
+		});
+		</script>
+	</h:head>
+	<h:body class="body">
+		<div align="center">
+			<h1 class="title">PLANIFICATION DES INTERVENTIONS</h1>
+			<br/><br/>
+			<div id="planning"></div><br/><br/>
+			<h:form>
+				<h:panelGroup id="listecontent">
+					<table border="1" >
+						<tr>
+							<th>numero unique</th>
+							<th>date planification</th>
+							<th>date realisation</th>
+							<th>statut</th>
+							<th>commentaire</th>
+							<th>action</th>
+						</tr>
+						<ui:repeat var="i"  value="#{intervenantBean.interventions}">
+							<tr>
+								<td>#{i.numeroUnique}</td>
+								<td>#{i.datePlanifie}</td>
+								<td>#{i.dateRealisation}</td>
+								<td>#{i.statut}</td>
+								<td>#{i.commentaire}</td>
+								<td>
+								<h:commandButton value="editer" action="#{editBean.editInterventionByIntervenant}">
+									<f:param name="id" value="#{i.id}" />
+								</h:commandButton>
+								</td>
+							</tr>
+						</ui:repeat>
+					</table>
+				</h:panelGroup>
+			</h:form>
+			<br/><br/>
+			<h:form>
+				<h:commandButton id="button" value="Déconnexion" action="#{loginBean.doLogout}" class="buttonDeconnect"/>
+			</h:form>
+		</div>
+		<hr style="margin-top: 100px"/>
+	</h:body>
+</html>
