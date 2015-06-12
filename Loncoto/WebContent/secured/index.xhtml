@@ -6,6 +6,7 @@
 	<h:head>
 		<title>ACCUEIL</title>
 		<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+		<link href="../css/styles.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="../css/jquery.mobile-1.2.0.min.css" />
 		<link rel="stylesheet" href="./css/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
@@ -61,13 +62,13 @@
 						</tr>
 						<ui:repeat var="i"  value="#{intervenantBean.interventions}">
 							<tr>
-								<td>#{i.numeroUnique}</td>
+								<td >#{i.numeroUnique}</td>
 								<td>#{i.datePlanifie}</td>
 								<td>#{i.dateRealisation}</td>
 								<td>#{i.statut}</td>
 								<td>#{i.commentaire}</td>
 								<td>
-								<h:commandButton value="editer" action="#{editBean.editInterventionByIntervenant}">
+								<h:commandButton value="editer" action="#{editBean.editInterventionByIntervenant}" class="buttonTableau">
 									<f:param name="id" value="#{i.id}" />
 								</h:commandButton>
 								</td>
