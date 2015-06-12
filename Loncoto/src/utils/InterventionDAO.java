@@ -41,10 +41,13 @@ public class InterventionDAO implements IInterventionDAO {
 	
 	@Override
 	@Transactional
-	public List<Intervention> find(int intervenantID, int materielID, int clientID, int weekNo, int yearNo){
+	public List<Intervention> find(int intervenantID, int materielID, int clientID, int weekNo , int yearNo ){
+		System.out.println("valeur de intervenantID :"+ intervenantID + " materieID: " + materielID + " clientID :" + clientID);
 		String ejbstring = "select DISTINCT i from Intervention as i ";
 		Query q;
 		int compteur = 0;
+		
+		
 		if(intervenantID != 0)
 			ejbstring += ", IN(i.intervenant) as iv";
 		if(materielID != 0)
@@ -77,21 +80,14 @@ public class InterventionDAO implements IInterventionDAO {
 				ejbstring += "client.id = :clid";
 		}
 		
-		GregorianCalendar gc = new GregorianCalendar();
-		gc.set(GregorianCalendar.WEEK_OF_YEAR, weekNo);
-		gc.set(GregorianCalendar.YEAR, yearNo);
-		gc.set(GregorianCalendar.DAY_OF_WEEK, GregorianCalendar.MONDAY);
-		GregorianCalendar gc2 = new GregorianCalendar();
-		gc2.set(GregorianCalendar.WEEK_OF_YEAR, weekNo);
-		gc2.set(GregorianCalendar.YEAR, yearNo);
-		gc2.set(GregorianCalendar.DAY_OF_WEEK, GregorianCalendar.SATURDAY);
-		Date d1 = gc.getTime();
-		Date d2 = gc.getTime();
-		
-		if(compteur != 0) {
-			ejbstring += " AND i.datePlanifie >= :datemin AND i.datePlanifie <= :datemax";
-		} else {
-			ejbstring += "i.datePlanifie >= :datemin AND i.datePlanifie <= :datemax";
+		if(weekNo != 0 && yearNo != 0){
+			if(compteur != 0) {
+				ejbstring += " AND i.datePlanifie >= :datemin AND i.datePlanifie <= :datemax";
+			} else {
+				ejbstring += "i.datePlanifie >= :datemin AND i.datePlanifie <= :datemax";
+			}
+			
+			
 		}
 		
 		q = em.createQuery(ejbstring);
@@ -102,10 +98,24 @@ public class InterventionDAO implements IInterventionDAO {
 		if(clientID != 0)
 			q.setParameter("clid", clientID);
 		
-		q.setParameter("datemin", d1);
-		q.setParameter("datemax", d2);
+		if(weekNo != 0 && yearNo != 0){
+			GregorianCalendar gc = new GregorianCalendar();
+			gc.set(GregorianCalendar.WEEK_OF_YEAR, weekNo);
+			gc.set(GregorianCalendar.YEAR, yearNo);
+			gc.set(GregorianCalendar.DAY_OF_WEEK, GregorianCalendar.MONDAY);
+			GregorianCalendar gc2 = new GregorianCalendar();
+			gc2.set(GregorianCalendar.WEEK_OF_YEAR, weekNo);
+			gc2.set(GregorianCalendar.YEAR, yearNo);
+			gc2.set(GregorianCalendar.DAY_OF_WEEK, GregorianCalendar.SATURDAY);
+			Date d1 = gc.getTime();
+			Date d2 = gc.getTime();
+			q.setParameter("datemin", d1);
+			q.setParameter("datemax", d2);
+		}
+			
 		
 		return q.getResultList();
+
 		
 	}
 	
