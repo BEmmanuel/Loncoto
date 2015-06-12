@@ -120,19 +120,19 @@
 	            <div class="contenu_onglet" id="contenu_onglet_article">
 	                <h:form>
 						<h:panelGroup>
-							<table border="1">
+							<table class="tableau">
 								<tr>
-									<th>nom</th>
-									<th>description</th>
-									<th>nom de sousFamille</th>
-									<th>action</th>
+									<th width="100" class="entete">Marque</th>
+									<th width="80" class="entete">Type</th>
+									<th width="350" class="entete">Description</th>
+									<th width="80" class="entete">Action</th>
 								</tr>
 								<ui:repeat var="a" value="#{adminBean.articles}">
 								<tr>
-									<td>#{a.nom}</td>
-									<td>#{a.description}</td>
-									<td>#{a.sousfamille.nom}</td>
-									<td>
+									<td class="colonneImpair">#{a.nom}</td>
+									<td class="colonnePair">#{a.sousfamille.nom}</td>
+									<td class="colonneImpair">#{a.description}</td>
+									<td class="colonnePair">
 									<h:commandButton value="editer" action="#{editBean.editArticle}" class="buttonTableau">
 										<f:param name="aid" value="#{a.id}" />
 									</h:commandButton>
@@ -142,6 +142,7 @@
 								</ui:repeat>
 							</table>
 						</h:panelGroup>
+						<h:commandButton value="Ajouter un article" action="#{editBean.createArticle}" class="buttonCreate"/>
 					</h:form>
 	            </div>
 	            <div class="contenu_onglet" id="contenu_onglet_materiel">
