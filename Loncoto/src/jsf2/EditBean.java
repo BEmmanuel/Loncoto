@@ -585,7 +585,7 @@ public class EditBean {
 		setArticleID(article.getId());
 		setArticleDescription(article.getDescription());
 		setArticleNom(article.getNom());
-		setArticleSousFamilleId(article.getSousfamille().getId());
+		setArticleSousFamilleId(0);
 		
 		return "editArticle.xhtml";
 	}
@@ -624,8 +624,8 @@ public class EditBean {
 		Materiel materiel = new Materiel();
 		setMaterielID2(materiel.getId());
 		setMaterielNumeroSerie(materiel.getNumeroSerie());
-		setMaterielClientID(materiel.getClient_id().getId());
-		setMaterielArticleID(materiel.getArticle_id().getId());
+		setMaterielClientID(0);
+		setMaterielArticleID(0);
 		
 		return "editMateriel.xhtml";
 	}
