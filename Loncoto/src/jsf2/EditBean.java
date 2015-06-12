@@ -657,6 +657,17 @@ public class EditBean {
 		return "adminAccueil.xhtml?faces-redirect=true";
 	}
 	
+	public String createClient(){
+		
+		Client client = new Client();
+		setClientID(client.getId());
+		setClientNom(client.getNom());
+		setClientNumeroTelephone(client.getNumeroTelephone());
+		
+		return "editClient.xhtml";
+		
+	}
+	
 	public String editClient(){
 		int id = Integer.parseInt(FacesContext
 				.getCurrentInstance()
