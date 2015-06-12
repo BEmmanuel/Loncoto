@@ -16,7 +16,7 @@ html
 .body
 {
 	background: #ffffff;
-	border: 2px solid #000000;
+	border: 2px solid #0A464F;
 	border-radius: 15px;
 	width : 960px;
 	margin: 20px auto;
@@ -27,14 +27,14 @@ html
 	width: 400px;
 	height: 230px;
 	margin: 125px auto;
-	border : 2px solid #000000;
+	border : 2px solid #0A464F;
 	border-radius: 15px;
 	background: #FFFFFF;
 }
 
 .title
 {
-	background: #000000;
+	background: #0A464F;
 	color: #FFFFFF;
 	font-size: 24px;
 	text-align: center;
@@ -57,7 +57,7 @@ html
 .labelPortail
 {
 	display: block;
-	color: #000000;
+	color: #0A464F;
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
@@ -66,7 +66,7 @@ html
 }
 .inputPortail
 {
-	color: #000000;
+	color: #0A464F;
 	font-size: 18px;
 	text-align: center;
 	margin: auto;
@@ -77,9 +77,20 @@ html
 .buttonStyle
 {
 	display: block;
-	background: #dddddd;
-	border: 1px solid #000000;
-	color: #000000;
+	background: #D7E9F2;
+	border: 1px solid #0A464F;
+	color: #0A464F;
+	font-size: 18px;
+	margin: 10px auto;
+	padding: 3px 10px;
+	border-radius: 5px;
+}
+.buttonCreate
+{
+	display: block;
+	background: #2E8F34;
+	border: 1px solid #FFFFFF;
+	color: #FFFFFF;
 	font-size: 18px;
 	margin: 10px auto;
 	padding: 3px 10px;
@@ -88,7 +99,7 @@ html
 .buttonReturn
 {
 	display: block;
-	background: #000000;
+	background: #0A464F;
 	border: 1px solid #dddddd;
 	color: #FFFFFF;
 	font-size: 18px;
@@ -100,8 +111,8 @@ html
 {
 	display: block;
 	background: #dddddd;
-	border: 1px solid #000000;
-	color: #000000;
+	border: 1px solid #0A464F;
+	color: #0A464F;
 	font-size: 12px;
 	text-align: center;
 	margin: 10px auto;

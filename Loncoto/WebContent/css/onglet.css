@@ -10,19 +10,19 @@
         }
         .onglet_0
         {
-                background:#bbbbbb;
-                border-bottom:1px solid black;
+                background:#66C1D4;
+                border-bottom:1px solid #146775;
         }
         .onglet_1
         {
-                background:#dddddd;
+                background:#D7E9F2;
                 border-bottom:0px solid black;
                 padding-bottom:4px;
         }
         .contenu_onglet
         {
-                background-color:#dddddd;
-                border:1px solid black;
+                background-color:#D7E9F2;
+                border:1px solid #0A464F;
                 margin-top:-1px;
                 padding:5px;
                 display:none;
