@@ -8,68 +8,65 @@
 <title>Page Accueil pour admin</title>
 <link href="../css/styles.css" rel="stylesheet" type="text/css"/>
 <link href="./css/styles.css" rel="stylesheet" type="text/css"/>
-
 </h:head>
-<body>
+<h:body class="body">
+<h1 class="title"> PLANIFICATION DES INTERVENTIONS </h1>
 <div align="center">
-<h:form>
-
-<h:selectOneMenu value="#{adminBean.intervenantID}" >
+<h:form class="hForm">
+<h:selectOneMenu value="#{adminBean.intervenantID}" class="filtreAdminIndex">
 	<f:selectItem itemValue="0" itemLabel="--select--" />
 	<f:selectItems value="#{adminBean.intervenants}"
 					var="i"
 	 				itemValue="#{i.id}"
 	 				itemLabel="#{i.nom}" />
 	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
-</h:selectOneMenu><br />
+</h:selectOneMenu>
 
-
-<h:selectOneMenu value="#{adminBean.materielID}" >
+<h:selectOneMenu value="#{adminBean.materielID}"  class="filtreAdminIndex">
 	<f:selectItem itemValue="0" itemLabel="--select--" />
 	<f:selectItems value="#{adminBean.materiels}"
 					var="m"
 	 				itemValue="#{m.id}"
 	 				itemLabel="#{m.numeroSerie}" />
 	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
-</h:selectOneMenu><br />
+</h:selectOneMenu>
 
-<h:selectOneMenu value="#{adminBean.clientID}" >
+<h:selectOneMenu value="#{adminBean.clientID}"  class="filtreAdminIndex">
 	<f:selectItem itemValue="0" itemLabel="--select--" />
 	<f:selectItems value="#{adminBean.clients}"
 					var="c"
 	 				itemValue="#{c.id}"
 	 				itemLabel="#{c.nom}" />
 	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
-</h:selectOneMenu><br />
+</h:selectOneMenu><br /><br />
  
 <h:panelGroup id="listecontent">
-<table border="1" >
-	<tr>
-	<th>numero unique</th>
-	<th>date planification</th>
-	<th>date realisation</th>
-	<th>statut</th>
-	<th>commentaire</th>
-	<th>action</th>
-	</tr>
-	<ui:repeat var="i"  value="#{adminBean.interventions}">
-	<tr>
-		<td>#{i.numeroUnique}</td>
-		<td>#{i.datePlanifie}</td>
-		<td>#{i.dateRealisation}</td>
-		<td>#{i.statut}</td>
-		<td>#{i.commentaire}</td>
-		<td>
-		<h:commandButton value="editer" action="#{editBean.editIntervention}">
-			<f:param name="id" value="#{i.id}" />
-		</h:commandButton>
-		</td>
-	</tr>
-	</ui:repeat>
-</table>
+	<table class="tableau">
+		<tr>
+			<th>numero unique</th>
+			<th>date planification</th>
+			<th>date realisation</th>
+			<th>statut</th>
+			<th>commentaire</th>
+			<th>action</th>
+		</tr>
+		<ui:repeat var="i"  value="#{adminBean.interventions}">
+			<tr>
+				<td>#{i.numeroUnique}</td>
+				<td>#{i.datePlanifie}</td>
+				<td>#{i.dateRealisation}</td>
+				<td>#{i.statut}</td>
+				<td>#{i.commentaire}</td>
+				<td>
+					<h:commandButton value="editer" action="#{editBean.editIntervention}" class="buttonTableau">
+						<f:param name="id" value="#{i.id}" />
+					</h:commandButton>
+				</td>
+			</tr>
+		</ui:repeat>
+	</table>
 </h:panelGroup>
-<h:commandButton value="creer intervention" action="#{editBean.createIntervention}"/>
-
+<h:commandButton value="creer intervention" action="#{editBean.createIntervention}" class="buttonStyle"/>
 </h:form>
 
 
@@ -77,18 +74,18 @@
 
 <h:form>
 	<h:panelGroup id="listecontent2">
-		<table border="1">
-			<tr>
-				<th>nom</th>
-				<th>adresse</th>
-				<th>action</th>
+		<table class="tableau">
+			<tr class="headerTableau">
+				<td>nom</td>
+				<td>adresse</td>
+				<td>action</td>
 			</tr>
 			<ui:repeat var="s" value="#{adminBean.sites}">
 			<tr>
-				<td>#{s.nom}</td>
-				<td>#{s.adresse}</td>
-				<td>
-				<h:commandButton value="editer" action="#{editBean.editSite}">
+				<td class="bodyTableau">#{s.nom}</td>
+				<td class="bodyTableau">#{s.adresse}</td>
+				<td class="bodyTableau">
+				<h:commandButton value="editer" action="#{editBean.editSite}" class="buttonTableau">
 					<f:param name="sid" value="#{s.id}" />
 				</h:commandButton>
 				</td>
@@ -114,7 +111,7 @@
 				<td>#{a.description}</td>
 				<td>#{a.sousfamille.nom}</td>
 				<td>
-				<h:commandButton value="editer" action="#{editBean.editArticle}">
+				<h:commandButton value="editer" action="#{editBean.editArticle}" class="buttonTableau">
 					<f:param name="aid" value="#{a.id}" />
 				</h:commandButton>
 				
@@ -209,5 +206,5 @@
 
 
 </div>
-</body>
+</h:body>
 </html>

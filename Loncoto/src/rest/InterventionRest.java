@@ -34,7 +34,7 @@ public class InterventionRest {
 	}
 
 	@RequestMapping("/interventions")
-	public @ResponseBody List<Intervention> getContents() {
+	public @ResponseBody List<Intervention> getInterventions() {
 		System.out.println("dans rest -> getContents");
 		return getInterventionDAO().findAll();
 	}
@@ -59,6 +59,13 @@ public class InterventionRest {
 	@RequestMapping("/interventions/{interventionId}")
 	public @ResponseBody Intervention findContent(@PathVariable("interventionId") int id) {
 		return getInterventionDAO().findByID(id);
+	}
+	
+	
+	@RequestMapping("/myAndGroupeInterventions")
+	public @ResponseBody List<Intervention> getMyAndGroupeInterventions() {
+		System.out.println("dans rest -> getContents");
+		return getInterventionDAO().findByIntervenantAndGroup(((Intervenant) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).getAttribute("user")).getId());
 	}
 	
 }

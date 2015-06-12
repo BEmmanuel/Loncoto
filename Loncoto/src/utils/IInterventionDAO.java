@@ -15,5 +15,7 @@ public interface IInterventionDAO {
 	List<Intervention> findByIntervenant(int intervenantId);
 	List<Intervention> findByGroup(int intervenantId);
 	List<Intervention> findByIntervenantAndGroup(int intervenantId);
+	List<Intervention> find(int intervenantID, int materielID, int clientID,
+			int weekNo, int yearNo);
 
 }
