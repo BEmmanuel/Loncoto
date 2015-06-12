@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+<meta charset="UTF-8"></meta>
+<title>Edition d'intervention</title>
+<link href="../css/jquery.datetimepicker.css" rel="stylesheet" type="text/css"/> 
+<script src="../js/jquery.js" />
+<script src="../js/jquery.datetimepicker.js" />
+</h:head>
+<body>
+<h:form>
+<h:inputHidden value="#{editBean.interventionID}" />
+datePlanification : <h:inputText value="#{editBean.datePlanification}" class="datetimepicker1">
+<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris" />
+</h:inputText>
+dateRealisation : <h:inputText value="#{editBean.dateRealisation}" class="datetimepicker2">
+<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris"/>
+</h:inputText>
+Duree: <h:inputText value="#{editBean.interventionDuree}"/><br />
+Commentaire: <h:inputText value="#{editBean.interventionCommentaire}"/><br />
+status: <h:inputTextarea value="#{editBean.interventionStatus}"/><br />
+materiel:  <h:selectOneMenu value="#{editBean.materielID}">
+			<f:selectItems value="#{editBean.materiels}" var="m"
+				itemValue="#{m.id}" itemLabel="#{m.numeroSerie}" />
+		</h:selectOneMenu>
+		<br />
+<h:commandButton value="sauver" action="#{editBean.saveInterventionByIntervenant}" />
+</h:form>
+<SCRIPT type="text/javascript">
+	$(".datetimepicker1").datetimepicker({
+		  format:'Y-m-d H:i:s',
+		  lang:'en'
+		});
+	$(".datetimepicker2").datetimepicker({
+		  format:'Y-m-d H:i:s',
+		  lang:'en'
+		});
+
+</SCRIPT>
+</body>
+</html>
