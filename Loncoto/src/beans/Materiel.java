@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Materiel {
 
@@ -74,7 +76,8 @@ public class Materiel {
 		this.numeroSerie = numeroSerie;
 	}
 	
-	@OneToMany(mappedBy="materiel")
+	@JsonIgnore
+	@OneToMany(mappedBy="materiel")	
 	public List<Intervention> getInterventions() {
 		return interventions;
 	}

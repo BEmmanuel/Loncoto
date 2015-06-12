@@ -2,6 +2,8 @@ package beans;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 import java.util.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Client {
 	private Set<Site> sites;
 	private Set<Materiel> materiels;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="client_id")
 	public Set<Materiel> getMateriels() {
 		if(materiels == null)
@@ -26,6 +29,8 @@ public class Client {
 	public void setSites(Set<Site> sites) {
 		this.sites = sites;
 	}
+	
+	@JsonIgnore
 	@ManyToMany(cascade=CascadeType.PERSIST, mappedBy="clients")
 	public Set<Site> getSites() {return sites;}
 	public void setUsers(Set<Site> sites) {this.sites = sites;}

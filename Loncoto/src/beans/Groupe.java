@@ -3,6 +3,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Groupe {
 
@@ -10,6 +12,7 @@ public class Groupe {
 	private String nom;
 	private List<Intervenant> intervenants;
 	
+	@JsonIgnore
 	@ManyToMany(mappedBy = "groupes")
 	public List<Intervenant> getIntervenants() {
 		if(intervenants == null)

@@ -151,6 +151,18 @@ public class InterventionDAO implements IInterventionDAO {
 		q.setParameter("id", intervenantId);
 		return q.getResultList();
 	}
-
+	
+	
+	@Override
+	@Transactional
+	public List<Intervention> findByIntervenantAndGroup(int intervenantId){
+		Query q = em.createQuery("select distinct inter from Intervention as inter, "
+				+ "in (inter.intervenant) as iv where iv.groupes = (select ive.groupes from intervenant as ive "
+				+ "where ive.id = :id) OR iv.id = :intervenant"
+				, Intervention.class);
+		q.setParameter("id", intervenantId);
+		q.setParameter("intervenant", intervenantId);
+		return q.getResultList();
+	}
 }
 

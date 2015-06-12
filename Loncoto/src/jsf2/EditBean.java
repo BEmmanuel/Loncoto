@@ -459,6 +459,24 @@ public class EditBean {
 		return "editIntervention.xhtml";
 	}
 	
+	public String editInterventionByIntervenant(){
+		int id = Integer.parseInt(FacesContext
+				.getCurrentInstance()
+				.getExternalContext()
+				.getRequestParameterMap()
+				.get("id"));
+		
+		Intervention intervention = getInterventionDAO().findByID(id);
+		setInterventionID(id);
+		setDatePlanification(intervention.getDatePlanifie());
+		setDateRealisation(intervention.getDateRealisation());
+		setInterventionDuree(intervention.getDuree());
+		setInterventionCommentaire(intervention.getCommentaire());
+		setMaterielID(intervention.getMateriel().getId());
+		
+		return "editInterventionByIntervenant.xhtml";
+	}
+	
 	
 	public String saveIntervention(){
 		Intervention intervention = new Intervention();
@@ -482,8 +500,12 @@ public class EditBean {
 		Intervention intervention = new Intervention();
 		intervention.setId(getInterventionID());
 		intervention.setDatePlanifie(getDatePlanification());
-		intervention.setCommentaire(getInterventionCommentaire());
+		System.out.println("---------------------------------------");
+		System.out.println("le suivant est le date planification quand on fait saveIntervention2");
+		System.out.println(getDatePlanification());
 		
+		intervention.setCommentaire(getInterventionCommentaire());
+		intervention.setDateRealisation(null);
 		Intervenant intervenant = getIntervenantDAO().findByID(getIntervenantID());
 		Materiel materiel = getMaterielDAO().findByID(getMaterielID());
 		intervention.setIntervenant(intervenant);
@@ -491,6 +513,23 @@ public class EditBean {
 		getInterventionDAO().save(intervention);
 		
 		return "adminAccueil.xhtml?faces-redirect=true";
+	}
+	
+	
+	public String saveInterventionByIntervenant(){
+		Intervention intervention = new Intervention();
+		intervention.setId(getInterventionID());
+		intervention.setDatePlanifie(getDatePlanification());
+		intervention.setDateRealisation(getDateRealisation());
+		intervention.setDuree(getInterventionDuree());
+		intervention.setCommentaire(getInterventionCommentaire());
+		intervention.setStatut(getInterventionStatus());
+		
+		Materiel materiel = getMaterielDAO().findByID(getMaterielID());
+		intervention.setMateriel(materiel);
+		getInterventionDAO().save(intervention);
+		
+		return "intervenantAccueil.xhtml?faces-redirect=true";
 	}
 	
 	public String editSite(){

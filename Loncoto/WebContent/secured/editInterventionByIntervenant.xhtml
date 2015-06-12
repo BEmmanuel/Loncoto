@@ -17,20 +17,17 @@ datePlanification : <h:inputText value="#{editBean.datePlanification}" class="da
 <f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris" />
 </h:inputText>
 dateRealisation : <h:inputText value="#{editBean.dateRealisation}" class="datetimepicker2">
-<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris" />
+<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris"/>
 </h:inputText>
 Duree: <h:inputText value="#{editBean.interventionDuree}"/><br />
 Commentaire: <h:inputText value="#{editBean.interventionCommentaire}"/><br />
 status: <h:inputTextarea value="#{editBean.interventionStatus}"/><br />
-intervenant: <h:selectOneMenu value="#{editBean.intervenantID}">
-	<f:selectItems value="#{editBean.intervenants}" var="i" itemValue="#{i.id}" itemLabel="#{i.nom}" />
-</h:selectOneMenu><br />
 materiel:  <h:selectOneMenu value="#{editBean.materielID}">
 			<f:selectItems value="#{editBean.materiels}" var="m"
 				itemValue="#{m.id}" itemLabel="#{m.numeroSerie}" />
 		</h:selectOneMenu>
 		<br />
-<h:commandButton value="sauver" action="#{editBean.saveIntervention}" />
+<h:commandButton value="sauver" action="#{editBean.saveInterventionByIntervenant}" />
 </h:form>
 <SCRIPT type="text/javascript">
 	$(".datetimepicker1").datetimepicker({

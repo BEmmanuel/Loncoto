@@ -4,6 +4,8 @@ import java.util.*;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class SousFamille {
 	
@@ -49,6 +51,7 @@ public class SousFamille {
 				+ famille + "]";
 	}
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="sousfamille")
 	public List<Article> getArticles() {
 		if(articles == null)

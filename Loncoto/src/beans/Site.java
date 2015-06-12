@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+
 @Entity
 public class Site {
 	private int id;
@@ -44,7 +46,7 @@ public class Site {
 		this.clients = clients;
 	}
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="site_id")
 	public List<Batiment> getBatiments() {
 		if(batiments == null)
