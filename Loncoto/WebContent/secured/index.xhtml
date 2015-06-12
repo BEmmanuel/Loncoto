@@ -45,6 +45,39 @@ $(document).ready(function(){
 </h:head>
 <h:body class="body">
 <div align="center">
+
+	<h:form>
+		<h:panelGroup id="listecontent">
+			<table border="1" >
+				<tr>
+				<th>numero unique</th>
+				<th>date planification</th>
+				<th>date realisation</th>
+				<th>statut</th>
+				<th>commentaire</th>
+				<th>action</th>
+				</tr>
+				<ui:repeat var="i"  value="#{intervenantBean.interventions}">
+				<tr>
+					<td>#{i.numeroUnique}</td>
+					<td>#{i.datePlanifie}</td>
+					<td>#{i.dateRealisation}</td>
+					<td>#{i.statut}</td>
+					<td>#{i.commentaire}</td>
+					<td>
+					<h:commandButton value="editer" action="#{editBean.editInterventionByIntervenant}">
+						<f:param name="id" value="#{i.id}" />
+					</h:commandButton>
+					</td>
+				</tr>
+				</ui:repeat>
+			</table>
+		</h:panelGroup>
+		
+		</h:form>
+</div>
+<div id="planning"></div>
+
 <h1 class="title">PLANIFICATION DES INTERVENTIONS</h1>
 <br/><br/>
 <div id="planning"></div><br/><br/>

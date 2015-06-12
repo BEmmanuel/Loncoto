@@ -5,6 +5,7 @@ import java.util.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.id.IdentityGenerator.GetGeneratedKeysDelegate;
 import org.springframework.stereotype.Component;
@@ -524,12 +525,12 @@ public class EditBean {
 		intervention.setDuree(getInterventionDuree());
 		intervention.setCommentaire(getInterventionCommentaire());
 		intervention.setStatut(getInterventionStatus());
-		
+		intervention.setIntervenant((Intervenant) ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).getAttribute("user"));
 		Materiel materiel = getMaterielDAO().findByID(getMaterielID());
 		intervention.setMateriel(materiel);
 		getInterventionDAO().save(intervention);
 		
-		return "intervenantAccueil.xhtml?faces-redirect=true";
+		return "index.xhtml?faces-redirect=true";
 	}
 	
 	public String editSite(){
