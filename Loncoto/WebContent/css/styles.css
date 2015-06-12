@@ -204,12 +204,14 @@ html
 .colonnePair
 {
 	background: #efefef;
+	padding: 2px 10px;
 	text-align: center;
 	
 }
 .colonneImpair
 {
 	background:#66C1D4;
+	padding: 2px 10px;
 	text-align: center;
 }
 
