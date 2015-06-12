@@ -769,7 +769,7 @@ public class EditBean {
 		setIntervenantPrenom(intervenant.getPrenom());
 		setIntervenantPassword(intervenant.getPassword());
 		
-		return "editIntervenant.xhtml";
+		return "editIntervenant2.xhtml";
 		
 	}
 	
