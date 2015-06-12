@@ -85,6 +85,17 @@ html
 	padding: 3px 10px;
 	border-radius: 5px;
 }
+.buttonDeconnect
+{
+	display: block;
+	background: #E58A84;
+	border: 1px solid #A10406;
+	color: #A10406;
+	font-size: 18px;
+	margin: 10px auto;
+	padding: 3px 10px;
+	border-radius: 5px;
+}
 .buttonCreate
 {
 	display: block;
