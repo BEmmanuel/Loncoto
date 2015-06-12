@@ -65,21 +65,21 @@
 						<h:panelGroup id="listecontent">
 							<table class="tableau">
 								<tr>
-									<th>numero unique</th>
-									<th>date planification</th>
-									<th>date realisation</th>
-									<th>statut</th>
-									<th>commentaire</th>
-									<th>action</th>
+									<th width="150" class="entete">numero unique</th>
+									<th width="220" class="entete">date planification</th>
+									<th width="220" class="entete">date realisation</th>
+									<th width="100" class="entete">statut</th>
+									<th width="150" class="entete">commentaire</th>
+									<th width="80" class="entete">action</th>
 								</tr>
 								<ui:repeat var="i"  value="#{adminBean.interventions}">
 									<tr>
-										<td>#{i.numeroUnique}</td>
-										<td>#{i.datePlanifie}</td>
-										<td>#{i.dateRealisation}</td>
-										<td>#{i.statut}</td>
-										<td>#{i.commentaire}</td>
-										<td>
+										<td class="colonneImpair">#{i.numeroUnique}</td>
+										<td class="colonnePair">#{i.datePlanifie}</td>
+										<td class="colonneImpair">#{i.dateRealisation}</td>
+										<td class="colonnePair">#{i.statut}</td>
+										<td class="colonneImpair">#{i.commentaire}</td>
+										<td class="colonnePair">
 											<h:commandButton value="editer" action="#{editBean.editIntervention}" class="buttonTableau">
 												<f:param name="id" value="#{i.id}" />
 											</h:commandButton>

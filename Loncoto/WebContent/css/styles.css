@@ -3,6 +3,7 @@
 	margin: 0;
 	border: 0;
 	padding: 0;
+	border-spacing: 0;
 	font-family: Arial;
 }
 
@@ -184,7 +185,7 @@ html
 
 .tableau
 {
-	border: 1px solid #333333;
+	border: 1px solid #0A464F;
 }
 
 .headerTableau
@@ -199,4 +200,25 @@ html
 {
 	border: 1px solid #333333;
 	font-size: 12px;
+}
+.colonnePair
+{
+	background: #efefef;
+	text-align: center;
+	
+}
+.colonneImpair
+{
+	background:#66C1D4;
+	text-align: center;
+}
+
+.entete
+{
+	background: #0A464F;
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 5px;
 }
