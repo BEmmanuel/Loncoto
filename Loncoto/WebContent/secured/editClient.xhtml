@@ -5,17 +5,25 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 <meta charset="UTF-8"></meta>
-<title>Edition de client</title>
-</h:head>
-<body>
-<h:form>
+<title>Gest'LONCOTO</title>
+		<link href="../css/styles.css" rel="stylesheet" type="text/css"/> 
+	</h:head>
+	<h:body class="body">
+		<h1 class="title">Gest'LONCOTO</h1>
+		<h2 class="sousTitle">Création d'un client</h2>
+		<h:form>
 <h:inputHidden value="#{editBean.clientID}" />
+			<div class="blocLabels">
+	    	   <h:outputLabel value="Nom" class="labelForm" />
+	    	   <h:outputLabel value="Numéro de téléphone" class="labelForm" />
+	    	</div>
+	    	<div class="blocInputs">
+<h:inputText value="#{editBean.clientNom}" class="inputForm"/><br />
+<h:inputText value="#{editBean.clientNumeroTelephone}" class="inputForm"/><br />
+ </div><br />
 
-nom: <h:inputText value="#{editBean.clientNom}"/><br />
-numero telephone: <h:inputText value="#{editBean.clientNumeroTelephone}"/><br />
- <br />
-
-<h:commandButton value="sauver" action="#{editBean.saveClient}" />
+<h:commandButton value="sauver" action="#{editBean.saveClient}" class="buttonStyle"/>
+<h:commandButton value="retour à l'accueil" action="#{navigationBean.redirectToWelcomeAdmin}" class="buttonReturn"/>
 </h:form>
-</body>
+</h:body>
 </html>

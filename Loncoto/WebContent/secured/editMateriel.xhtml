@@ -5,22 +5,31 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 <h:head>
 <meta charset="UTF-8"></meta>
-<title>Edition de materiel</title>
-</h:head>
-<body>
-<h:form>
+<title>Gest'LONCOTO</title>
+		<link href="../css/styles.css" rel="stylesheet" type="text/css"/> 
+	</h:head>
+	<h:body class="body">
+		<h1 class="title">Gest'LONCOTO</h1>
+		<h2 class="sousTitle">Création d'un matériel</h2>
+		<h:form>
 <h:inputHidden value="#{editBean.materielID2}" />
-
-numeroSerie: <h:inputText value="#{editBean.materielNumeroSerie}"/><br />
-client qui dipose materiel: <h:selectOneMenu value="#{editBean.materielClientID}">
-	<f:selectItems value="#{editBean.clients}" var="c" itemValue="#{c.id}" itemLabel="#{c.nom}" />
-</h:selectOneMenu><br />
-article de ce materiel:  <h:selectOneMenu value="#{editBean.materielArticleID}">
-			<f:selectItems value="#{editBean.articles}" var="a"
-				itemValue="#{a.id}" itemLabel="#{a.nom}" />
+<div class="blocLabels">
+	    	   <h:outputLabel value="Numéro de série" class="labelForm" />
+	    	   <h:outputLabel value="Nom du client" class="labelForm" />
+	    	   <h:outputLabel value="Type d'article" class="labelForm" />
+	    	</div>
+	    	<div class="blocInputs">
+				<h:inputText value="#{editBean.materielNumeroSerie}" class="inputForm"/><br />
+				<h:selectOneMenu value="#{editBean.materielClientID}" class="inputForm">
+					<f:selectItems value="#{editBean.clients}" var="c" itemValue="#{c.id}" itemLabel="#{c.nom}" />
+				</h:selectOneMenu><br />
+		<h:selectOneMenu value="#{editBean.materielArticleID}" class="inputForm">
+			<f:selectItems value="#{editBean.articles}" var="a" itemValue="#{a.id}" itemLabel="#{a.nom}" />
 		</h:selectOneMenu>
+</div>
 		<br />
-<h:commandButton value="sauver" action="#{editBean.saveMateriel}" />
+<h:commandButton value="sauver" action="#{editBean.saveMateriel}" class="buttonStyle"/>
+<h:commandButton value="retour à l'accueil" action="#{navigationBean.redirectToWelcomeAdmin}" class="buttonReturn"/>
 </h:form>
-</body>
+</h:body>
 </html>
