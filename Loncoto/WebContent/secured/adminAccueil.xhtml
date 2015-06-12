@@ -96,16 +96,16 @@
 	            	<h:form>
 						<h:panelGroup id="listecontent2">
 							<table class="tableau">
-								<tr class="headerTableau">
-									<td>nom</td>
-									<td>adresse</td>
-									<td>action</td>
+								<tr>
+									<td width="120" class="entete">nom</td>
+									<td width="350" class="entete">adresse</td>
+									<td width="80" class="entete">action</td>
 								</tr>
 								<ui:repeat var="s" value="#{adminBean.sites}">
 								<tr>
-									<td class="bodyTableau">#{s.nom}</td>
-									<td class="bodyTableau">#{s.adresse}</td>
-									<td class="bodyTableau">
+									<td class="colonnePair">#{s.nom}</td>
+									<td class="colonneImpair">#{s.adresse}</td>
+									<td class="colonnePair">
 									<h:commandButton value="editer" action="#{editBean.editSite}" class="buttonTableau">
 										<f:param name="sid" value="#{s.id}" />
 									</h:commandButton>
@@ -114,6 +114,7 @@
 								</ui:repeat>	
 							</table>
 						</h:panelGroup>
+						<h:commandButton value="Ajouter un site" action="#{editBean.createSite}" class="buttonCreate"/>
 					</h:form> 
 	            </div>
 	            <div class="contenu_onglet" id="contenu_onglet_article">
