@@ -43,7 +43,7 @@ public class MaterielDAO implements IMaterielDAO {
 	@Override
 	@Transactional
 	public List<Materiel> findAllWithIntervention() {
-		return em.createQuery("select mat from Materiel as mat , IN(mat.interventions) as interventions where interventions.size > 0 ", Materiel.class).getResultList();
+		return em.createQuery("select DISTINCT mat from Materiel as mat , IN(mat.interventions) as interventions where interventions.size > 0 ", Materiel.class).getResultList();
 	}
 
 	@Override

@@ -63,7 +63,8 @@ public class ClientDAO implements IClientDAO {
 		
 		for(Materiel mat : materiels ){
 			if(mat.getClient_id() instanceof Client)
-				clients.add(mat.getClient_id());
+				if(!clients.contains(mat.getClient_id()))
+					clients.add(mat.getClient_id());
 		}
 		
 		return clients;

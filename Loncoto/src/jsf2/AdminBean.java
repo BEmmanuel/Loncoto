@@ -109,18 +109,24 @@ public class AdminBean {
 		return materielID;
 	}
 	public void setMaterielID(int materielID) {
+		System.out.println("injection de materielID" + materielID);
+		System.out.println("-----------------------------");
 		this.materielID = materielID;
 	}
 	public int getClientID() {
 		return clientID;
 	}
 	public void setClientID(int clientID) {
+		System.out.println("injection de ClientID" + clientID);
+		System.out.println("-----------------------------");
 		this.clientID = clientID;
 	}
 	public int getIntervenantID() {
 		return intervenantID;
 	}
 	public void setIntervenantID(int intervenantID) {
+		System.out.println("injection de ClientID" + intervenantID);
+		System.out.println("-----------------------------");
 		this.intervenantID = intervenantID;
 	}
 	public List<Materiel> getMateriels() {
@@ -137,14 +143,13 @@ public class AdminBean {
 			return getInterventionDAO().findAll();
 		}
 		else
-			return getInterventionDAO().find(getIntervenantID(),getMaterielID(),getClientID());
+			return getInterventionDAO().find(getIntervenantID(),getMaterielID(),getClientID(),0,0);
 	}
 	public void setInterventions(List<Intervention> interventions) {
 		this.interventions = interventions;
 	}
 	public List<Intervenant> getIntervenants() {
-		System.out.println("appel de getIntervenants");
-		System.out.println("--------------------------");
+		
 		return getIntervenantDAO().findAllWitchIntervention();
 	}
 	public void setIntervenants(List<Intervenant> intervenants) {
