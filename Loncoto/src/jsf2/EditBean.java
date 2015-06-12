@@ -533,6 +533,16 @@ public class EditBean {
 		return "index.xhtml?faces-redirect=true";
 	}
 	
+	public String createSite(){
+		
+		Site site = new Site();
+		setSiteID(site.getId());
+		setSiteNom(site.getNom());
+		setSiteAdresse(site.getAdresse());
+		
+		return "editSite.xhtml";
+	}
+	
 	public String editSite(){
 		System.out.println("entre dans le methode editsite");
 		System.out.println("--------------------------------------------------");
