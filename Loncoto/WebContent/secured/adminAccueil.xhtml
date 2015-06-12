@@ -201,26 +201,26 @@
 	            <div class="contenu_onglet" id="contenu_onglet_utilisateur">
 	                <h:form>
 						<h:panelGroup>
-							<table border="1">
+							<table class="tableau">
 								<tr>
-									<th>nom</th>
-									<th>prenom</th>
-									<th>email</th>
-									<th>groupe</th>
-									<th>action</th>
+									<th width="100" class="entete">nom</th>
+									<th width="100" class="entete">prenom</th>
+									<th width="100" class="entete">email</th>
+									<th width="100" class="entete">groupe</th>
+									<th width="80" class="entete">action</th>
 								</tr>
 								<ui:repeat var="i" value="#{adminBean.intervenants2}">
 								<tr>
-									<td>#{i.nom}</td>
-									<td>#{i.prenom}</td>
-									<td>#{i.email}</td>
-									<td>
+									<td class="colonnePair">#{i.nom}</td>
+									<td class="colonneImpair">#{i.prenom}</td>
+									<td class="colonnePair">#{i.email}</td>
+									<td class="colonneImpair">
 										<ui:repeat var="g" value="#{i.groupes}"> 
 											#{g.nom}  
 										</ui:repeat>
 									</td>
-									<td>
-									<h:commandButton value="editer" action="#{editBean.editIntervenant2}">
+									<td class="colonnePair">
+									<h:commandButton value="editer" action="#{editBean.editIntervenant2}" class="buttonTableau">
 										<f:param name="id" value="#{i.id}" />
 									</h:commandButton>
 									</td>
@@ -228,6 +228,7 @@
 								</ui:repeat>
 							</table>
 						</h:panelGroup>
+						<h:commandButton value="Ajouter un utilisateur" action="#{editBean.editIntervenant2}" class="buttonCreate"/>
 					</h:form>  
 	            </div>
 
