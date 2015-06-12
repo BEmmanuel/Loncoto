@@ -3,253 +3,234 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-<h:head>
-<script type="text/javascript">
-        
-	function change_onglet(name)
-    {
-            document.getElementById('onglet_'+anc_onglet).className = 'onglet_0 onglet';
-            document.getElementById('onglet_'+name).className = 'onglet_1 onglet';
-            document.getElementById('contenu_onglet_'+anc_onglet).style.display = 'none';
-            document.getElementById('contenu_onglet_'+name).style.display = 'block';
-            anc_onglet = name;
-    }
-        
-</script>
-<meta charset="UTF-8"></meta>
-<title>Page Accueil pour admin</title>
-<link href="../css/styles.css" rel="stylesheet" type="text/css"/>
-<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
-</h:head>
-<h:body class="body">
-<h1 class="title"> PLANIFICATION DES INTERVENTIONS </h1>
-<div class="systeme_onglets">
-        <div class="onglets">
-            <span class="onglet_0 onglet" id="onglet_inter" onclick="javascript:change_onglet('inter');">Interventions</span>
-            <span class="onglet_0 onglet" id="onglet_site" onclick="javascript:change_onglet('site');">Sites</span>
-            <span class="onglet_0 onglet" id="onglet_article" onclick="javascript:change_onglet('article');">Articles</span>
-            <span class="onglet_0 onglet" id="onglet_materiel" onclick="javascript:change_onglet('materiel');">Materiels</span>
-            <span class="onglet_0 onglet" id="onglet_client" onclick="javascript:change_onglet('client');">Clients</span>
-            <span class="onglet_0 onglet" id="onglet_utilisateur" onclick="javascript:change_onglet('utilisateur');">Utilisateurs</span>
-        </div>
-        <div class="contenu_onglets">
-            <div class="contenu_onglet" id="contenu_onglet_inter">
-                <h:form class="hForm">
-<h:selectOneMenu value="#{adminBean.intervenantID}" class="filtreAdminIndex">
-	<f:selectItem itemValue="0" itemLabel="--select--" />
-	<f:selectItems value="#{adminBean.intervenants}"
-					var="i"
-	 				itemValue="#{i.id}"
-	 				itemLabel="#{i.nom}" />
-	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
-</h:selectOneMenu>
-
-<h:selectOneMenu value="#{adminBean.materielID}"  class="filtreAdminIndex">
-	<f:selectItem itemValue="0" itemLabel="--select--" />
-	<f:selectItems value="#{adminBean.materiels}"
-					var="m"
-	 				itemValue="#{m.id}"
-	 				itemLabel="#{m.numeroSerie}" />
-	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
-</h:selectOneMenu>
-
-<h:selectOneMenu value="#{adminBean.clientID}"  class="filtreAdminIndex">
-	<f:selectItem itemValue="0" itemLabel="--select--" />
-	<f:selectItems value="#{adminBean.clients}"
-					var="c"
-	 				itemValue="#{c.id}"
-	 				itemLabel="#{c.nom}" />
-	<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
-</h:selectOneMenu><br /><br />
- 
-<h:panelGroup id="listecontent">
-	<table class="tableau">
-		<tr>
-			<th>numero unique</th>
-			<th>date planification</th>
-			<th>date realisation</th>
-			<th>statut</th>
-			<th>commentaire</th>
-			<th>action</th>
-		</tr>
-		<ui:repeat var="i"  value="#{adminBean.interventions}">
-			<tr>
-				<td>#{i.numeroUnique}</td>
-				<td>#{i.datePlanifie}</td>
-				<td>#{i.dateRealisation}</td>
-				<td>#{i.statut}</td>
-				<td>#{i.commentaire}</td>
-				<td>
-					<h:commandButton value="editer" action="#{editBean.editIntervention}" class="buttonTableau">
-						<f:param name="id" value="#{i.id}" />
-					</h:commandButton>
-				</td>
-			</tr>
-		</ui:repeat>
-	</table>
-</h:panelGroup>
-<h:commandButton value="creer intervention" action="#{editBean.createIntervention}" class="buttonStyle"/>
-</h:form>
-            </div>
-            <div class="contenu_onglet" id="contenu_onglet_site">
-               <h:form>
-	<h:panelGroup id="listecontent2">
-		<table class="tableau">
-			<tr class="headerTableau">
-				<td>nom</td>
-				<td>adresse</td>
-				<td>action</td>
-			</tr>
-			<ui:repeat var="s" value="#{adminBean.sites}">
-			<tr>
-				<td class="bodyTableau">#{s.nom}</td>
-				<td class="bodyTableau">#{s.adresse}</td>
-				<td class="bodyTableau">
-				<h:commandButton value="editer" action="#{editBean.editSite}" class="buttonTableau">
-					<f:param name="sid" value="#{s.id}" />
-				</h:commandButton>
-				</td>
-			</tr>	
-			</ui:repeat>	
-		</table>
-	</h:panelGroup>
-</h:form>
-               
-            </div>
-            <div class="contenu_onglet" id="contenu_onglet_article">
-                <h:form>
-	<h:panelGroup>
-		<table border="1">
-			<tr>
-				<th>nom</th>
-				<th>description</th>
-				<th>nom de sousFamille</th>
-				<th>action</th>
-			</tr>
-			<ui:repeat var="a" value="#{adminBean.articles}">
-			<tr>
-				<td>#{a.nom}</td>
-				<td>#{a.description}</td>
-				<td>#{a.sousfamille.nom}</td>
-				<td>
-				<h:commandButton value="editer" action="#{editBean.editArticle}" class="buttonTableau">
-					<f:param name="aid" value="#{a.id}" />
-				</h:commandButton>
-				
-				</td>
-			</tr>
-			</ui:repeat>
-		</table>
-	</h:panelGroup>
-</h:form>
-            </div>
-            <div class="contenu_onglet" id="contenu_onglet_materiel">
-                <h:form>
-	<h:panelGroup>
-		<table border="1">
-			<tr>
-				<th>numeroSerie</th>
-				<th>nom de client</th>
-				<th>nom d'article</th>
-				<th>action</th>
-			</tr>
-			<ui:repeat var="m" value="#{adminBean.materiels2}">
-			<tr>
-				<td>#{m.numeroSerie}</td>
-				<td>#{m.client_id.nom}</td>
-				<td>#{m.article_id.nom}</td>
-				<td>
-				<h:commandButton value="editer" action="#{editBean.editMateriel}">
-					<f:param name="mid" value="#{m.id}" />
-				</h:commandButton>
-				
-				</td>
-			</tr>
-			</ui:repeat>
-		</table>
-	</h:panelGroup>
-</h:form>
-            </div>
-            <div class="contenu_onglet" id="contenu_onglet_client">
-                <h:form>
-	<h:panelGroup>
-		<table border="1">
-			<tr>
-				<th>nom</th>
-				<th>numeroTelephone</th>
-				<th>action</th>
-			</tr>
-			<ui:repeat var="c" value="#{adminBean.clients2}">
-			<tr>
-				<td>#{c.nom}</td>
-				<td>#{c.numeroTelephone}</td>
-				<td>
-				<h:commandButton value="editer" action="#{editBean.editClient}">
-					<f:param name="clientId" value="#{c.id}" />
-				</h:commandButton>
-				</td>
-			</tr>
-			</ui:repeat>
-		</table>
-	</h:panelGroup>
-</h:form>
-                
-            </div>
-            <div class="contenu_onglet" id="contenu_onglet_utilisateur">
-                <h:form>
-	<h:panelGroup>
-		<table border="1">
-			<tr>
-				<th>nom</th>
-				<th>prenom</th>
-				<th>email</th>
-				<th>groupe</th>
-				<th>action</th>
-			</tr>
-			<ui:repeat var="i" value="#{adminBean.intervenants2}">
-			<tr>
-				<td>#{i.nom}</td>
-				<td>#{i.prenom}</td>
-				<td>#{i.email}</td>
-				<td>
-					<ui:repeat var="g" value="#{i.groupes}"> 
-						#{g.nom}  
-					</ui:repeat>
-				</td>
-				<td>
-				<h:commandButton value="editer" action="#{editBean.editIntervenant2}">
-					<f:param name="id" value="#{i.id}" />
-				</h:commandButton>
-				</td>
-			</tr>
-			</ui:repeat>
-		</table>
-	</h:panelGroup>
-</h:form>
-                
-            </div>
-        </div>
-    </div>
-<div align="center">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-<script type="text/javascript">
-	var anc_onglet = 'quoi';
-    change_onglet(anc_onglet);
-</script>
-</h:body>
+	<h:head>
+		<script type="text/javascript">     
+			function change_onglet(name)
+		    {
+		            document.getElementById('onglet_'+anc_onglet).className = 'onglet_0 onglet';
+		            document.getElementById('onglet_'+name).className = 'onglet_1 onglet';
+		            document.getElementById('contenu_onglet_'+anc_onglet).style.display = 'none';
+		            document.getElementById('contenu_onglet_'+name).style.display = 'block';
+		            anc_onglet = name;
+		    }    
+		</script>
+		<meta charset="UTF-8"></meta>
+		<title>Page Accueil pour admin</title>
+		<link href="../css/styles.css" rel="stylesheet" type="text/css"/>
+		<link href="./css/styles.css" rel="stylesheet" type="text/css"/>
+		<link href="./css/onglet.css" rel="stylesheet" type="text/css"/>
+		<link href="../css/onglet.css" rel="stylesheet" type="text/css"/>
+	</h:head>
+	<h:body class="body">
+		<h1 class="title"> PLANIFICATION DES INTERVENTIONS </h1>
+		<div class="systeme_onglets" align="center">
+	        <div class="onglets">
+	            <span class="onglet_0 onglet" id="onglet_inter" onclick="javascript:change_onglet('inter');">Interventions</span>
+	            <span class="onglet_0 onglet" id="onglet_site" onclick="javascript:change_onglet('site');">Sites</span>
+	            <span class="onglet_0 onglet" id="onglet_article" onclick="javascript:change_onglet('article');">Articles</span>
+	            <span class="onglet_0 onglet" id="onglet_materiel" onclick="javascript:change_onglet('materiel');">Materiels</span>
+	            <span class="onglet_0 onglet" id="onglet_client" onclick="javascript:change_onglet('client');">Clients</span>
+	            <span class="onglet_0 onglet" id="onglet_utilisateur" onclick="javascript:change_onglet('utilisateur');">Utilisateurs</span>
+	        </div>
+	        <div class="contenu_onglets">
+	            <div class="contenu_onglet" id="contenu_onglet_inter">
+	                <h:form class="hForm">
+						<h:selectOneMenu value="#{adminBean.intervenantID}" class="filtreAdminIndex">
+							<f:selectItem itemValue="0" itemLabel="--select--" />
+							<f:selectItems value="#{adminBean.intervenants}"
+											var="i"
+							 				itemValue="#{i.id}"
+							 				itemLabel="#{i.nom}" />
+							<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
+						</h:selectOneMenu>
+	
+						<h:selectOneMenu value="#{adminBean.materielID}"  class="filtreAdminIndex">
+							<f:selectItem itemValue="0" itemLabel="--select--" />
+							<f:selectItems value="#{adminBean.materiels}"
+											var="m"
+							 				itemValue="#{m.id}"
+							 				itemLabel="#{m.numeroSerie}" />
+							<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
+						</h:selectOneMenu>
+	
+						<h:selectOneMenu value="#{adminBean.clientID}"  class="filtreAdminIndex">
+							<f:selectItem itemValue="0" itemLabel="--select--" />
+							<f:selectItems value="#{adminBean.clients}"
+											var="c"
+							 				itemValue="#{c.id}"
+							 				itemLabel="#{c.nom}" />
+							<f:ajax render="listecontent" listener="#{adminBean.filterInt}" />
+						</h:selectOneMenu><br /><br />
+	 
+						<h:panelGroup id="listecontent">
+							<table class="tableau">
+								<tr>
+									<th>numero unique</th>
+									<th>date planification</th>
+									<th>date realisation</th>
+									<th>statut</th>
+									<th>commentaire</th>
+									<th>action</th>
+								</tr>
+								<ui:repeat var="i"  value="#{adminBean.interventions}">
+									<tr>
+										<td>#{i.numeroUnique}</td>
+										<td>#{i.datePlanifie}</td>
+										<td>#{i.dateRealisation}</td>
+										<td>#{i.statut}</td>
+										<td>#{i.commentaire}</td>
+										<td>
+											<h:commandButton value="editer" action="#{editBean.editIntervention}" class="buttonTableau">
+												<f:param name="id" value="#{i.id}" />
+											</h:commandButton>
+										</td>
+									</tr>
+								</ui:repeat>
+							</table>
+						</h:panelGroup>
+						<h:commandButton value="Créer une intervention" action="#{editBean.createIntervention}" class="buttonCreate"/>
+					</h:form>
+	            </div>
+	            <div class="contenu_onglet" id="contenu_onglet_site">
+	            	<h:form>
+						<h:panelGroup id="listecontent2">
+							<table class="tableau">
+								<tr class="headerTableau">
+									<td>nom</td>
+									<td>adresse</td>
+									<td>action</td>
+								</tr>
+								<ui:repeat var="s" value="#{adminBean.sites}">
+								<tr>
+									<td class="bodyTableau">#{s.nom}</td>
+									<td class="bodyTableau">#{s.adresse}</td>
+									<td class="bodyTableau">
+									<h:commandButton value="editer" action="#{editBean.editSite}" class="buttonTableau">
+										<f:param name="sid" value="#{s.id}" />
+									</h:commandButton>
+									</td>
+								</tr>	
+								</ui:repeat>	
+							</table>
+						</h:panelGroup>
+					</h:form> 
+	            </div>
+	            <div class="contenu_onglet" id="contenu_onglet_article">
+	                <h:form>
+						<h:panelGroup>
+							<table border="1">
+								<tr>
+									<th>nom</th>
+									<th>description</th>
+									<th>nom de sousFamille</th>
+									<th>action</th>
+								</tr>
+								<ui:repeat var="a" value="#{adminBean.articles}">
+								<tr>
+									<td>#{a.nom}</td>
+									<td>#{a.description}</td>
+									<td>#{a.sousfamille.nom}</td>
+									<td>
+									<h:commandButton value="editer" action="#{editBean.editArticle}" class="buttonTableau">
+										<f:param name="aid" value="#{a.id}" />
+									</h:commandButton>
+									
+									</td>
+								</tr>
+								</ui:repeat>
+							</table>
+						</h:panelGroup>
+					</h:form>
+	            </div>
+	            <div class="contenu_onglet" id="contenu_onglet_materiel">
+	                <h:form>
+						<h:panelGroup>
+							<table border="1">
+								<tr>
+									<th>numeroSerie</th>
+									<th>nom de client</th>
+									<th>nom d'article</th>
+									<th>action</th>
+								</tr>
+								<ui:repeat var="m" value="#{adminBean.materiels2}">
+								<tr>
+									<td>#{m.numeroSerie}</td>
+									<td>#{m.client_id.nom}</td>
+									<td>#{m.article_id.nom}</td>
+									<td>
+									<h:commandButton value="editer" action="#{editBean.editMateriel}">
+										<f:param name="mid" value="#{m.id}" />
+									</h:commandButton>
+									
+									</td>
+								</tr>
+								</ui:repeat>
+							</table>
+						</h:panelGroup>
+					</h:form>
+	            </div>
+	            <div class="contenu_onglet" id="contenu_onglet_client">
+	                <h:form>
+						<h:panelGroup>
+							<table border="1">
+								<tr>
+									<th>nom</th>
+									<th>numeroTelephone</th>
+									<th>action</th>
+								</tr>
+								<ui:repeat var="c" value="#{adminBean.clients2}">
+								<tr>
+									<td>#{c.nom}</td>
+									<td>#{c.numeroTelephone}</td>
+									<td>
+									<h:commandButton value="editer" action="#{editBean.editClient}">
+										<f:param name="clientId" value="#{c.id}" />
+									</h:commandButton>
+									</td>
+								</tr>
+								</ui:repeat>
+							</table>
+						</h:panelGroup>
+					</h:form>
+	            </div>
+	            <div class="contenu_onglet" id="contenu_onglet_utilisateur">
+	                <h:form>
+						<h:panelGroup>
+							<table border="1">
+								<tr>
+									<th>nom</th>
+									<th>prenom</th>
+									<th>email</th>
+									<th>groupe</th>
+									<th>action</th>
+								</tr>
+								<ui:repeat var="i" value="#{adminBean.intervenants2}">
+								<tr>
+									<td>#{i.nom}</td>
+									<td>#{i.prenom}</td>
+									<td>#{i.email}</td>
+									<td>
+										<ui:repeat var="g" value="#{i.groupes}"> 
+											#{g.nom}  
+										</ui:repeat>
+									</td>
+									<td>
+									<h:commandButton value="editer" action="#{editBean.editIntervenant2}">
+										<f:param name="id" value="#{i.id}" />
+									</h:commandButton>
+									</td>
+								</tr>
+								</ui:repeat>
+							</table>
+						</h:panelGroup>
+					</h:form>  
+	            </div>
+	        </div>
+	    </div>
+	
+		<script type="text/javascript">
+			var anc_onglet = 'inter';
+		    change_onglet(anc_onglet);
+		</script>
+	</h:body>
 </html>
