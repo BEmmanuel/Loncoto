@@ -21,11 +21,16 @@ dateRealisation : <h:inputText value="#{editBean.dateRealisation}" class="dateti
 </h:inputText>
 Duree: <h:inputText value="#{editBean.interventionDuree}"/><br />
 Commentaire: <h:inputText value="#{editBean.interventionCommentaire}"/><br />
-status: <h:inputTextarea value="#{editBean.interventionStatus}"/><br />
-intervenant: <h:selectOneMenu value="#{editBean.intervenantID}">
+Status: <h:selectOneMenu value="#{editBean.interventionStatus}">
+			<f:selectItem id="item1" itemLabel="En attente" itemValue="En attente" />
+	    	<f:selectItem id="item2" itemLabel="En cours" itemValue="En cours" />
+	    	<f:selectItem id="item3" itemLabel="Terminé" itemValue="Terminé" />
+	    	<f:selectItem id="item4" itemLabel="Annulé" itemValue="Annulé" />
+		</h:selectOneMenu><br />
+Intervenant: <h:selectOneMenu value="#{editBean.intervenantID}">
 	<f:selectItems value="#{editBean.intervenants}" var="i" itemValue="#{i.id}" itemLabel="#{i.nom}" />
 </h:selectOneMenu><br />
-materiel:  <h:selectOneMenu value="#{editBean.materielID}">
+Materiel:  <h:selectOneMenu value="#{editBean.materielID}">
 			<f:selectItems value="#{editBean.materiels}" var="m"
 				itemValue="#{m.id}" itemLabel="#{m.numeroSerie}" />
 		</h:selectOneMenu>
