@@ -39,7 +39,7 @@ public class IntervenantDAO implements IIntervenantDAO {
 	@Override
 	@Transactional
 	public List<Intervenant> findAllWitchIntervention(){
-		return em.createQuery("select inter from Intervenant as inter , IN(inter.interventions) as interventions where interventions.size > 0 ", Intervenant.class).getResultList();
+		return em.createQuery("select DISTINCT inter from Intervenant as inter , IN(inter.interventions) as interventions where interventions.size > 0 ", Intervenant.class).getResultList();
 	}
 	
 	@Override
