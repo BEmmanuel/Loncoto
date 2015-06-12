@@ -16,19 +16,30 @@
 		<h1 class="title">Gest'LONCOTO</h1>
 		<h2 class="sousTitle">Création d'une intervention</h2>
 		<h:form>
-			<h:inputHidden value="#{editBean.interventionID}" />
-			datePlanification : <h:inputText value="#{editBean.datePlanification}" class="datetimepicker">
-			<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris"/>
-			</h:inputText>
-			Commentaire: <h:inputText value="#{editBean.interventionCommentaire}"/><br />
-			intervenant: <h:selectOneMenu value="#{editBean.intervenantID}">
-				<f:selectItems value="#{editBean.intervenants}" var="i" itemValue="#{i.id}" itemLabel="#{i.nom}" />
-			</h:selectOneMenu><br />
-			materiel:  <h:selectOneMenu value="#{editBean.materielID}">
-				<f:selectItems value="#{editBean.materiels}" var="m" itemValue="#{m.id}" itemLabel="#{m.numeroSerie}" />
-			</h:selectOneMenu>
+			
+			<div class="blocLabels">
+	    	   <h:outputLabel value="Date prévue de l'intervention" class="labelForm" />
+	    	   <h:outputLabel value="Nom de l'intervenant" class="labelForm" />
+	    	   <h:outputLabel value="Materiel Concerné" class="labelForm" />
+	    	   <h:outputLabel value="Diagnostic de la panne" class="labelForm" />
+	    	</div>
+	    	<div class="blocInputs">
+		    	<h:inputHidden value="#{editBean.interventionID}" />
+		    	
+				<h:inputText value="#{editBean.datePlanification}" class="datetimepicker inputForm">
+					<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" timeZone="Europe/Paris"/>
+				</h:inputText><br />
+				<h:selectOneMenu value="#{editBean.intervenantID}" class="inputForm">
+					<f:selectItems value="#{editBean.intervenants}" var="i" itemValue="#{i.id}" itemLabel="#{i.nom}" />
+				</h:selectOneMenu><br />
+				<h:selectOneMenu value="#{editBean.materielID}" class="inputForm">
+					<f:selectItems value="#{editBean.materiels}" var="m" itemValue="#{m.id}" itemLabel="#{m.numeroSerie}" />
+				</h:selectOneMenu><br />
+				<h:inputText value="#{editBean.interventionCommentaire}" class="inputForm"/><br />
+			</div>
 			<br />
-			<h:commandButton value="sauver" action="#{editBean.saveIntervention2}" />
+			<h:commandButton value="Créer" action="#{editBean.saveIntervention2}" class="buttonStyle"/>
+			<h:commandButton value="retour à l'accueil" action="#{navigationBean.redirectToWelcomeAdmin}" class="buttonReturn"/>
 		</h:form>
 		
 		<SCRIPT type="text/javascript">
